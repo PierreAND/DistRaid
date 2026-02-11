@@ -1,21 +1,23 @@
 services:
-
   dbtest:
-    image: postgres:latest
+    image: postgres:18
+    container_name: dbtest
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: test
     ports:
       - "5434:5432"
-
-
-
-
+    volumes:
+      - postgres_data:/var/lib/postgresql
 
   adminer:
     image: adminer
+    container_name: adminer
     ports:
-      - "8080:8080" 
+      - "8080:8080"
     depends_on:
       - dbtest
+
+volumes:
+  postgres_data:
