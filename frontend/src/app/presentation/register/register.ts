@@ -85,7 +85,7 @@ onSubmit(): void {
     .subscribe({
       next: (res) => {
         localStorage.setItem('access_token', res.access_token);
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         this.isLoading = false;
