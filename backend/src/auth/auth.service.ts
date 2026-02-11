@@ -17,7 +17,6 @@ export class AuthService {
   ) {}
 
   async register(dto: RegisterDto) {
-    // Vérifier que l'email n'existe pas déjà
     const existingUser = await this.prisma.user.findUnique({
       where: { email: dto.email },
     });
@@ -25,7 +24,6 @@ export class AuthService {
       throw new ConflictException('Un utilisateur avec cet email existe déjà');
     }
 
-    // Vérifier que la classe existe
     const classe = await this.prisma.classe.findUnique({
       where: { id: dto.classeId },
     });
@@ -33,7 +31,6 @@ export class AuthService {
       throw new BadRequestException('Classe introuvable');
     }
 
-    // Vérifier que la spécialisation existe et appartient à la classe
     const specialisation = await this.prisma.specialisation.findUnique({
       where: { id: dto.specialisationId },
     });
@@ -43,10 +40,8 @@ export class AuthService {
       );
     }
 
-    // Hasher le mot de passe
     const hashedPassword = await bcrypt.hash(dto.password, 10);
 
-    // Créer l'utilisateur
     const user = await this.prisma.user.create({
       data: {
         name: dto.name,
@@ -67,7 +62,6 @@ export class AuthService {
   }
 
   async login(dto: LoginDto) {
-    // Trouver l'utilisateur
     const user = await this.prisma.user.findUnique({
       where: { email: dto.email },
       include: { classe: true, specialisation: true },
@@ -76,7 +70,6 @@ export class AuthService {
       throw new UnauthorizedException('Email ou mot de passe incorrect');
     }
 
-    // Vérifier le mot de passe
     const isPasswordValid = await bcrypt.compare(dto.password, user.password);
     if (!isPasswordValid) {
       throw new UnauthorizedException('Email ou mot de passe incorrect');
