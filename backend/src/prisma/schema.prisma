@@ -13,6 +13,8 @@ model User {
   password         String
   classeId         Int
   specialisationId Int
+  raidId           Int?
+  raid             Raid?           @relation(fields: [raidId], references: [id])
   classe           Classe         @relation(fields: [classeId], references: [id])
   specialisation   Specialisation @relation(fields: [specialisationId], references: [id])
   createdAt        DateTime       @default(now())
@@ -33,4 +35,10 @@ model Specialisation {
   users    User[]
 
   @@unique([name, classeId])
+}
+
+model Raid {
+  id Int    @id @default(autoincrement())
+  name String
+  users User[]
 }
