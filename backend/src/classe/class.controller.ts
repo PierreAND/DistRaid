@@ -1,8 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { ClassesService
-    
- } from './class.service';
+import { ClassesService } from './class.service';
 @ApiTags('Classes')
 @Controller('classes')
 export class ClassesController {
