@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { RegisterUseCase } from '../../application/usecases/users/registerUser-usecase';
 import { GetAllClassUseCase } from '../../application/usecases/classes/getAllClasses.usecase';
 import { Classe, Specialisation } from '../../domain/models/users/user.model';
@@ -9,7 +9,7 @@ import { Classe, Specialisation } from '../../domain/models/users/user.model';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
@@ -42,6 +42,7 @@ export class Register {
 loadClasses(): void {
   this.getAllClasseUseCase.execute().subscribe({
     next: (classes) => {
+      console.log(classes)
       this.classes = classes;
       this.specialisations = classes.flatMap((c) => c.specialisation);
     },
