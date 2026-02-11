@@ -1,1 +1,76 @@
-<p>register works!</p>
+<div class="register-container">
+  <h2>Inscription</h2>
+
+  @if (errorMessage) {
+    <div class="error">{{ errorMessage }}</div>
+  }
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input id="name" type="text" formControlName="name" placeholder="Votre nom" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" placeholder="email@exemple.com" />
+      @if (registerForm.get('email')?.touched && registerForm.get('email')?.errors) {
+        <small class="field-error">
+          @if (registerForm.get('email')?.errors?.['required']) {
+            L'email est requis
+          }
+          @if (registerForm.get('email')?.errors?.['email']) {
+            Format d'email invalide
+          }
+        </small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input id="password" type="password" formControlName="password" placeholder="6 caractères minimum" />
+      @if (registerForm.get('password')?.touched && registerForm.get('password')?.errors) {
+        <small class="field-error">
+          @if (registerForm.get('password')?.errors?.['required']) {
+            Le mot de passe est requis
+          }
+          @if (registerForm.get('password')?.errors?.['minlength']) {
+            6 caractères minimum
+          }
+        </small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="classe">Classe</label>
+      <select id="classe" formControlName="classeId" (change)="onClasseChange()">
+        <option [ngValue]="null" disabled>Choisir une classe</option>
+        @for (classe of classes; track classe.id) {
+          <option [value]="classe.id">{{ classe.name }}</option>
+        }
+      </select>
+      @if (registerForm.get('classeId')?.touched && registerForm.get('classeId')?.errors?.['required']) {
+        <small class="field-error">La classe est requise</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="specialisation">Spécialisation</label>
+      <select id="specialisation" formControlName="specialisationId">
+        <option [ngValue]="null" disabled>Choisir une spécialisation</option>
+        @for (spec of filteredSpecialisations; track spec.id) {
+          <option [value]="spec.id">{{ spec.name }}</option>
+        }
+      </select>
+      @if (registerForm.get('specialisationId')?.touched && registerForm.get('specialisationId')?.errors?.['required']) {
+        <small class="field-error">La spécialisation est requise</small>
+      }
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid || isLoading">
+      {{ isLoading ? 'Inscription...' : "S'inscrire" }}
+    </button>
+  </form>
+
+  <p>Déjà un compte ? <a routerLink="/login">Se connecter</a></p>
+</div>
