@@ -4,6 +4,8 @@ export interface User {
     name: string
     classeId: number
     specialisationId: number
+    raidId?: number
+    raid?: Raid
     classe: Classe
     specialisation: Specialisation
     createdAt: Date
@@ -26,6 +28,15 @@ export interface Specialisation {
     users: User[]
 }
 
+export interface Raid {
+    id: number
+    name: string
+    users: User[]
+}
+
+export interface CreateRaidPayload {
+    name: string
+}
 
 export interface AuthResponse {
     user: User
@@ -50,4 +61,5 @@ export interface UpdateUserPayload {
     email?: string
     classeId: number
     specialisationId: number
+    raidId?: number
 }
