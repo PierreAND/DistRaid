@@ -22,4 +22,9 @@ export class UpdateUserDTO {
   @IsInt()
   @IsOptional()
   specialisationId?: number;
+
+  @ApiPropertyOptional({ example: 1 })
+  @IsInt()
+  @IsOptional()
+  raidId?: number | null;
 }
