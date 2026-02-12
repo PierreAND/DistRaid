@@ -24,7 +24,7 @@ export class Register {
   constructor(
     private fb: FormBuilder,
     private registerUseCase: RegisterUseCase,
-    private getAllClasseUseCase: GetAllClassUseCase,
+    private getAllClasse: GetAllClassUseCase,
     private router: Router,
   ) {}
 
@@ -40,7 +40,7 @@ export class Register {
 }
 
 loadClasses(): void {
-  this.getAllClasseUseCase.execute().subscribe({
+  this.getAllClasse.execute().subscribe({
     next: (classes) => {
       console.log(classes)
       this.classes = classes;

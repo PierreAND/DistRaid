@@ -59,7 +59,7 @@ export interface LoginPayload {
 export interface UpdateUserPayload {
     name?: string
     email?: string
-    classeId: number
-    specialisationId: number
-    raidId?: number
+    classeId?: number
+    specialisationId?: number
+    raidId?: number | null 
 }

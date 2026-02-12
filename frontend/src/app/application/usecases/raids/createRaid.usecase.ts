@@ -4,10 +4,10 @@ import { RaidRepository } from '../../../domain/repositories/Raid.repository';
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
-export class createRaidUseCase {
-  constructor(private RaidRepository: RaidRepository) {}
+export class CreateRaidUseCase {
+  constructor(private raidRepository: RaidRepository) {}
 
   execute(payload: CreateRaidPayload): Observable<Raid> {
-    return this.RaidRepository.create(payload);
+    return this.raidRepository.create(payload);
   }
 }

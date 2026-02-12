@@ -4,9 +4,9 @@ import { Raid } from '../../../domain/models/users/user.model';
 import { RaidRepository } from '../../../domain/repositories/Raid.repository';
 
 @Injectable({ providedIn: 'root' })
-export class getAllRaidUseCase {
-  constructor(private readonly RaidRepository: RaidRepository) {}
+export class GetAllRaidUseCase {
+  constructor(private readonly raidRepository: RaidRepository) {}
   execute(): Observable<Raid[]> {
-    return this.RaidRepository.getAll();
+    return this.raidRepository.getAll();
   }
 }

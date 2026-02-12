@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { LoginUseCase } from '../../application/usecases/users/loginUser-usecase';
 import { CommonModule } from '@angular/common';
@@ -23,10 +23,10 @@ export class Login {
   ) {}
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: [''],
-      passeword: ['']
-    })
+   this.loginForm = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]]
+  });
   }
   onSubmit(): void {
     if (this.loginForm.invalid) return;
