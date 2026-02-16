@@ -1,0 +1,144 @@
+@use '../../../styles/theme' as *;
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: $bg-primary;
+}
+
+.boss-detail-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid $border-default;
+}
+
+.btn-back {
+  font-family: $font-body;
+  font-size: 0.75rem;
+  background: $bg-secondary;
+  border: 1px solid $border-default;
+  color: $text-secondary;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: $text-primary;
+    border-color: $border-gold;
+  }
+}
+
+.page-title {
+  font-family: $font-display;
+  font-size: 1.35rem;
+  @include gold-glow-text;
+  margin: 0;
+}
+
+.alert-error {
+  color: $red-error;
+  background: rgba($red-error, 0.08);
+  border: 1px solid rgba($red-error, 0.25);
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-family: $font-body;
+  font-size: 0.78rem;
+}
+
+.loots-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $font-body;
+  font-size: 0.85rem;
+  color: $text-secondary;
+  margin-bottom: 1.5rem;
+}
+
+.loots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.loot-card {
+  background: $bg-card;
+  @include gold-border;
+  border-radius: 8px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  transition: all 0.3s;
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 16px $gold-glow;
+  }
+  ::ng-deep .iconmedium,
+  ::ng-deep .iconsmall,
+  ::ng-deep .iconlarge {
+    display: inline-block !important;
+  }
+  ::ng-deep ins.wowhead-tooltip {
+    display: inline-block !important;
+  }
+}
+.loot-image {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.loot-name {
+  font-family: $font-display;
+  font-size: 0.9rem;
+  color: $text-primary;
+  text-align: center;
+}
+
+.btn-wishlist {
+  font-family: $font-body;
+  font-size: 0.72rem;
+  color: $gold-primary;
+  background: rgba($gold-primary, 0.06);
+  border: 1px solid $border-gold;
+  border-radius: 4px;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all 0.25s;
+  width: 100%;
+  text-align: center;
+
+  &:hover {
+    background: rgba($gold-primary, 0.14);
+    box-shadow: 0 0 10px rgba(201, 168, 76, 0.15);
+    color: $gold-light;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  color: $text-muted;
+  font-family: $font-body;
+  margin-top: 3rem;
+}

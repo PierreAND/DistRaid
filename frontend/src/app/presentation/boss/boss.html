@@ -11,19 +11,12 @@
   @if (bosses.length > 0) {
     <div class="boss-grid">
       @for (boss of bosses; track boss.id) {
-        <div class="boss-card">
+        <div class="boss-card" [routerLink]="['/boss', boss.id]">
           <h3 class="boss-name">{{ boss.name }}</h3>
           <div class="boss-loots">
             <span class="loots-icon">🎁</span>
             <span>{{ boss.loots?.length || 0 }} loot(s)</span>
           </div>
-          @if (boss.loots && boss.loots.length > 0) {
-            <ul class="loots-list">
-              @for (loot of boss.loots; track loot.id) {
-                <li class="loot-item">{{ loot.name }}</li>
-              }
-            </ul>
-          }
         </div>
       }
     </div>

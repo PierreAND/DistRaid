@@ -1,0 +1,36 @@
+<div class="boss-detail-wrapper">
+  <header class="top-bar">
+    <button class="btn-back" routerLink="/boss">← Retour aux boss</button>
+    @if (boss) {
+      <h1 class="page-title">⚔ {{ boss.name }}</h1>
+    }
+  </header>
+
+  @if (errorMessage) {
+    <div class="alert alert-error">{{ errorMessage }}</div>
+  }
+
+  @if (boss) {
+    <div class="loots-section">
+      <p class="loots-count">
+        <span class="loots-icon">🎁</span>
+        {{ boss.loots?.length || 0 }} loot(s) disponible(s)
+      </p>
+
+      @if (boss.loots && boss.loots.length > 0) {
+        <div class="loots-grid">
+          @for (loot of boss.loots; track loot.id) {
+            <div class="loot-card">
+              <a [href]="loot.url" target="_blank" class="loot-link">{{ loot.name }}</a>
+              <button class="btn-wishlist">⭐ Ajouter à ma wishlist</button>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="empty-state">
+          <p>Aucun loot pour ce boss</p>
+        </div>
+      }
+    </div>
+  }
+</div>
