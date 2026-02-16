@@ -66,3 +66,12 @@ export interface UpdateUserPayload {
     specialisationId?: number
     raidId?: number | null 
 }
+
+export interface UserWishlist {
+  id: number;
+  name: string;
+  email: string;
+  classe: Classe;
+  specialisation: Specialisation;
+  loots: Loot[];
+}
