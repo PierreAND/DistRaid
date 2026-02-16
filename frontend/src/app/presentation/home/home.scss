@@ -55,6 +55,23 @@
   border-radius: 16px;
   letter-spacing: 0.02em;
 }
+.btn-profil {
+  font-family: $font-body;
+  font-size: 0.72rem;
+  color: $gold-primary;
+  background: rgba($gold-primary, 0.08);
+  border: 1px solid $border-gold;
+  border-radius: 6px;
+  padding: 5px 14px;
+  cursor: pointer;
+  transition: all 0.25s;
+
+  &:hover {
+    background: rgba($gold-primary, 0.16);
+    box-shadow: 0 0 10px rgba(201, 168, 76, 0.15);
+    color: $gold-light;
+  }
+}
 
 .btn-logout {
   font-family: $font-body;

@@ -1,0 +1,204 @@
+@use '../../../styles/theme' as *;
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: $bg-primary;
+  background-image:
+    radial-gradient(ellipse at 10% 20%, rgba(201, 168, 76, 0.035) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(201, 168, 76, 0.025) 0%, transparent 50%);
+}
+
+.profil-wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid $border-default;
+}
+
+.btn-back {
+  font-family: $font-body;
+  font-size: 0.75rem;
+  background: $bg-secondary;
+  border: 1px solid $border-default;
+  color: $text-secondary;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    color: $text-primary;
+    border-color: $border-gold;
+  }
+}
+
+.page-title {
+  font-family: $font-display;
+  font-size: 1.35rem;
+  @include gold-glow-text;
+  margin: 0;
+}
+
+.alert {
+  font-family: $font-body;
+  font-size: 0.78rem;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  animation: slideIn 0.25s ease-out;
+}
+
+.alert-success {
+  color: $green-success;
+  background: rgba($green-success, 0.08);
+  border: 1px solid rgba($green-success, 0.25);
+}
+
+.alert-error {
+  color: $red-error;
+  background: rgba($red-error, 0.08);
+  border: 1px solid rgba($red-error, 0.25);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.loot-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: $font-body;
+  font-size: 0.78rem;
+  color: $text-secondary;
+  margin: 0 0 1.5rem;
+}
+
+.count-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $green-success;
+  box-shadow: 0 0 6px rgba($green-success, 0.5);
+}
+
+.loots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.loot-card {
+  background: $bg-card;
+  @include gold-border;
+  border-radius: 8px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 16px $gold-glow;
+  }
+}
+
+.loot-link {
+  color: $text-secondary;
+  text-decoration: none;
+  font-family: $font-body;
+  font-size: 0.85rem;
+
+  &:hover {
+    color: $text-primary;
+  }
+}
+
+.loot-boss {
+  font-family: $font-display;
+  font-size: 0.72rem;
+  color: $gold-primary;
+  opacity: 0.7;
+}
+
+.btn-remove {
+  font-family: $font-body;
+  font-size: 0.72rem;
+  color: $red-error;
+  background: rgba($red-error, 0.06);
+  border: 1px solid rgba($red-error, 0.25);
+  border-radius: 4px;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: auto;
+
+  &:hover:not(:disabled) {
+    background: rgba($red-error, 0.14);
+    box-shadow: 0 0 10px rgba($red-error, 0.12);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.empty-icon {
+  font-size: 2.8rem;
+  margin: 0 0 0.8rem;
+  opacity: 0.7;
+}
+
+.empty-text {
+  font-family: $font-display;
+  font-size: 1.15rem;
+  @include gold-glow-text;
+  margin: 0 0 0.4rem;
+}
+
+.empty-sub {
+  font-family: $font-body;
+  font-size: 0.78rem;
+  color: $text-secondary;
+  margin: 0 0 1.5rem;
+}
+
+.btn-browse {
+  font-family: $font-display;
+  font-size: 0.78rem;
+  color: $gold-primary;
+  background: rgba($gold-primary, 0.08);
+  border: 1px solid $border-gold;
+  border-radius: 6px;
+  padding: 10px 24px;
+  cursor: pointer;
+  transition: all 0.25s;
+
+  &:hover {
+    background: rgba($gold-primary, 0.16);
+    box-shadow: 0 0 14px rgba(201, 168, 76, 0.15);
+  }
+}
+
+@media (max-width: 640px) {
+  .loots-grid {
+    grid-template-columns: 1fr;
+  }
+}

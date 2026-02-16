@@ -1,0 +1,49 @@
+<div class="profil-wrapper">
+  <header class="top-bar">
+    <button class="btn-back" routerLink="/home">← Retour</button>
+    <h1 class="page-title">⭐ Ma Wishlist</h1>
+  </header>
+
+  @if (successMessage) {
+    <div class="alert alert-success">{{ successMessage }}</div>
+  }
+  @if (errorMessage) {
+    <div class="alert alert-error">{{ errorMessage }}</div>
+  }
+
+  <p class="loot-count">
+    <span class="count-dot"></span>
+    {{ loots.length }} loot(s) dans votre wishlist
+  </p>
+
+  @if (loots.length > 0) {
+    <div class="loots-grid">
+      @for (loot of loots; track loot.id) {
+        <div class="loot-card">
+          <a [href]="loot.url" target="_blank" class="loot-link">{{ loot.name }}</a>
+          @if (loot.boss) {
+            <span class="loot-boss">{{ loot.boss.name }}</span>
+          }
+          <button
+            class="btn-remove"
+            [disabled]="removingLootId === loot.id"
+            (click)="removeLoot(loot.id)"
+          >
+            @if (removingLootId === loot.id) {
+              Suppression...
+            } @else {
+              ✕ Retirer
+            }
+          </button>
+        </div>
+      }
+    </div>
+  } @else if (!errorMessage) {
+    <div class="empty-state">
+      <p class="empty-icon">⭐</p>
+      <p class="empty-text">Votre wishlist est vide</p>
+      <p class="empty-sub">Parcourez les boss pour ajouter des loots !</p>
+      <button class="btn-browse" routerLink="/boss">⚔ Voir les boss</button>
+    </div>
+  }
+</div>

@@ -142,3 +142,29 @@
   font-family: $font-body;
   margin-top: 3rem;
 }
+
+.alert {
+  font-family: $font-body;
+  font-size: 0.78rem;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  animation: slideIn 0.25s ease-out;
+}
+
+.alert-success {
+  color: $green-success;
+  background: rgba($green-success, 0.08);
+  border: 1px solid rgba($green-success, 0.25);
+}
+
+.alert-error {
+  color: $red-error;
+  background: rgba($red-error, 0.08);
+  border: 1px solid rgba($red-error, 0.25);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}

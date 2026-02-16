@@ -4,6 +4,7 @@ import { Login } from './presentation/login/login';
 import { Home } from './presentation/home/home';
 import { BossComponent } from './presentation/boss/boss';
 import { BossDetail } from './presentation/boss-details/boss-details';
+import { ProfilComponent } from './presentation/profil/profil';
 
 export const routes: Routes = [
   { path: 'register', component: Register },
@@ -11,5 +12,6 @@ export const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'boss', component: BossComponent },
   {path: 'boss/:id', component: BossDetail},
+  { path: 'profil', component: ProfilComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

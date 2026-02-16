@@ -6,6 +6,9 @@
     }
   </header>
 
+  @if (sucessMessage) {
+    <div class="alert alert-success">{{ sucessMessage }}</div>
+  }
   @if (errorMessage) {
     <div class="alert alert-error">{{ errorMessage }}</div>
   }
@@ -22,7 +25,17 @@
           @for (loot of boss.loots; track loot.id) {
             <div class="loot-card">
               <a [href]="loot.url" target="_blank" class="loot-link">{{ loot.name }}</a>
-              <button class="btn-wishlist">⭐ Ajouter à ma wishlist</button>
+              <button
+                class="btn-wishlist"
+                [disabled]="addingLootId === loot.id"
+                (click)="addLoot(loot.id)"
+              >
+                @if (addingLootId === loot.id) {
+                  Ajout...
+                } @else {
+                  ⭐ Ajouter à ma wishlist
+                }
+              </button>
             </div>
           }
         </div>
