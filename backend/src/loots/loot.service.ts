@@ -1,5 +1,5 @@
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { AddLootDto } from './dto/addLoot.dto';
 
 @Injectable()
@@ -44,5 +44,31 @@ export class LootService {
     });
     if (!user) throw new NotFoundException('Utilisateur introuvable');
     return user.loots;
+  }
+
+  async getRaidLootList(requesterId: number, raidId: number) {
+    const raid = await this.prisma.raid.findUnique({
+      where: { id: raidId },
+      include: { users: true },
+    });
+    if (!raid) throw new NotFoundException('Raid introuvable');
+
+    const isInRaid = raid.users.some((u) => u.id === requesterId);
+    if (!isInRaid)
+      throw new ForbiddenException('Vous ne faites pas partie de ce raid');
+
+    return this.prisma.user.findMany({
+      where: { raidId },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        classe: true,
+        specialisation: true,
+        loots: {
+          include: { boss: true },
+        },
+      },
+    });
   }
 }

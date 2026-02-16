@@ -33,15 +33,14 @@ export class RaidController {
   @Post()
   @UseGuards(JwtAuthGuard)
   create(@Req() req, @Body() dto: CreateRaidDto) {
+    console.log('req.user:', req.user);
     return this.raidService.create(req.user.id, dto);
   }
-
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
   delete(@Req() req, @Param('id', ParseIntPipe) id: number) {
     return this.raidService.delete(req.user.id, id);
   }
-
 
   @Post(':id/join')
   @UseGuards(JwtAuthGuard)
@@ -49,24 +48,27 @@ export class RaidController {
     return this.raidService.requestJoin(req.user.id, raidId);
   }
 
-
   @Get(':id/requests')
   @UseGuards(JwtAuthGuard)
   getPendingRequests(@Req() req, @Param('id', ParseIntPipe) raidId: number) {
     return this.raidService.getPendingRequests(req.user.id, raidId);
   }
 
-
   @Patch('requests/:requestId/accept')
   @UseGuards(JwtAuthGuard)
-  acceptRequest(@Req() req, @Param('requestId', ParseIntPipe) requestId: number) {
+  acceptRequest(
+    @Req() req,
+    @Param('requestId', ParseIntPipe) requestId: number,
+  ) {
     return this.raidService.acceptRequest(req.user.id, requestId);
   }
 
-
   @Patch('requests/:requestId/reject')
   @UseGuards(JwtAuthGuard)
-  rejectRequest(@Req() req, @Param('requestId', ParseIntPipe) requestId: number) {
+  rejectRequest(
+    @Req() req,
+    @Param('requestId', ParseIntPipe) requestId: number,
+  ) {
     return this.raidService.rejectRequest(req.user.id, requestId);
   }
 
@@ -80,7 +82,6 @@ export class RaidController {
     return this.raidService.kickUser(req.user.id, raidId, userId);
   }
 
-
   @Delete(':id/users/:userId/loots/:lootId')
   @UseGuards(JwtAuthGuard)
   removeLootFromUser(
@@ -89,6 +90,11 @@ export class RaidController {
     @Param('userId', ParseIntPipe) userId: number,
     @Param('lootId', ParseIntPipe) lootId: number,
   ) {
-    return this.raidService.removeLootFromUser(req.user.id, raidId, userId, lootId);
+    return this.raidService.removeLootFromUser(
+      req.user.id,
+      raidId,
+      userId,
+      lootId,
+    );
   }
 }

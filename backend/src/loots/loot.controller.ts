@@ -35,4 +35,9 @@ export class LootController {
   removeLoot(@Req() req, @Param('lootId', ParseIntPipe) lootId: number) {
     return this.lootService.removeLoot(req.user.id, lootId);
   }
+  @Get('raid/:raidId')
+  @UseGuards(JwtAuthGuard)
+  getRaidLootList(@Req() req, @Param('raidId', ParseIntPipe) raidId: number) {
+    return this.lootService.getRaidLootList(req.user.id, raidId);
+  }
 }

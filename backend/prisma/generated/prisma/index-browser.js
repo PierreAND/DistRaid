@@ -144,7 +144,16 @@ exports.Prisma.SpecialisationScalarFieldEnum = {
 
 exports.Prisma.RaidScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  createdById: 'createdById'
+};
+
+exports.Prisma.JoinRequestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  raidId: 'raidId',
+  status: 'status',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.BossScalarFieldEnum = {
@@ -180,6 +189,7 @@ exports.Prisma.ModelName = {
   Classe: 'Classe',
   Specialisation: 'Specialisation',
   Raid: 'Raid',
+  JoinRequest: 'JoinRequest',
   Boss: 'Boss',
   Loot: 'Loot'
 };
