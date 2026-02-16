@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, ParseIntPipe, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { BossService } from './boss.service';
 
@@ -10,7 +10,8 @@ export class BossController {
   getAll() {
     return this.bossesService.getAll();
   }
-  getOne(id: number) {
+  @Get(':id')
+  getOne(@Param('id', ParseIntPipe) id: number) {
     return this.bossesService.getOne(id);
   }
 }

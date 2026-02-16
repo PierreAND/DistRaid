@@ -6,6 +6,7 @@ import { UsersModule } from './user/user.module';
 import { ClassesModule } from './classe/class.module';
 import { RaidModule } from './raid/raid.module';
 import { BossModule } from './boss/boss.module';
+import { LootModule } from './loots/loot.module';
 
 @Module({
   imports: [
@@ -15,7 +16,8 @@ import { BossModule } from './boss/boss.module';
     UsersModule,
     ClassesModule,
     RaidModule,
-    BossModule
+    BossModule,
+    LootModule,
   ],
 })
 export class AppModule {}
