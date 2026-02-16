@@ -15,13 +15,14 @@ model User {
   classeId         Int
   specialisationId Int
   raidId           Int?
-  raid             Raid?           @relation(fields: [raidId], references: [id])
+  raid             Raid?          @relation(fields: [raidId], references: [id])
+  createdRaids     Raid[]         @relation("RaidCreator")
+  joinRequests     JoinRequest[]
   loots            Loot[]
   classe           Classe         @relation(fields: [classeId], references: [id])
   specialisation   Specialisation @relation(fields: [specialisationId], references: [id])
   createdAt        DateTime       @default(now())
 }
-
 model Classe {
   id             Int              @id @default(autoincrement())
   name           String           @unique
@@ -42,7 +43,22 @@ model Specialisation {
 model Raid {
   id Int    @id @default(autoincrement())
   name String
+  createdById Int
+  createdBy User  @relation("RaidCreator", fields: [createdById], references: [id])
   users User[]
+  joinRequests JoinRequest[]
+}
+
+model JoinRequest {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  raidId    Int
+  status    String   @default("pending") // pending, accepted, rejected
+  user      User     @relation(fields: [userId], references: [id])
+  raid      Raid     @relation(fields: [raidId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, raidId])
 }
 
 model Boss {
