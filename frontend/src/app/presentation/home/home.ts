@@ -6,6 +6,7 @@ import { Raid, User } from '../../domain/models/users/user.model';
 import { GetAllRaidUseCase } from '../../application/usecases/raids/getAllRaids.usecase';
 import { CreateRaidUseCase } from '../../application/usecases/raids/createRaid.usecase';
 import { UdpateUserUseCase } from '../../application/usecases/users/updateUser-usecase';
+import { RequestJoinRaidUseCase } from '../../application/usecases/raids/requestJoinRaid.usecase';
 
 @Component({
   selector: 'app-home',
@@ -23,11 +24,11 @@ export class Home implements OnInit {
   isJoining: number | null = null;
   errorMessage = '';
   successMessage = '';
-
-  constructor(
+ constructor(
     private readonly getAllRaidUseCase: GetAllRaidUseCase,
     private readonly createRaidUseCase: CreateRaidUseCase,
     private readonly updateUserUseCase: UdpateUserUseCase,
+    private readonly requestJoinRaidUseCase: RequestJoinRaidUseCase,
     private readonly cdr: ChangeDetectorRef,
     private readonly router: Router,
   ) {}
@@ -65,25 +66,27 @@ export class Home implements OnInit {
     });
   }
 
-  joinRaid(raidId: number): void {
-    if (!this.currentUser) return;
-
+requestJoin(raidId: number): void {
     this.isJoining = raidId;
     this.clearMessages();
 
-    this.updateUserUseCase.execute(this.currentUser.id, { raidId }).subscribe({
+    this.requestJoinRaidUseCase.execute(raidId).subscribe({
       next: () => {
-        this.successMessage = 'Vous avez rejoint le raid !';
+        this.successMessage = 'Demande envoyée ! En attente de validation par l\'admin.';
         this.isJoining = null;
-        this.loadRaids();
         this.cdr.detectChanges();
       },
       error: (err) => {
-        this.errorMessage = err.error?.message || 'Erreur en rejoignant le raid';
+        this.errorMessage = err.error?.message || 'Erreur lors de la demande';
         this.isJoining = null;
         this.cdr.detectChanges();
       },
     });
+  }
+
+  isRaidAdmin(raid: Raid): boolean {
+    if (!this.currentUser) return false;
+    return raid.createdById === this.currentUser.id;
   }
 
   leaveRaid(): void {

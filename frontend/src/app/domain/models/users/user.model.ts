@@ -34,8 +34,21 @@ export interface Specialisation {
 export interface Raid {
     id: number
     name: string
+    createdById: number
+    createdBy: {id: number; name: string ; email: string}
     users: User[]
 }
+
+
+export interface JoinRequest {
+  id: number;
+  userId: number;
+  raidId: number;
+  status: 'pending' | 'accepted' | 'rejected';
+  user: User;
+  createdAt: Date;
+}
+
 
 export interface CreateRaidPayload {
     name: string

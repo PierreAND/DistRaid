@@ -1,11 +1,11 @@
 <div class="home-wrapper">
   <header class="top-bar">
     <h1 class="app-title">⚔ Tableau des Raids</h1>
-  <div class="top-bar-actions">
-  <button class="btn-profil" routerLink="/profil">⭐ Ma Wishlist</button>
-  <span class="user-tag">{{ currentUser?.email }}</span>
-  <button class="btn-logout" (click)="logout()">Déconnexion</button>
-</div>
+    <div class="top-bar-actions">
+      <button class="btn-profil" routerLink="/profil">⭐ Ma Wishlist</button>
+      <span class="user-tag">{{ currentUser?.email }}</span>
+      <button class="btn-logout" (click)="logout()">Déconnexion</button>
+    </div>
   </header>
 
   @if (successMessage) {
@@ -52,19 +52,25 @@
   @if (raids.length > 0) {
     <div class="raids-grid">
       @for (raid of raids; track raid.id) {
-        <div class="raid-card" [class.joined]="isUserInRaid(raid)">
+        <div class="raid-card" [class.joined]="isUserInRaid(raid)" [class.admin]="isRaidAdmin(raid)">
           <div class="card-top-line"></div>
 
           <div class="raid-card-header">
             <h3 class="raid-name">{{ raid.name }}</h3>
-            @if (isUserInRaid(raid)) {
-              <span class="badge badge-joined">● Rejoint</span>
-            }
+            <div class="raid-badges">
+              @if (isRaidAdmin(raid)) {
+                <span class="badge badge-admin">👑 Admin</span>
+              }
+              @if (isUserInRaid(raid) && !isRaidAdmin(raid)) {
+                <span class="badge badge-joined">● Rejoint</span>
+              }
+            </div>
           </div>
 
           <div class="raid-members">
             <span class="members-icon">👥</span>
-            <span class="members-count">{{ raid.users.length || 0 }} membre(s)</span>
+            <span class="members-count">{{ raid.users?.length || 0 }} membre(s)</span>
+            <span class="raid-creator">— créé par {{ raid.createdBy?.name || raid.createdBy?.email }}</span>
           </div>
 
           @if (raid.users && raid.users.length > 0) {
@@ -74,25 +80,34 @@
               }
             </div>
           } @else {
-            <p class="no-members">Aucun membre — soyez le premier !</p>
+            <p class="no-members">Aucun membre</p>
           }
 
           <div class="raid-card-actions">
-            <button class="btn-details" routerLink="/boss">📋 Détails</button>
-            @if (isUserInRaid(raid)) {
-              <button class="btn-leave" (click)="leaveRaid()">✕ Quitter le raid</button>
-            } @else {
+            <button class="btn-details" routerLink="/boss">📋 Boss</button>
+
+            @if (isRaidAdmin(raid)) {
+              <button class="btn-admin" [routerLink]="['/raid-admin', raid.id]">
+                👑 Gérer
+              </button>
+            }
+
+            @if (isUserInRaid(raid) && !isRaidAdmin(raid)) {
+              <button class="btn-leave" (click)="leaveRaid()">✕ Quitter</button>
+            }
+
+            @if (!isUserInRaid(raid)) {
               <button
                 class="btn-join"
                 [disabled]="isUserInAnyRaid() || isJoining === raid.id"
-                (click)="joinRaid(raid.id)"
+                (click)="requestJoin(raid.id)"
               >
                 @if (isJoining === raid.id) {
-                  Inscription...
+                  Envoi...
                 } @else if (isUserInAnyRaid()) {
                   Déjà dans un raid
                 } @else {
-                  🛡 Rejoindre
+                  🛡 Demander à rejoindre
                 }
               </button>
             }

@@ -567,3 +567,49 @@
     grid-template-columns: 1fr;
   }
 }
+
+.badge-admin {
+  color: $gold-primary;
+  background: rgba($gold-primary, 0.12);
+  border: 1px solid $border-gold;
+}
+
+.raid-badges {
+  display: flex;
+  gap: 6px;
+}
+
+.raid-creator {
+  font-size: 0.68rem;
+  color: $text-muted;
+  margin-left: 4px;
+}
+
+.btn-admin {
+  flex: 1;
+  font-family: $font-display;
+  font-size: 0.75rem;
+  color: $gold-primary;
+  background: rgba($gold-primary, 0.08);
+  border: 1px solid $border-gold;
+  border-radius: 4px;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-align: center;
+
+  &:hover {
+    background: rgba($gold-primary, 0.16);
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.2);
+    color: $gold-light;
+  }
+}
+
+.raid-card.admin {
+  border-color: $border-gold;
+
+  .card-top-line {
+    background: linear-gradient(90deg, $gold-dark, $gold-light, $gold-dark);
+    opacity: 1;
+  }
+}

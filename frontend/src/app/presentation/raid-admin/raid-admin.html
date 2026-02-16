@@ -1,0 +1,74 @@
+<div class="admin-wrapper">
+  <header class="top-bar">
+    <button class="btn-back" routerLink="/home">← Retour</button>
+    <h1 class="page-title">👑 Gestion du Raid</h1>
+  </header>
+
+  @if (successMessage) {
+    <div class="alert alert-success">{{ successMessage }}</div>
+  }
+  @if (errorMessage) {
+    <div class="alert alert-error">{{ errorMessage }}</div>
+  }
+
+  <!-- Demandes en attente -->
+  <section class="admin-section">
+    <h2 class="section-title">📩 Demandes en attente ({{ pendingRequests.length }})</h2>
+
+    @if (pendingRequests.length > 0) {
+      <div class="requests-list">
+        @for (request of pendingRequests; track request.id) {
+          <div class="request-card">
+            <div class="request-info">
+              <span class="request-name">{{ request.user.name || request.user.email }}</span>
+              <span class="request-class">{{ request.user.classe?.name }} — {{ request.user.specialisation?.name }}</span>
+            </div>
+            <div class="request-actions">
+              <button class="btn-accept" (click)="acceptRequest(request.id)">✓ Accepter</button>
+              <button class="btn-reject" (click)="rejectRequest(request.id)">✕ Refuser</button>
+            </div>
+          </div>
+        }
+      </div>
+    } @else {
+      <p class="empty-text">Aucune demande en attente</p>
+    }
+  </section>
+
+  <!-- Membres et wishlists -->
+  <section class="admin-section">
+    <h2 class="section-title">👥 Membres et Wishlists ({{ members.length }})</h2>
+
+    @if (members.length > 0) {
+      @for (member of members; track member.id) {
+        <div class="member-card">
+          <div class="member-header">
+            <div class="member-info">
+              <span class="member-name">{{ member.name || member.email }}</span>
+              <span class="member-class">{{ member.classe?.name }} — {{ member.specialisation?.name }}</span>
+            </div>
+            <button class="btn-kick" (click)="kickUser(member.id)">✕ Kick</button>
+          </div>
+
+          @if (member.loots && member.loots.length > 0) {
+            <div class="member-loots">
+              <span class="loots-label">Wishlist ({{ member.loots.length }}) :</span>
+              <div class="loots-tags">
+                @for (loot of member.loots; track loot.id) {
+                  <span class="loot-tag">
+                    {{ loot.name }}
+                    <span class="loot-boss">{{ loot.boss?.name }}</span>
+                  </span>
+                }
+              </div>
+            </div>
+          } @else {
+            <p class="no-loots">Wishlist vide</p>
+          }
+        </div>
+      }
+    } @else {
+      <p class="empty-text">Aucun membre dans le raid</p>
+    }
+  </section>
+</div>
