@@ -10,7 +10,7 @@ export class ClasseRepositoryImp implements ClasseRepository {
   private readonly classeUrl = `${environment.apiUrl}/classes`;
 
   constructor(private http: HttpClient) {}
-   getAll(): Observable<Classe[]> {
-                return this.http.get<Classe[]>(`${this.classeUrl}`)
-            }
+  getAll(): Observable<Classe[]> {
+    return this.http.get<Classe[]>(`${this.classeUrl}`);
+  }
 }

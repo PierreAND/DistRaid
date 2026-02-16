@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './user/user.module';
 import { ClassesModule } from './classe/class.module';
 import { RaidModule } from './raid/raid.module';
+import { BossModule } from './boss/boss.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { RaidModule } from './raid/raid.module';
     AuthModule,
     UsersModule,
     ClassesModule,
-    RaidModule
+    RaidModule,
+    BossModule
   ],
 })
 export class AppModule {}

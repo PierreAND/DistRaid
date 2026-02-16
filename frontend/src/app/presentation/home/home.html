@@ -1,5 +1,4 @@
 <div class="home-wrapper">
-  
   <header class="top-bar">
     <h1 class="app-title">⚔ Tableau des Raids</h1>
     <div class="top-bar-actions">
@@ -8,7 +7,6 @@
     </div>
   </header>
 
-
   @if (successMessage) {
     <div class="alert alert-success">{{ successMessage }}</div>
   }
@@ -16,7 +14,6 @@
     <div class="alert alert-error">{{ errorMessage }}</div>
   }
 
-  
   <div class="actions-bar">
     <p class="raid-count">
       <span class="count-dot"></span>
@@ -26,7 +23,6 @@
       {{ showCreateForm ? '✕ Annuler' : '+ Créer un Raid' }}
     </button>
   </div>
-
 
   @if (showCreateForm) {
     <div class="create-form">
@@ -52,15 +48,12 @@
     </div>
   }
 
-
   @if (raids.length > 0) {
     <div class="raids-grid">
       @for (raid of raids; track raid.id) {
         <div class="raid-card" [class.joined]="isUserInRaid(raid)">
-      
           <div class="card-top-line"></div>
 
-          
           <div class="raid-card-header">
             <h3 class="raid-name">{{ raid.name }}</h3>
             @if (isUserInRaid(raid)) {
@@ -68,13 +61,11 @@
             }
           </div>
 
-        
           <div class="raid-members">
             <span class="members-icon">👥</span>
             <span class="members-count">{{ raid.users?.length || 0 }} membre(s)</span>
           </div>
 
-         
           @if (raid.users && raid.users.length > 0) {
             <div class="members-list">
               @for (user of raid.users; track user.id) {
@@ -85,12 +76,10 @@
             <p class="no-members">Aucun membre — soyez le premier !</p>
           }
 
-      
           <div class="raid-card-actions">
+            <button class="btn-details" routerLink="/boss">📋 Détails</button>
             @if (isUserInRaid(raid)) {
-              <button class="btn-leave" (click)="leaveRaid()">
-                ✕ Quitter le raid
-              </button>
+              <button class="btn-leave" (click)="leaveRaid()">✕ Quitter le raid</button>
             } @else {
               <button
                 class="btn-join"
@@ -111,7 +100,6 @@
       }
     </div>
   } @else {
-   
     <div class="empty-state">
       <p class="empty-icon">🏰</p>
       <p class="empty-text">Aucun raid disponible</p>

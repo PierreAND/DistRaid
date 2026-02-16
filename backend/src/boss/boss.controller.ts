@@ -3,7 +3,7 @@ import { ApiTags } from '@nestjs/swagger';
 import { BossService } from './boss.service';
 
 @ApiTags('Boss')
-@Controller('Boss')
+@Controller('boss')
 export class BossController {
   constructor(private readonly bossesService: BossService) {}
   @Get()

@@ -170,8 +170,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
 }
 
 .btn-create {
@@ -236,7 +241,9 @@
     border: 1px solid $border-default;
     border-radius: 6px;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
 
     &::placeholder {
       color: $text-muted;
@@ -279,8 +286,9 @@
 
   &:hover {
     border-color: rgba($gold-primary, 0.3);
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3),
-                0 0 10px rgba(201, 168, 76, 0.06);
+    box-shadow:
+      0 2px 16px rgba(0, 0, 0, 0.3),
+      0 0 10px rgba(201, 168, 76, 0.06);
   }
 
   &.joined {
@@ -394,7 +402,6 @@
 }
 
 .btn-join {
-  width: 100%;
   font-family: $font-display;
   font-size: 0.78rem;
   letter-spacing: 0.04em;
@@ -408,7 +415,12 @@
   box-shadow: 0 0 8px rgba(201, 168, 76, 0.2);
 
   &:hover:not(:disabled) {
-    background: linear-gradient(180deg, lighten($gold-light, 4%) 0%, $gold-light 50%, $gold-primary 100%);
+    background: linear-gradient(
+      180deg,
+      lighten($gold-light, 4%) 0%,
+      $gold-light 50%,
+      $gold-primary 100%
+    );
     box-shadow: 0 0 18px rgba(201, 168, 76, 0.4);
     transform: translateY(-1px);
   }
@@ -426,9 +438,41 @@
     transform: none;
   }
 }
+.raid-card-actions {
+  padding: 1rem 1.2rem;
+  margin-top: 0.6rem;
+  border-top: 1px solid $border-default;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.btn-details {
+  flex: 1;
+  font-family: $font-body;
+  font-size: 0.75rem;
+  color: $gold-primary;
+  background: rgba($gold-primary, 0.06);
+  border: 1px solid $border-gold;
+  border-radius: 4px;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none;
+  text-align: center;
+
+  &:hover {
+    background: rgba($gold-primary, 0.14);
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.15);
+    color: $gold-light;
+  }
+}
+
+.btn-join,
+.btn-leave {
+  flex: 1;
+}
 
 .btn-leave {
-  width: 100%;
   font-family: $font-body;
   font-size: 0.75rem;
   color: $red-error;

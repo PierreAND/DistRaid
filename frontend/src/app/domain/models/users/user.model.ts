@@ -1,3 +1,5 @@
+import { Loot } from "../boss/boss.model"
+
 export interface User {
     id: number
     email: string
@@ -7,6 +9,7 @@ export interface User {
     raidId?: number
     raid?: Raid
     classe: Classe
+    loots: Loot[]
     specialisation: Specialisation
     createdAt: Date
 }

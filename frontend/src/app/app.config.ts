@@ -4,15 +4,18 @@ import { USER_REPOSITORY_PROVIDER } from './domain/Implement/user.provider';
 import { routes } from './app.routes';
 import { CLASS_REPOSITORY_PROVIDER } from './domain/Implement/classe.provider';
 import { RAID_REPOSITORY_PROVIDER } from './domain/Implement/raid.provider';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './infrastructure/services/auth.interceptor';
+import { BOSS_REPOSITORY_PROVIDER } from './domain/Implement/boss.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     USER_REPOSITORY_PROVIDER,
     CLASS_REPOSITORY_PROVIDER,
-    RAID_REPOSITORY_PROVIDER
+    RAID_REPOSITORY_PROVIDER,
+    BOSS_REPOSITORY_PROVIDER
   ]
 };
