@@ -7,6 +7,7 @@ import { ClassesModule } from './classe/class.module';
 import { RaidModule } from './raid/raid.module';
 import { BossModule } from './boss/boss.module';
 import { LootModule } from './loots/loot.module';
+import { DkpModule } from './dkp/dkp.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { LootModule } from './loots/loot.module';
     RaidModule,
     BossModule,
     LootModule,
+    DkpModule,
   ],
 })
 export class AppModule {}

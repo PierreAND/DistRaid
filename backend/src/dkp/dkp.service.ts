@@ -1,3 +1,8 @@
+// =============================================
+// backend/src/dkp/dkp.service.ts
+// Module SÉPARÉ — ne touche PAS à LootService
+// =============================================
+
 import {
   Injectable,
   NotFoundException,
@@ -7,15 +12,14 @@ import {
 import { PrismaService } from '../prisma/prisma.service';
 import {
   SetPointsDto,
-  AddWishlistItemDto,
   AttributeLootDto,
   RecordAttendanceDto,
 } from './dto/dkp.dto';
 
 const PRIORITY_COSTS: Record<number, number> = {
-  1: 30, // Priorité haute
-  2: 20, // Priorité moyenne
-  3: 10, // Priorité basse
+  1: 30,
+  2: 20,
+  3: 10,
 };
 
 const ATTENDANCE_POINTS = 5;
@@ -35,6 +39,43 @@ export class DkpService {
     return raid;
   }
 
+  async getRaidDkpTable(raidId: number) {
+    const raid = await this.prisma.raid.findUnique({
+      where: { id: raidId },
+      include: {
+        users: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            classe: true,
+            specialisation: true,
+            loots: { include: { boss: true } },
+          },
+        },
+      },
+    });
+    if (!raid) throw new NotFoundException('Raid introuvable');
+
+    const points = await this.prisma.raidPoints.findMany({
+      where: { raidId },
+    });
+
+    const dkpTable = raid.users
+      .map((user) => ({
+        ...user,
+        points: points.find((p) => p.userId === user.id)?.points ?? 0,
+      }))
+      .sort((a, b) => b.points - a.points);
+
+    return {
+      raid: { id: raid.id, name: raid.name },
+      priorityCosts: PRIORITY_COSTS,
+      attendancePoints: ATTENDANCE_POINTS,
+      members: dkpTable,
+    };
+  }
+
   async setPoints(adminId: number, raidId: number, dto: SetPointsDto) {
     await this.verifyAdmin(adminId, raidId);
 
@@ -51,134 +92,33 @@ export class DkpService {
     });
   }
 
-  async getRaidDkpTable(raidId: number) {
-    const raid = await this.prisma.raid.findUnique({
-      where: { id: raidId },
-      include: {
-        users: {
-          select: {
-            id: true,
-            name: true,
-            email: true,
-            classe: true,
-            specialisation: true,
-          },
-        },
-      },
-    });
-    if (!raid) throw new NotFoundException('Raid introuvable');
-
-    const points = await this.prisma.raidPoints.findMany({
-      where: { raidId },
-    });
-
-    const userIds = raid.users.map((u) => u.id);
-    const wishlists = await this.prisma.wishlistItem.findMany({
-      where: { userId: { in: userIds } },
-      include: {
-        loot: {
-          include: {
-            boss: true,
-          },
-        },
-      },
-    });
-
-    const dkpTable = raid.users
-      .map((user) => ({
-        ...user,
-        points: points.find((p) => p.userId === user.id)?.points ?? 0,
-        wishlist: wishlists
-          .filter((w) => w.userId === user.id)
-          .map((w) => ({
-            id: w.id,
-            loot: w.loot,
-            priority: w.priority,
-          })),
-      }))
-      .sort((a, b) => b.points - a.points);
-
-    return {
-      raid: { id: raid.id, name: raid.name },
-      priorityCosts: PRIORITY_COSTS,
-      attendancePoints: ATTENDANCE_POINTS,
-      members: dkpTable,
-    };
-  }
-
-  async addWishlistItem(userId: number, dto: AddWishlistItemDto) {
-    const user = await this.prisma.user.findUnique({
-      where: { id: userId },
-    });
-    if (!user || !user.raidId) {
-      throw new BadRequestException(
-        'Vous devez être dans un raid pour ajouter à votre wishlist',
-      );
-    }
-
-    const loot = await this.prisma.loot.findUnique({
-      where: { id: dto.lootId },
-    });
-    if (!loot) throw new NotFoundException('Loot introuvable');
-
-    return this.prisma.wishlistItem.upsert({
-      where: { userId_lootId: { userId, lootId: dto.lootId } },
-      update: { priority: dto.priority },
-      create: {
-        userId,
-        lootId: dto.lootId,
-        priority: dto.priority,
-      },
-      include: {
-        loot: { include: { boss: true } },
-      },
-    });
-  }
-
-  async removeWishlistItem(userId: number, wishlistItemId: number) {
-    const item = await this.prisma.wishlistItem.findUnique({
-      where: { id: wishlistItemId },
-    });
-    if (!item) throw new NotFoundException('Item introuvable');
-    if (item.userId !== userId) {
-      throw new ForbiddenException('Cet item ne vous appartient pas');
-    }
-
-    return this.prisma.wishlistItem.delete({
-      where: { id: wishlistItemId },
-    });
-  }
-
-  async getUserWishlist(userId: number) {
-    return this.prisma.wishlistItem.findMany({
-      where: { userId },
-      include: {
-        loot: { include: { boss: true } },
-      },
-      orderBy: { priority: 'asc' },
-    });
-  }
-
   async attributeLoot(adminId: number, raidId: number, dto: AttributeLootDto) {
     await this.verifyAdmin(adminId, raidId);
 
     const user = await this.prisma.user.findFirst({
       where: { id: dto.userId, raidId },
+      include: { loots: true },
     });
     if (!user)
       throw new NotFoundException('Ce joueur ne fait pas partie du raid');
 
-    const wishlistItem = await this.prisma.wishlistItem.findUnique({
-      where: { userId_lootId: { userId: dto.userId, lootId: dto.lootId } },
-      include: { loot: { include: { boss: true } } },
-    });
-    if (!wishlistItem) {
+    const hasLoot = user.loots.some((l) => l.id === dto.lootId);
+    if (!hasLoot) {
       throw new NotFoundException(
         "Ce loot n'est pas dans la wishlist du joueur",
       );
     }
 
-    const pointsCost = PRIORITY_COSTS[wishlistItem.priority] || 10;
+    const loot = await this.prisma.loot.findUnique({
+      where: { id: dto.lootId },
+      include: { boss: true },
+    });
+
+    const wishlistItem = await this.prisma.wishlistItem.findUnique({
+      where: { userId_lootId: { userId: dto.userId, lootId: dto.lootId } },
+    });
+    const priority = wishlistItem?.priority ?? 2;
+    const pointsCost = PRIORITY_COSTS[priority] || 20;
 
     const currentPoints = await this.prisma.raidPoints.findUnique({
       where: { userId_raidId: { userId: dto.userId, raidId } },
@@ -192,7 +132,7 @@ export class DkpService {
           userId: dto.userId,
           lootId: dto.lootId,
           raidId,
-          priority: wishlistItem.priority,
+          priority,
           pointsCost,
         },
         include: {
@@ -214,9 +154,18 @@ export class DkpService {
         create: { userId: dto.userId, raidId, points: newPoints },
       }),
 
-      this.prisma.wishlistItem.delete({
-        where: { id: wishlistItem.id },
+      this.prisma.user.update({
+        where: { id: dto.userId },
+        data: { loots: { disconnect: { id: dto.lootId } } },
       }),
+
+      ...(wishlistItem
+        ? [
+            this.prisma.wishlistItem.delete({
+              where: { id: wishlistItem.id },
+            }),
+          ]
+        : []),
     ]);
 
     return {
@@ -242,7 +191,7 @@ export class DkpService {
       );
     }
 
-    const results = await this.prisma.$transaction(
+    await this.prisma.$transaction(
       dto.userIds.map((userId) =>
         this.prisma.raidAttendance.create({
           data: { userId, raidId, pointsGiven: ATTENDANCE_POINTS },
@@ -293,36 +242,83 @@ export class DkpService {
   }
 
   async getLootCandidates(raidId: number, lootId: number) {
-    const wishlistItems = await this.prisma.wishlistItem.findMany({
+    const users = await this.prisma.user.findMany({
       where: {
-        lootId,
-        user: { raidId },
+        raidId,
+        loots: { some: { id: lootId } },
       },
+      select: {
+        id: true,
+        name: true,
+        classe: true,
+        specialisation: true,
+        RaidPoints: true,
+        WishlistItem: {
+          where: { lootId },
+        },
+      },
+    });
+
+    return users
+      .map((user) => ({
+        userId: user.id,
+        name: user.name,
+        classe: user.classe,
+        specialisation: user.specialisation,
+        priority: user.WishlistItem[0]?.priority ?? 2,
+        priorityCost: PRIORITY_COSTS[user.WishlistItem[0]?.priority ?? 2],
+        points: user.RaidPoints?.points ?? 0,
+      }))
+      .sort((a, b) => b.points - a.points);
+  }
+
+  async getLootCandidatesByBoss(bossId: number) {
+    const boss = await this.prisma.boss.findUnique({
+      where: { id: bossId },
       include: {
-        user: {
+        loots: true,
+      },
+    });
+
+    if (!boss) throw new NotFoundException('Boss introuvable');
+
+    const result = await Promise.all(
+      boss.loots.map(async (loot) => {
+        const users = await this.prisma.user.findMany({
+          where: {
+            loots: { some: { id: loot.id } },
+            raidId: { not: null },
+          },
           select: {
             id: true,
             name: true,
             classe: true,
             specialisation: true,
+            RaidPoints: true,
+            WishlistItem: {
+              where: { lootId: loot.id },
+            },
           },
-        },
-      },
-    });
+        });
 
-    const userIds = wishlistItems.map((w) => w.user.id);
-    const points = await this.prisma.raidPoints.findMany({
-      where: { raidId, userId: { in: userIds } },
-    });
+        return {
+          id: loot.id,
+          name: loot.name,
+          url: loot.url,
+          candidates: users
+            .map((user) => ({
+              userId: user.id,
+              name: user.name,
+              classe: user.classe,
+              specialisation: user.specialisation,
+              priority: user.WishlistItem[0]?.priority ?? 2,
+              points: user.RaidPoints?.points ?? 0,
+            }))
+            .sort((a, b) => b.points - a.points),
+        };
+      }),
+    );
 
-    return wishlistItems
-      .map((item) => ({
-        wishlistItemId: item.id,
-        user: item.user,
-        priority: item.priority,
-        priorityCost: PRIORITY_COSTS[item.priority],
-        points: points.find((p) => p.userId === item.user.id)?.points ?? 0,
-      }))
-      .sort((a, b) => b.points - a.points); // Trié par points décroissants
+    return result;
   }
 }
