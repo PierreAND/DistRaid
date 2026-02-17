@@ -156,6 +156,39 @@ exports.Prisma.JoinRequestScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.RaidPointsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  raidId: 'raidId',
+  points: 'points'
+};
+
+exports.Prisma.WishlistItemScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  lootId: 'lootId',
+  priority: 'priority',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LootHistoryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  lootId: 'lootId',
+  raidId: 'raidId',
+  priority: 'priority',
+  pointsCost: 'pointsCost',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.RaidAttendanceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  raidId: 'raidId',
+  pointsGiven: 'pointsGiven',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.BossScalarFieldEnum = {
   id: 'id',
   name: 'name'
@@ -190,6 +223,10 @@ exports.Prisma.ModelName = {
   Specialisation: 'Specialisation',
   Raid: 'Raid',
   JoinRequest: 'JoinRequest',
+  RaidPoints: 'RaidPoints',
+  WishlistItem: 'WishlistItem',
+  LootHistory: 'LootHistory',
+  RaidAttendance: 'RaidAttendance',
   Boss: 'Boss',
   Loot: 'Loot'
 };

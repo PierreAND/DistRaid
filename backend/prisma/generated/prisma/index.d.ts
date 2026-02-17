@@ -39,6 +39,26 @@ export type Raid = $Result.DefaultSelection<Prisma.$RaidPayload>
  */
 export type JoinRequest = $Result.DefaultSelection<Prisma.$JoinRequestPayload>
 /**
+ * Model RaidPoints
+ * 
+ */
+export type RaidPoints = $Result.DefaultSelection<Prisma.$RaidPointsPayload>
+/**
+ * Model WishlistItem
+ * 
+ */
+export type WishlistItem = $Result.DefaultSelection<Prisma.$WishlistItemPayload>
+/**
+ * Model LootHistory
+ * 
+ */
+export type LootHistory = $Result.DefaultSelection<Prisma.$LootHistoryPayload>
+/**
+ * Model RaidAttendance
+ * 
+ */
+export type RaidAttendance = $Result.DefaultSelection<Prisma.$RaidAttendancePayload>
+/**
  * Model Boss
  * 
  */
@@ -215,6 +235,46 @@ export class PrismaClient<
     * ```
     */
   get joinRequest(): Prisma.JoinRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.raidPoints`: Exposes CRUD operations for the **RaidPoints** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RaidPoints
+    * const raidPoints = await prisma.raidPoints.findMany()
+    * ```
+    */
+  get raidPoints(): Prisma.RaidPointsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.wishlistItem`: Exposes CRUD operations for the **WishlistItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WishlistItems
+    * const wishlistItems = await prisma.wishlistItem.findMany()
+    * ```
+    */
+  get wishlistItem(): Prisma.WishlistItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.lootHistory`: Exposes CRUD operations for the **LootHistory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LootHistories
+    * const lootHistories = await prisma.lootHistory.findMany()
+    * ```
+    */
+  get lootHistory(): Prisma.LootHistoryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.raidAttendance`: Exposes CRUD operations for the **RaidAttendance** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RaidAttendances
+    * const raidAttendances = await prisma.raidAttendance.findMany()
+    * ```
+    */
+  get raidAttendance(): Prisma.RaidAttendanceDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.boss`: Exposes CRUD operations for the **Boss** model.
@@ -674,6 +734,10 @@ export namespace Prisma {
     Specialisation: 'Specialisation',
     Raid: 'Raid',
     JoinRequest: 'JoinRequest',
+    RaidPoints: 'RaidPoints',
+    WishlistItem: 'WishlistItem',
+    LootHistory: 'LootHistory',
+    RaidAttendance: 'RaidAttendance',
     Boss: 'Boss',
     Loot: 'Loot'
   };
@@ -691,7 +755,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "classe" | "specialisation" | "raid" | "joinRequest" | "boss" | "loot"
+      modelProps: "user" | "classe" | "specialisation" | "raid" | "joinRequest" | "raidPoints" | "wishlistItem" | "lootHistory" | "raidAttendance" | "boss" | "loot"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1065,6 +1129,302 @@ export namespace Prisma {
           }
         }
       }
+      RaidPoints: {
+        payload: Prisma.$RaidPointsPayload<ExtArgs>
+        fields: Prisma.RaidPointsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RaidPointsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidPointsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RaidPointsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidPointsPayload>
+          }
+          findFirst: {
+            args: Prisma.RaidPointsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidPointsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RaidPointsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidPointsPayload>
+          }
+          findMany: {
+            args: Prisma.RaidPointsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidPointsPayload>[]
+          }
+          create: {
+            args: Prisma.RaidPointsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidPointsPayload>
+          }
+          createMany: {
+            args: Prisma.RaidPointsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RaidPointsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidPointsPayload>[]
+          }
+          delete: {
+            args: Prisma.RaidPointsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidPointsPayload>
+          }
+          update: {
+            args: Prisma.RaidPointsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidPointsPayload>
+          }
+          deleteMany: {
+            args: Prisma.RaidPointsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RaidPointsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RaidPointsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidPointsPayload>[]
+          }
+          upsert: {
+            args: Prisma.RaidPointsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidPointsPayload>
+          }
+          aggregate: {
+            args: Prisma.RaidPointsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRaidPoints>
+          }
+          groupBy: {
+            args: Prisma.RaidPointsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RaidPointsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RaidPointsCountArgs<ExtArgs>
+            result: $Utils.Optional<RaidPointsCountAggregateOutputType> | number
+          }
+        }
+      }
+      WishlistItem: {
+        payload: Prisma.$WishlistItemPayload<ExtArgs>
+        fields: Prisma.WishlistItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WishlistItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishlistItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WishlistItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishlistItemPayload>
+          }
+          findFirst: {
+            args: Prisma.WishlistItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishlistItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WishlistItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishlistItemPayload>
+          }
+          findMany: {
+            args: Prisma.WishlistItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishlistItemPayload>[]
+          }
+          create: {
+            args: Prisma.WishlistItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishlistItemPayload>
+          }
+          createMany: {
+            args: Prisma.WishlistItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WishlistItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishlistItemPayload>[]
+          }
+          delete: {
+            args: Prisma.WishlistItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishlistItemPayload>
+          }
+          update: {
+            args: Prisma.WishlistItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishlistItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.WishlistItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WishlistItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WishlistItemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishlistItemPayload>[]
+          }
+          upsert: {
+            args: Prisma.WishlistItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WishlistItemPayload>
+          }
+          aggregate: {
+            args: Prisma.WishlistItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWishlistItem>
+          }
+          groupBy: {
+            args: Prisma.WishlistItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WishlistItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WishlistItemCountArgs<ExtArgs>
+            result: $Utils.Optional<WishlistItemCountAggregateOutputType> | number
+          }
+        }
+      }
+      LootHistory: {
+        payload: Prisma.$LootHistoryPayload<ExtArgs>
+        fields: Prisma.LootHistoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LootHistoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LootHistoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LootHistoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LootHistoryPayload>
+          }
+          findFirst: {
+            args: Prisma.LootHistoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LootHistoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LootHistoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LootHistoryPayload>
+          }
+          findMany: {
+            args: Prisma.LootHistoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LootHistoryPayload>[]
+          }
+          create: {
+            args: Prisma.LootHistoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LootHistoryPayload>
+          }
+          createMany: {
+            args: Prisma.LootHistoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LootHistoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LootHistoryPayload>[]
+          }
+          delete: {
+            args: Prisma.LootHistoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LootHistoryPayload>
+          }
+          update: {
+            args: Prisma.LootHistoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LootHistoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.LootHistoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LootHistoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LootHistoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LootHistoryPayload>[]
+          }
+          upsert: {
+            args: Prisma.LootHistoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LootHistoryPayload>
+          }
+          aggregate: {
+            args: Prisma.LootHistoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLootHistory>
+          }
+          groupBy: {
+            args: Prisma.LootHistoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LootHistoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LootHistoryCountArgs<ExtArgs>
+            result: $Utils.Optional<LootHistoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      RaidAttendance: {
+        payload: Prisma.$RaidAttendancePayload<ExtArgs>
+        fields: Prisma.RaidAttendanceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RaidAttendanceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidAttendancePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RaidAttendanceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidAttendancePayload>
+          }
+          findFirst: {
+            args: Prisma.RaidAttendanceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidAttendancePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RaidAttendanceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidAttendancePayload>
+          }
+          findMany: {
+            args: Prisma.RaidAttendanceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidAttendancePayload>[]
+          }
+          create: {
+            args: Prisma.RaidAttendanceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidAttendancePayload>
+          }
+          createMany: {
+            args: Prisma.RaidAttendanceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RaidAttendanceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidAttendancePayload>[]
+          }
+          delete: {
+            args: Prisma.RaidAttendanceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidAttendancePayload>
+          }
+          update: {
+            args: Prisma.RaidAttendanceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidAttendancePayload>
+          }
+          deleteMany: {
+            args: Prisma.RaidAttendanceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RaidAttendanceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.RaidAttendanceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidAttendancePayload>[]
+          }
+          upsert: {
+            args: Prisma.RaidAttendanceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RaidAttendancePayload>
+          }
+          aggregate: {
+            args: Prisma.RaidAttendanceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRaidAttendance>
+          }
+          groupBy: {
+            args: Prisma.RaidAttendanceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RaidAttendanceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RaidAttendanceCountArgs<ExtArgs>
+            result: $Utils.Optional<RaidAttendanceCountAggregateOutputType> | number
+          }
+        }
+      }
       Boss: {
         payload: Prisma.$BossPayload<ExtArgs>
         fields: Prisma.BossFieldRefs
@@ -1326,6 +1686,10 @@ export namespace Prisma {
     specialisation?: SpecialisationOmit
     raid?: RaidOmit
     joinRequest?: JoinRequestOmit
+    raidPoints?: RaidPointsOmit
+    wishlistItem?: WishlistItemOmit
+    lootHistory?: LootHistoryOmit
+    raidAttendance?: RaidAttendanceOmit
     boss?: BossOmit
     loot?: LootOmit
   }
@@ -1411,12 +1775,18 @@ export namespace Prisma {
     createdRaids: number
     joinRequests: number
     loots: number
+    WishlistItem: number
+    LootHistory: number
+    attendances: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     createdRaids?: boolean | UserCountOutputTypeCountCreatedRaidsArgs
     joinRequests?: boolean | UserCountOutputTypeCountJoinRequestsArgs
     loots?: boolean | UserCountOutputTypeCountLootsArgs
+    WishlistItem?: boolean | UserCountOutputTypeCountWishlistItemArgs
+    LootHistory?: boolean | UserCountOutputTypeCountLootHistoryArgs
+    attendances?: boolean | UserCountOutputTypeCountAttendancesArgs
   }
 
   // Custom InputTypes
@@ -1449,6 +1819,27 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountLootsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: LootWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountWishlistItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WishlistItemWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountLootHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LootHistoryWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAttendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RaidAttendanceWhereInput
   }
 
 
@@ -1528,11 +1919,17 @@ export namespace Prisma {
    */
 
   export type RaidCountOutputType = {
+    RaidPoints: number
+    LootHistory: number
+    attendances: number
     users: number
     joinRequests: number
   }
 
   export type RaidCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    RaidPoints?: boolean | RaidCountOutputTypeCountRaidPointsArgs
+    LootHistory?: boolean | RaidCountOutputTypeCountLootHistoryArgs
+    attendances?: boolean | RaidCountOutputTypeCountAttendancesArgs
     users?: boolean | RaidCountOutputTypeCountUsersArgs
     joinRequests?: boolean | RaidCountOutputTypeCountJoinRequestsArgs
   }
@@ -1546,6 +1943,27 @@ export namespace Prisma {
      * Select specific fields to fetch from the RaidCountOutputType
      */
     select?: RaidCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * RaidCountOutputType without action
+   */
+  export type RaidCountOutputTypeCountRaidPointsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RaidPointsWhereInput
+  }
+
+  /**
+   * RaidCountOutputType without action
+   */
+  export type RaidCountOutputTypeCountLootHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LootHistoryWhereInput
+  }
+
+  /**
+   * RaidCountOutputType without action
+   */
+  export type RaidCountOutputTypeCountAttendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RaidAttendanceWhereInput
   }
 
   /**
@@ -1600,10 +2018,14 @@ export namespace Prisma {
 
   export type LootCountOutputType = {
     users: number
+    WishlistItem: number
+    LootHistory: number
   }
 
   export type LootCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | LootCountOutputTypeCountUsersArgs
+    WishlistItem?: boolean | LootCountOutputTypeCountWishlistItemArgs
+    LootHistory?: boolean | LootCountOutputTypeCountLootHistoryArgs
   }
 
   // Custom InputTypes
@@ -1622,6 +2044,20 @@ export namespace Prisma {
    */
   export type LootCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserWhereInput
+  }
+
+  /**
+   * LootCountOutputType without action
+   */
+  export type LootCountOutputTypeCountWishlistItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WishlistItemWhereInput
+  }
+
+  /**
+   * LootCountOutputType without action
+   */
+  export type LootCountOutputTypeCountLootHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LootHistoryWhereInput
   }
 
 
@@ -1867,6 +2303,10 @@ export namespace Prisma {
     createdRaids?: boolean | User$createdRaidsArgs<ExtArgs>
     joinRequests?: boolean | User$joinRequestsArgs<ExtArgs>
     loots?: boolean | User$lootsArgs<ExtArgs>
+    WishlistItem?: boolean | User$WishlistItemArgs<ExtArgs>
+    RaidPoints?: boolean | User$RaidPointsArgs<ExtArgs>
+    LootHistory?: boolean | User$LootHistoryArgs<ExtArgs>
+    attendances?: boolean | User$attendancesArgs<ExtArgs>
     classe?: boolean | ClasseDefaultArgs<ExtArgs>
     specialisation?: boolean | SpecialisationDefaultArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1917,6 +2357,10 @@ export namespace Prisma {
     createdRaids?: boolean | User$createdRaidsArgs<ExtArgs>
     joinRequests?: boolean | User$joinRequestsArgs<ExtArgs>
     loots?: boolean | User$lootsArgs<ExtArgs>
+    WishlistItem?: boolean | User$WishlistItemArgs<ExtArgs>
+    RaidPoints?: boolean | User$RaidPointsArgs<ExtArgs>
+    LootHistory?: boolean | User$LootHistoryArgs<ExtArgs>
+    attendances?: boolean | User$attendancesArgs<ExtArgs>
     classe?: boolean | ClasseDefaultArgs<ExtArgs>
     specialisation?: boolean | SpecialisationDefaultArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1939,6 +2383,10 @@ export namespace Prisma {
       createdRaids: Prisma.$RaidPayload<ExtArgs>[]
       joinRequests: Prisma.$JoinRequestPayload<ExtArgs>[]
       loots: Prisma.$LootPayload<ExtArgs>[]
+      WishlistItem: Prisma.$WishlistItemPayload<ExtArgs>[]
+      RaidPoints: Prisma.$RaidPointsPayload<ExtArgs> | null
+      LootHistory: Prisma.$LootHistoryPayload<ExtArgs>[]
+      attendances: Prisma.$RaidAttendancePayload<ExtArgs>[]
       classe: Prisma.$ClassePayload<ExtArgs>
       specialisation: Prisma.$SpecialisationPayload<ExtArgs>
     }
@@ -2349,6 +2797,10 @@ export namespace Prisma {
     createdRaids<T extends User$createdRaidsArgs<ExtArgs> = {}>(args?: Subset<T, User$createdRaidsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RaidPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     joinRequests<T extends User$joinRequestsArgs<ExtArgs> = {}>(args?: Subset<T, User$joinRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JoinRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     loots<T extends User$lootsArgs<ExtArgs> = {}>(args?: Subset<T, User$lootsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LootPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    WishlistItem<T extends User$WishlistItemArgs<ExtArgs> = {}>(args?: Subset<T, User$WishlistItemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    RaidPoints<T extends User$RaidPointsArgs<ExtArgs> = {}>(args?: Subset<T, User$RaidPointsArgs<ExtArgs>>): Prisma__RaidPointsClient<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    LootHistory<T extends User$LootHistoryArgs<ExtArgs> = {}>(args?: Subset<T, User$LootHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    attendances<T extends User$attendancesArgs<ExtArgs> = {}>(args?: Subset<T, User$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     classe<T extends ClasseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClasseDefaultArgs<ExtArgs>>): Prisma__ClasseClient<$Result.GetResult<Prisma.$ClassePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     specialisation<T extends SpecialisationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SpecialisationDefaultArgs<ExtArgs>>): Prisma__SpecialisationClient<$Result.GetResult<Prisma.$SpecialisationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -2872,6 +3324,97 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: LootScalarFieldEnum | LootScalarFieldEnum[]
+  }
+
+  /**
+   * User.WishlistItem
+   */
+  export type User$WishlistItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+    where?: WishlistItemWhereInput
+    orderBy?: WishlistItemOrderByWithRelationInput | WishlistItemOrderByWithRelationInput[]
+    cursor?: WishlistItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WishlistItemScalarFieldEnum | WishlistItemScalarFieldEnum[]
+  }
+
+  /**
+   * User.RaidPoints
+   */
+  export type User$RaidPointsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+    where?: RaidPointsWhereInput
+  }
+
+  /**
+   * User.LootHistory
+   */
+  export type User$LootHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    where?: LootHistoryWhereInput
+    orderBy?: LootHistoryOrderByWithRelationInput | LootHistoryOrderByWithRelationInput[]
+    cursor?: LootHistoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LootHistoryScalarFieldEnum | LootHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * User.attendances
+   */
+  export type User$attendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
+    where?: RaidAttendanceWhereInput
+    orderBy?: RaidAttendanceOrderByWithRelationInput | RaidAttendanceOrderByWithRelationInput[]
+    cursor?: RaidAttendanceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RaidAttendanceScalarFieldEnum | RaidAttendanceScalarFieldEnum[]
   }
 
   /**
@@ -5273,6 +5816,9 @@ export namespace Prisma {
     name?: boolean
     createdById?: boolean
     createdBy?: boolean | UserDefaultArgs<ExtArgs>
+    RaidPoints?: boolean | Raid$RaidPointsArgs<ExtArgs>
+    LootHistory?: boolean | Raid$LootHistoryArgs<ExtArgs>
+    attendances?: boolean | Raid$attendancesArgs<ExtArgs>
     users?: boolean | Raid$usersArgs<ExtArgs>
     joinRequests?: boolean | Raid$joinRequestsArgs<ExtArgs>
     _count?: boolean | RaidCountOutputTypeDefaultArgs<ExtArgs>
@@ -5301,6 +5847,9 @@ export namespace Prisma {
   export type RaidOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdById", ExtArgs["result"]["raid"]>
   export type RaidInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     createdBy?: boolean | UserDefaultArgs<ExtArgs>
+    RaidPoints?: boolean | Raid$RaidPointsArgs<ExtArgs>
+    LootHistory?: boolean | Raid$LootHistoryArgs<ExtArgs>
+    attendances?: boolean | Raid$attendancesArgs<ExtArgs>
     users?: boolean | Raid$usersArgs<ExtArgs>
     joinRequests?: boolean | Raid$joinRequestsArgs<ExtArgs>
     _count?: boolean | RaidCountOutputTypeDefaultArgs<ExtArgs>
@@ -5316,6 +5865,9 @@ export namespace Prisma {
     name: "Raid"
     objects: {
       createdBy: Prisma.$UserPayload<ExtArgs>
+      RaidPoints: Prisma.$RaidPointsPayload<ExtArgs>[]
+      LootHistory: Prisma.$LootHistoryPayload<ExtArgs>[]
+      attendances: Prisma.$RaidAttendancePayload<ExtArgs>[]
       users: Prisma.$UserPayload<ExtArgs>[]
       joinRequests: Prisma.$JoinRequestPayload<ExtArgs>[]
     }
@@ -5718,6 +6270,9 @@ export namespace Prisma {
   export interface Prisma__RaidClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     createdBy<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    RaidPoints<T extends Raid$RaidPointsArgs<ExtArgs> = {}>(args?: Subset<T, Raid$RaidPointsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    LootHistory<T extends Raid$LootHistoryArgs<ExtArgs> = {}>(args?: Subset<T, Raid$LootHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    attendances<T extends Raid$attendancesArgs<ExtArgs> = {}>(args?: Subset<T, Raid$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     users<T extends Raid$usersArgs<ExtArgs> = {}>(args?: Subset<T, Raid$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     joinRequests<T extends Raid$joinRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Raid$joinRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$JoinRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -6145,6 +6700,78 @@ export namespace Prisma {
      * Limit how many Raids to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Raid.RaidPoints
+   */
+  export type Raid$RaidPointsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+    where?: RaidPointsWhereInput
+    orderBy?: RaidPointsOrderByWithRelationInput | RaidPointsOrderByWithRelationInput[]
+    cursor?: RaidPointsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RaidPointsScalarFieldEnum | RaidPointsScalarFieldEnum[]
+  }
+
+  /**
+   * Raid.LootHistory
+   */
+  export type Raid$LootHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    where?: LootHistoryWhereInput
+    orderBy?: LootHistoryOrderByWithRelationInput | LootHistoryOrderByWithRelationInput[]
+    cursor?: LootHistoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LootHistoryScalarFieldEnum | LootHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * Raid.attendances
+   */
+  export type Raid$attendancesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
+    where?: RaidAttendanceWhereInput
+    orderBy?: RaidAttendanceOrderByWithRelationInput | RaidAttendanceOrderByWithRelationInput[]
+    cursor?: RaidAttendanceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RaidAttendanceScalarFieldEnum | RaidAttendanceScalarFieldEnum[]
   }
 
   /**
@@ -7319,6 +7946,4483 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: JoinRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RaidPoints
+   */
+
+  export type AggregateRaidPoints = {
+    _count: RaidPointsCountAggregateOutputType | null
+    _avg: RaidPointsAvgAggregateOutputType | null
+    _sum: RaidPointsSumAggregateOutputType | null
+    _min: RaidPointsMinAggregateOutputType | null
+    _max: RaidPointsMaxAggregateOutputType | null
+  }
+
+  export type RaidPointsAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    raidId: number | null
+    points: number | null
+  }
+
+  export type RaidPointsSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    raidId: number | null
+    points: number | null
+  }
+
+  export type RaidPointsMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    raidId: number | null
+    points: number | null
+  }
+
+  export type RaidPointsMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    raidId: number | null
+    points: number | null
+  }
+
+  export type RaidPointsCountAggregateOutputType = {
+    id: number
+    userId: number
+    raidId: number
+    points: number
+    _all: number
+  }
+
+
+  export type RaidPointsAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    raidId?: true
+    points?: true
+  }
+
+  export type RaidPointsSumAggregateInputType = {
+    id?: true
+    userId?: true
+    raidId?: true
+    points?: true
+  }
+
+  export type RaidPointsMinAggregateInputType = {
+    id?: true
+    userId?: true
+    raidId?: true
+    points?: true
+  }
+
+  export type RaidPointsMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    raidId?: true
+    points?: true
+  }
+
+  export type RaidPointsCountAggregateInputType = {
+    id?: true
+    userId?: true
+    raidId?: true
+    points?: true
+    _all?: true
+  }
+
+  export type RaidPointsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RaidPoints to aggregate.
+     */
+    where?: RaidPointsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RaidPoints to fetch.
+     */
+    orderBy?: RaidPointsOrderByWithRelationInput | RaidPointsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RaidPointsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RaidPoints from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RaidPoints.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RaidPoints
+    **/
+    _count?: true | RaidPointsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RaidPointsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RaidPointsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RaidPointsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RaidPointsMaxAggregateInputType
+  }
+
+  export type GetRaidPointsAggregateType<T extends RaidPointsAggregateArgs> = {
+        [P in keyof T & keyof AggregateRaidPoints]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRaidPoints[P]>
+      : GetScalarType<T[P], AggregateRaidPoints[P]>
+  }
+
+
+
+
+  export type RaidPointsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RaidPointsWhereInput
+    orderBy?: RaidPointsOrderByWithAggregationInput | RaidPointsOrderByWithAggregationInput[]
+    by: RaidPointsScalarFieldEnum[] | RaidPointsScalarFieldEnum
+    having?: RaidPointsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RaidPointsCountAggregateInputType | true
+    _avg?: RaidPointsAvgAggregateInputType
+    _sum?: RaidPointsSumAggregateInputType
+    _min?: RaidPointsMinAggregateInputType
+    _max?: RaidPointsMaxAggregateInputType
+  }
+
+  export type RaidPointsGroupByOutputType = {
+    id: number
+    userId: number
+    raidId: number
+    points: number
+    _count: RaidPointsCountAggregateOutputType | null
+    _avg: RaidPointsAvgAggregateOutputType | null
+    _sum: RaidPointsSumAggregateOutputType | null
+    _min: RaidPointsMinAggregateOutputType | null
+    _max: RaidPointsMaxAggregateOutputType | null
+  }
+
+  type GetRaidPointsGroupByPayload<T extends RaidPointsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RaidPointsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RaidPointsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RaidPointsGroupByOutputType[P]>
+            : GetScalarType<T[P], RaidPointsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RaidPointsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    raidId?: boolean
+    points?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["raidPoints"]>
+
+  export type RaidPointsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    raidId?: boolean
+    points?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["raidPoints"]>
+
+  export type RaidPointsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    raidId?: boolean
+    points?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["raidPoints"]>
+
+  export type RaidPointsSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    raidId?: boolean
+    points?: boolean
+  }
+
+  export type RaidPointsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "raidId" | "points", ExtArgs["result"]["raidPoints"]>
+  export type RaidPointsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }
+  export type RaidPointsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }
+  export type RaidPointsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }
+
+  export type $RaidPointsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RaidPoints"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      raid: Prisma.$RaidPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      raidId: number
+      points: number
+    }, ExtArgs["result"]["raidPoints"]>
+    composites: {}
+  }
+
+  type RaidPointsGetPayload<S extends boolean | null | undefined | RaidPointsDefaultArgs> = $Result.GetResult<Prisma.$RaidPointsPayload, S>
+
+  type RaidPointsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RaidPointsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RaidPointsCountAggregateInputType | true
+    }
+
+  export interface RaidPointsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RaidPoints'], meta: { name: 'RaidPoints' } }
+    /**
+     * Find zero or one RaidPoints that matches the filter.
+     * @param {RaidPointsFindUniqueArgs} args - Arguments to find a RaidPoints
+     * @example
+     * // Get one RaidPoints
+     * const raidPoints = await prisma.raidPoints.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RaidPointsFindUniqueArgs>(args: SelectSubset<T, RaidPointsFindUniqueArgs<ExtArgs>>): Prisma__RaidPointsClient<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RaidPoints that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RaidPointsFindUniqueOrThrowArgs} args - Arguments to find a RaidPoints
+     * @example
+     * // Get one RaidPoints
+     * const raidPoints = await prisma.raidPoints.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RaidPointsFindUniqueOrThrowArgs>(args: SelectSubset<T, RaidPointsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RaidPointsClient<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RaidPoints that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidPointsFindFirstArgs} args - Arguments to find a RaidPoints
+     * @example
+     * // Get one RaidPoints
+     * const raidPoints = await prisma.raidPoints.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RaidPointsFindFirstArgs>(args?: SelectSubset<T, RaidPointsFindFirstArgs<ExtArgs>>): Prisma__RaidPointsClient<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RaidPoints that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidPointsFindFirstOrThrowArgs} args - Arguments to find a RaidPoints
+     * @example
+     * // Get one RaidPoints
+     * const raidPoints = await prisma.raidPoints.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RaidPointsFindFirstOrThrowArgs>(args?: SelectSubset<T, RaidPointsFindFirstOrThrowArgs<ExtArgs>>): Prisma__RaidPointsClient<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RaidPoints that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidPointsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RaidPoints
+     * const raidPoints = await prisma.raidPoints.findMany()
+     * 
+     * // Get first 10 RaidPoints
+     * const raidPoints = await prisma.raidPoints.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const raidPointsWithIdOnly = await prisma.raidPoints.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RaidPointsFindManyArgs>(args?: SelectSubset<T, RaidPointsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RaidPoints.
+     * @param {RaidPointsCreateArgs} args - Arguments to create a RaidPoints.
+     * @example
+     * // Create one RaidPoints
+     * const RaidPoints = await prisma.raidPoints.create({
+     *   data: {
+     *     // ... data to create a RaidPoints
+     *   }
+     * })
+     * 
+     */
+    create<T extends RaidPointsCreateArgs>(args: SelectSubset<T, RaidPointsCreateArgs<ExtArgs>>): Prisma__RaidPointsClient<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RaidPoints.
+     * @param {RaidPointsCreateManyArgs} args - Arguments to create many RaidPoints.
+     * @example
+     * // Create many RaidPoints
+     * const raidPoints = await prisma.raidPoints.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RaidPointsCreateManyArgs>(args?: SelectSubset<T, RaidPointsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many RaidPoints and returns the data saved in the database.
+     * @param {RaidPointsCreateManyAndReturnArgs} args - Arguments to create many RaidPoints.
+     * @example
+     * // Create many RaidPoints
+     * const raidPoints = await prisma.raidPoints.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many RaidPoints and only return the `id`
+     * const raidPointsWithIdOnly = await prisma.raidPoints.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RaidPointsCreateManyAndReturnArgs>(args?: SelectSubset<T, RaidPointsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a RaidPoints.
+     * @param {RaidPointsDeleteArgs} args - Arguments to delete one RaidPoints.
+     * @example
+     * // Delete one RaidPoints
+     * const RaidPoints = await prisma.raidPoints.delete({
+     *   where: {
+     *     // ... filter to delete one RaidPoints
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RaidPointsDeleteArgs>(args: SelectSubset<T, RaidPointsDeleteArgs<ExtArgs>>): Prisma__RaidPointsClient<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RaidPoints.
+     * @param {RaidPointsUpdateArgs} args - Arguments to update one RaidPoints.
+     * @example
+     * // Update one RaidPoints
+     * const raidPoints = await prisma.raidPoints.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RaidPointsUpdateArgs>(args: SelectSubset<T, RaidPointsUpdateArgs<ExtArgs>>): Prisma__RaidPointsClient<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RaidPoints.
+     * @param {RaidPointsDeleteManyArgs} args - Arguments to filter RaidPoints to delete.
+     * @example
+     * // Delete a few RaidPoints
+     * const { count } = await prisma.raidPoints.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RaidPointsDeleteManyArgs>(args?: SelectSubset<T, RaidPointsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RaidPoints.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidPointsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RaidPoints
+     * const raidPoints = await prisma.raidPoints.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RaidPointsUpdateManyArgs>(args: SelectSubset<T, RaidPointsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RaidPoints and returns the data updated in the database.
+     * @param {RaidPointsUpdateManyAndReturnArgs} args - Arguments to update many RaidPoints.
+     * @example
+     * // Update many RaidPoints
+     * const raidPoints = await prisma.raidPoints.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more RaidPoints and only return the `id`
+     * const raidPointsWithIdOnly = await prisma.raidPoints.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RaidPointsUpdateManyAndReturnArgs>(args: SelectSubset<T, RaidPointsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one RaidPoints.
+     * @param {RaidPointsUpsertArgs} args - Arguments to update or create a RaidPoints.
+     * @example
+     * // Update or create a RaidPoints
+     * const raidPoints = await prisma.raidPoints.upsert({
+     *   create: {
+     *     // ... data to create a RaidPoints
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RaidPoints we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RaidPointsUpsertArgs>(args: SelectSubset<T, RaidPointsUpsertArgs<ExtArgs>>): Prisma__RaidPointsClient<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RaidPoints.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidPointsCountArgs} args - Arguments to filter RaidPoints to count.
+     * @example
+     * // Count the number of RaidPoints
+     * const count = await prisma.raidPoints.count({
+     *   where: {
+     *     // ... the filter for the RaidPoints we want to count
+     *   }
+     * })
+    **/
+    count<T extends RaidPointsCountArgs>(
+      args?: Subset<T, RaidPointsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RaidPointsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RaidPoints.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidPointsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RaidPointsAggregateArgs>(args: Subset<T, RaidPointsAggregateArgs>): Prisma.PrismaPromise<GetRaidPointsAggregateType<T>>
+
+    /**
+     * Group by RaidPoints.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidPointsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RaidPointsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RaidPointsGroupByArgs['orderBy'] }
+        : { orderBy?: RaidPointsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RaidPointsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRaidPointsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RaidPoints model
+   */
+  readonly fields: RaidPointsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RaidPoints.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RaidPointsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    raid<T extends RaidDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RaidDefaultArgs<ExtArgs>>): Prisma__RaidClient<$Result.GetResult<Prisma.$RaidPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RaidPoints model
+   */
+  interface RaidPointsFieldRefs {
+    readonly id: FieldRef<"RaidPoints", 'Int'>
+    readonly userId: FieldRef<"RaidPoints", 'Int'>
+    readonly raidId: FieldRef<"RaidPoints", 'Int'>
+    readonly points: FieldRef<"RaidPoints", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RaidPoints findUnique
+   */
+  export type RaidPointsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+    /**
+     * Filter, which RaidPoints to fetch.
+     */
+    where: RaidPointsWhereUniqueInput
+  }
+
+  /**
+   * RaidPoints findUniqueOrThrow
+   */
+  export type RaidPointsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+    /**
+     * Filter, which RaidPoints to fetch.
+     */
+    where: RaidPointsWhereUniqueInput
+  }
+
+  /**
+   * RaidPoints findFirst
+   */
+  export type RaidPointsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+    /**
+     * Filter, which RaidPoints to fetch.
+     */
+    where?: RaidPointsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RaidPoints to fetch.
+     */
+    orderBy?: RaidPointsOrderByWithRelationInput | RaidPointsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RaidPoints.
+     */
+    cursor?: RaidPointsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RaidPoints from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RaidPoints.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RaidPoints.
+     */
+    distinct?: RaidPointsScalarFieldEnum | RaidPointsScalarFieldEnum[]
+  }
+
+  /**
+   * RaidPoints findFirstOrThrow
+   */
+  export type RaidPointsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+    /**
+     * Filter, which RaidPoints to fetch.
+     */
+    where?: RaidPointsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RaidPoints to fetch.
+     */
+    orderBy?: RaidPointsOrderByWithRelationInput | RaidPointsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RaidPoints.
+     */
+    cursor?: RaidPointsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RaidPoints from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RaidPoints.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RaidPoints.
+     */
+    distinct?: RaidPointsScalarFieldEnum | RaidPointsScalarFieldEnum[]
+  }
+
+  /**
+   * RaidPoints findMany
+   */
+  export type RaidPointsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+    /**
+     * Filter, which RaidPoints to fetch.
+     */
+    where?: RaidPointsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RaidPoints to fetch.
+     */
+    orderBy?: RaidPointsOrderByWithRelationInput | RaidPointsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RaidPoints.
+     */
+    cursor?: RaidPointsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RaidPoints from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RaidPoints.
+     */
+    skip?: number
+    distinct?: RaidPointsScalarFieldEnum | RaidPointsScalarFieldEnum[]
+  }
+
+  /**
+   * RaidPoints create
+   */
+  export type RaidPointsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RaidPoints.
+     */
+    data: XOR<RaidPointsCreateInput, RaidPointsUncheckedCreateInput>
+  }
+
+  /**
+   * RaidPoints createMany
+   */
+  export type RaidPointsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RaidPoints.
+     */
+    data: RaidPointsCreateManyInput | RaidPointsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RaidPoints createManyAndReturn
+   */
+  export type RaidPointsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * The data used to create many RaidPoints.
+     */
+    data: RaidPointsCreateManyInput | RaidPointsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RaidPoints update
+   */
+  export type RaidPointsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RaidPoints.
+     */
+    data: XOR<RaidPointsUpdateInput, RaidPointsUncheckedUpdateInput>
+    /**
+     * Choose, which RaidPoints to update.
+     */
+    where: RaidPointsWhereUniqueInput
+  }
+
+  /**
+   * RaidPoints updateMany
+   */
+  export type RaidPointsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RaidPoints.
+     */
+    data: XOR<RaidPointsUpdateManyMutationInput, RaidPointsUncheckedUpdateManyInput>
+    /**
+     * Filter which RaidPoints to update
+     */
+    where?: RaidPointsWhereInput
+    /**
+     * Limit how many RaidPoints to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RaidPoints updateManyAndReturn
+   */
+  export type RaidPointsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * The data used to update RaidPoints.
+     */
+    data: XOR<RaidPointsUpdateManyMutationInput, RaidPointsUncheckedUpdateManyInput>
+    /**
+     * Filter which RaidPoints to update
+     */
+    where?: RaidPointsWhereInput
+    /**
+     * Limit how many RaidPoints to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RaidPoints upsert
+   */
+  export type RaidPointsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RaidPoints to update in case it exists.
+     */
+    where: RaidPointsWhereUniqueInput
+    /**
+     * In case the RaidPoints found by the `where` argument doesn't exist, create a new RaidPoints with this data.
+     */
+    create: XOR<RaidPointsCreateInput, RaidPointsUncheckedCreateInput>
+    /**
+     * In case the RaidPoints was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RaidPointsUpdateInput, RaidPointsUncheckedUpdateInput>
+  }
+
+  /**
+   * RaidPoints delete
+   */
+  export type RaidPointsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+    /**
+     * Filter which RaidPoints to delete.
+     */
+    where: RaidPointsWhereUniqueInput
+  }
+
+  /**
+   * RaidPoints deleteMany
+   */
+  export type RaidPointsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RaidPoints to delete
+     */
+    where?: RaidPointsWhereInput
+    /**
+     * Limit how many RaidPoints to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RaidPoints without action
+   */
+  export type RaidPointsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidPoints
+     */
+    select?: RaidPointsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidPoints
+     */
+    omit?: RaidPointsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidPointsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WishlistItem
+   */
+
+  export type AggregateWishlistItem = {
+    _count: WishlistItemCountAggregateOutputType | null
+    _avg: WishlistItemAvgAggregateOutputType | null
+    _sum: WishlistItemSumAggregateOutputType | null
+    _min: WishlistItemMinAggregateOutputType | null
+    _max: WishlistItemMaxAggregateOutputType | null
+  }
+
+  export type WishlistItemAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    lootId: number | null
+    priority: number | null
+  }
+
+  export type WishlistItemSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    lootId: number | null
+    priority: number | null
+  }
+
+  export type WishlistItemMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    lootId: number | null
+    priority: number | null
+    createdAt: Date | null
+  }
+
+  export type WishlistItemMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    lootId: number | null
+    priority: number | null
+    createdAt: Date | null
+  }
+
+  export type WishlistItemCountAggregateOutputType = {
+    id: number
+    userId: number
+    lootId: number
+    priority: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type WishlistItemAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    lootId?: true
+    priority?: true
+  }
+
+  export type WishlistItemSumAggregateInputType = {
+    id?: true
+    userId?: true
+    lootId?: true
+    priority?: true
+  }
+
+  export type WishlistItemMinAggregateInputType = {
+    id?: true
+    userId?: true
+    lootId?: true
+    priority?: true
+    createdAt?: true
+  }
+
+  export type WishlistItemMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    lootId?: true
+    priority?: true
+    createdAt?: true
+  }
+
+  export type WishlistItemCountAggregateInputType = {
+    id?: true
+    userId?: true
+    lootId?: true
+    priority?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type WishlistItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WishlistItem to aggregate.
+     */
+    where?: WishlistItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WishlistItems to fetch.
+     */
+    orderBy?: WishlistItemOrderByWithRelationInput | WishlistItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WishlistItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WishlistItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WishlistItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WishlistItems
+    **/
+    _count?: true | WishlistItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WishlistItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WishlistItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WishlistItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WishlistItemMaxAggregateInputType
+  }
+
+  export type GetWishlistItemAggregateType<T extends WishlistItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateWishlistItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWishlistItem[P]>
+      : GetScalarType<T[P], AggregateWishlistItem[P]>
+  }
+
+
+
+
+  export type WishlistItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WishlistItemWhereInput
+    orderBy?: WishlistItemOrderByWithAggregationInput | WishlistItemOrderByWithAggregationInput[]
+    by: WishlistItemScalarFieldEnum[] | WishlistItemScalarFieldEnum
+    having?: WishlistItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WishlistItemCountAggregateInputType | true
+    _avg?: WishlistItemAvgAggregateInputType
+    _sum?: WishlistItemSumAggregateInputType
+    _min?: WishlistItemMinAggregateInputType
+    _max?: WishlistItemMaxAggregateInputType
+  }
+
+  export type WishlistItemGroupByOutputType = {
+    id: number
+    userId: number
+    lootId: number
+    priority: number
+    createdAt: Date
+    _count: WishlistItemCountAggregateOutputType | null
+    _avg: WishlistItemAvgAggregateOutputType | null
+    _sum: WishlistItemSumAggregateOutputType | null
+    _min: WishlistItemMinAggregateOutputType | null
+    _max: WishlistItemMaxAggregateOutputType | null
+  }
+
+  type GetWishlistItemGroupByPayload<T extends WishlistItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WishlistItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WishlistItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WishlistItemGroupByOutputType[P]>
+            : GetScalarType<T[P], WishlistItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WishlistItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    lootId?: boolean
+    priority?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["wishlistItem"]>
+
+  export type WishlistItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    lootId?: boolean
+    priority?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["wishlistItem"]>
+
+  export type WishlistItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    lootId?: boolean
+    priority?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["wishlistItem"]>
+
+  export type WishlistItemSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    lootId?: boolean
+    priority?: boolean
+    createdAt?: boolean
+  }
+
+  export type WishlistItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "lootId" | "priority" | "createdAt", ExtArgs["result"]["wishlistItem"]>
+  export type WishlistItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+  }
+  export type WishlistItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+  }
+  export type WishlistItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+  }
+
+  export type $WishlistItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WishlistItem"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      loot: Prisma.$LootPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      lootId: number
+      priority: number
+      createdAt: Date
+    }, ExtArgs["result"]["wishlistItem"]>
+    composites: {}
+  }
+
+  type WishlistItemGetPayload<S extends boolean | null | undefined | WishlistItemDefaultArgs> = $Result.GetResult<Prisma.$WishlistItemPayload, S>
+
+  type WishlistItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WishlistItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WishlistItemCountAggregateInputType | true
+    }
+
+  export interface WishlistItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WishlistItem'], meta: { name: 'WishlistItem' } }
+    /**
+     * Find zero or one WishlistItem that matches the filter.
+     * @param {WishlistItemFindUniqueArgs} args - Arguments to find a WishlistItem
+     * @example
+     * // Get one WishlistItem
+     * const wishlistItem = await prisma.wishlistItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WishlistItemFindUniqueArgs>(args: SelectSubset<T, WishlistItemFindUniqueArgs<ExtArgs>>): Prisma__WishlistItemClient<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one WishlistItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WishlistItemFindUniqueOrThrowArgs} args - Arguments to find a WishlistItem
+     * @example
+     * // Get one WishlistItem
+     * const wishlistItem = await prisma.wishlistItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WishlistItemFindUniqueOrThrowArgs>(args: SelectSubset<T, WishlistItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WishlistItemClient<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WishlistItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishlistItemFindFirstArgs} args - Arguments to find a WishlistItem
+     * @example
+     * // Get one WishlistItem
+     * const wishlistItem = await prisma.wishlistItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WishlistItemFindFirstArgs>(args?: SelectSubset<T, WishlistItemFindFirstArgs<ExtArgs>>): Prisma__WishlistItemClient<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WishlistItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishlistItemFindFirstOrThrowArgs} args - Arguments to find a WishlistItem
+     * @example
+     * // Get one WishlistItem
+     * const wishlistItem = await prisma.wishlistItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WishlistItemFindFirstOrThrowArgs>(args?: SelectSubset<T, WishlistItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__WishlistItemClient<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more WishlistItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishlistItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WishlistItems
+     * const wishlistItems = await prisma.wishlistItem.findMany()
+     * 
+     * // Get first 10 WishlistItems
+     * const wishlistItems = await prisma.wishlistItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const wishlistItemWithIdOnly = await prisma.wishlistItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WishlistItemFindManyArgs>(args?: SelectSubset<T, WishlistItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a WishlistItem.
+     * @param {WishlistItemCreateArgs} args - Arguments to create a WishlistItem.
+     * @example
+     * // Create one WishlistItem
+     * const WishlistItem = await prisma.wishlistItem.create({
+     *   data: {
+     *     // ... data to create a WishlistItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends WishlistItemCreateArgs>(args: SelectSubset<T, WishlistItemCreateArgs<ExtArgs>>): Prisma__WishlistItemClient<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many WishlistItems.
+     * @param {WishlistItemCreateManyArgs} args - Arguments to create many WishlistItems.
+     * @example
+     * // Create many WishlistItems
+     * const wishlistItem = await prisma.wishlistItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WishlistItemCreateManyArgs>(args?: SelectSubset<T, WishlistItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WishlistItems and returns the data saved in the database.
+     * @param {WishlistItemCreateManyAndReturnArgs} args - Arguments to create many WishlistItems.
+     * @example
+     * // Create many WishlistItems
+     * const wishlistItem = await prisma.wishlistItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WishlistItems and only return the `id`
+     * const wishlistItemWithIdOnly = await prisma.wishlistItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WishlistItemCreateManyAndReturnArgs>(args?: SelectSubset<T, WishlistItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a WishlistItem.
+     * @param {WishlistItemDeleteArgs} args - Arguments to delete one WishlistItem.
+     * @example
+     * // Delete one WishlistItem
+     * const WishlistItem = await prisma.wishlistItem.delete({
+     *   where: {
+     *     // ... filter to delete one WishlistItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WishlistItemDeleteArgs>(args: SelectSubset<T, WishlistItemDeleteArgs<ExtArgs>>): Prisma__WishlistItemClient<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one WishlistItem.
+     * @param {WishlistItemUpdateArgs} args - Arguments to update one WishlistItem.
+     * @example
+     * // Update one WishlistItem
+     * const wishlistItem = await prisma.wishlistItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WishlistItemUpdateArgs>(args: SelectSubset<T, WishlistItemUpdateArgs<ExtArgs>>): Prisma__WishlistItemClient<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more WishlistItems.
+     * @param {WishlistItemDeleteManyArgs} args - Arguments to filter WishlistItems to delete.
+     * @example
+     * // Delete a few WishlistItems
+     * const { count } = await prisma.wishlistItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WishlistItemDeleteManyArgs>(args?: SelectSubset<T, WishlistItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WishlistItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishlistItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WishlistItems
+     * const wishlistItem = await prisma.wishlistItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WishlistItemUpdateManyArgs>(args: SelectSubset<T, WishlistItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WishlistItems and returns the data updated in the database.
+     * @param {WishlistItemUpdateManyAndReturnArgs} args - Arguments to update many WishlistItems.
+     * @example
+     * // Update many WishlistItems
+     * const wishlistItem = await prisma.wishlistItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more WishlistItems and only return the `id`
+     * const wishlistItemWithIdOnly = await prisma.wishlistItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WishlistItemUpdateManyAndReturnArgs>(args: SelectSubset<T, WishlistItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one WishlistItem.
+     * @param {WishlistItemUpsertArgs} args - Arguments to update or create a WishlistItem.
+     * @example
+     * // Update or create a WishlistItem
+     * const wishlistItem = await prisma.wishlistItem.upsert({
+     *   create: {
+     *     // ... data to create a WishlistItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WishlistItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WishlistItemUpsertArgs>(args: SelectSubset<T, WishlistItemUpsertArgs<ExtArgs>>): Prisma__WishlistItemClient<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of WishlistItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishlistItemCountArgs} args - Arguments to filter WishlistItems to count.
+     * @example
+     * // Count the number of WishlistItems
+     * const count = await prisma.wishlistItem.count({
+     *   where: {
+     *     // ... the filter for the WishlistItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends WishlistItemCountArgs>(
+      args?: Subset<T, WishlistItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WishlistItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WishlistItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishlistItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WishlistItemAggregateArgs>(args: Subset<T, WishlistItemAggregateArgs>): Prisma.PrismaPromise<GetWishlistItemAggregateType<T>>
+
+    /**
+     * Group by WishlistItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WishlistItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WishlistItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WishlistItemGroupByArgs['orderBy'] }
+        : { orderBy?: WishlistItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WishlistItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWishlistItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WishlistItem model
+   */
+  readonly fields: WishlistItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WishlistItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WishlistItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    loot<T extends LootDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LootDefaultArgs<ExtArgs>>): Prisma__LootClient<$Result.GetResult<Prisma.$LootPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WishlistItem model
+   */
+  interface WishlistItemFieldRefs {
+    readonly id: FieldRef<"WishlistItem", 'Int'>
+    readonly userId: FieldRef<"WishlistItem", 'Int'>
+    readonly lootId: FieldRef<"WishlistItem", 'Int'>
+    readonly priority: FieldRef<"WishlistItem", 'Int'>
+    readonly createdAt: FieldRef<"WishlistItem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WishlistItem findUnique
+   */
+  export type WishlistItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+    /**
+     * Filter, which WishlistItem to fetch.
+     */
+    where: WishlistItemWhereUniqueInput
+  }
+
+  /**
+   * WishlistItem findUniqueOrThrow
+   */
+  export type WishlistItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+    /**
+     * Filter, which WishlistItem to fetch.
+     */
+    where: WishlistItemWhereUniqueInput
+  }
+
+  /**
+   * WishlistItem findFirst
+   */
+  export type WishlistItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+    /**
+     * Filter, which WishlistItem to fetch.
+     */
+    where?: WishlistItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WishlistItems to fetch.
+     */
+    orderBy?: WishlistItemOrderByWithRelationInput | WishlistItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WishlistItems.
+     */
+    cursor?: WishlistItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WishlistItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WishlistItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WishlistItems.
+     */
+    distinct?: WishlistItemScalarFieldEnum | WishlistItemScalarFieldEnum[]
+  }
+
+  /**
+   * WishlistItem findFirstOrThrow
+   */
+  export type WishlistItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+    /**
+     * Filter, which WishlistItem to fetch.
+     */
+    where?: WishlistItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WishlistItems to fetch.
+     */
+    orderBy?: WishlistItemOrderByWithRelationInput | WishlistItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WishlistItems.
+     */
+    cursor?: WishlistItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WishlistItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WishlistItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WishlistItems.
+     */
+    distinct?: WishlistItemScalarFieldEnum | WishlistItemScalarFieldEnum[]
+  }
+
+  /**
+   * WishlistItem findMany
+   */
+  export type WishlistItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+    /**
+     * Filter, which WishlistItems to fetch.
+     */
+    where?: WishlistItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WishlistItems to fetch.
+     */
+    orderBy?: WishlistItemOrderByWithRelationInput | WishlistItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WishlistItems.
+     */
+    cursor?: WishlistItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WishlistItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WishlistItems.
+     */
+    skip?: number
+    distinct?: WishlistItemScalarFieldEnum | WishlistItemScalarFieldEnum[]
+  }
+
+  /**
+   * WishlistItem create
+   */
+  export type WishlistItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WishlistItem.
+     */
+    data: XOR<WishlistItemCreateInput, WishlistItemUncheckedCreateInput>
+  }
+
+  /**
+   * WishlistItem createMany
+   */
+  export type WishlistItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WishlistItems.
+     */
+    data: WishlistItemCreateManyInput | WishlistItemCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WishlistItem createManyAndReturn
+   */
+  export type WishlistItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * The data used to create many WishlistItems.
+     */
+    data: WishlistItemCreateManyInput | WishlistItemCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WishlistItem update
+   */
+  export type WishlistItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WishlistItem.
+     */
+    data: XOR<WishlistItemUpdateInput, WishlistItemUncheckedUpdateInput>
+    /**
+     * Choose, which WishlistItem to update.
+     */
+    where: WishlistItemWhereUniqueInput
+  }
+
+  /**
+   * WishlistItem updateMany
+   */
+  export type WishlistItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WishlistItems.
+     */
+    data: XOR<WishlistItemUpdateManyMutationInput, WishlistItemUncheckedUpdateManyInput>
+    /**
+     * Filter which WishlistItems to update
+     */
+    where?: WishlistItemWhereInput
+    /**
+     * Limit how many WishlistItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * WishlistItem updateManyAndReturn
+   */
+  export type WishlistItemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * The data used to update WishlistItems.
+     */
+    data: XOR<WishlistItemUpdateManyMutationInput, WishlistItemUncheckedUpdateManyInput>
+    /**
+     * Filter which WishlistItems to update
+     */
+    where?: WishlistItemWhereInput
+    /**
+     * Limit how many WishlistItems to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WishlistItem upsert
+   */
+  export type WishlistItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WishlistItem to update in case it exists.
+     */
+    where: WishlistItemWhereUniqueInput
+    /**
+     * In case the WishlistItem found by the `where` argument doesn't exist, create a new WishlistItem with this data.
+     */
+    create: XOR<WishlistItemCreateInput, WishlistItemUncheckedCreateInput>
+    /**
+     * In case the WishlistItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WishlistItemUpdateInput, WishlistItemUncheckedUpdateInput>
+  }
+
+  /**
+   * WishlistItem delete
+   */
+  export type WishlistItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+    /**
+     * Filter which WishlistItem to delete.
+     */
+    where: WishlistItemWhereUniqueInput
+  }
+
+  /**
+   * WishlistItem deleteMany
+   */
+  export type WishlistItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WishlistItems to delete
+     */
+    where?: WishlistItemWhereInput
+    /**
+     * Limit how many WishlistItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * WishlistItem without action
+   */
+  export type WishlistItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model LootHistory
+   */
+
+  export type AggregateLootHistory = {
+    _count: LootHistoryCountAggregateOutputType | null
+    _avg: LootHistoryAvgAggregateOutputType | null
+    _sum: LootHistorySumAggregateOutputType | null
+    _min: LootHistoryMinAggregateOutputType | null
+    _max: LootHistoryMaxAggregateOutputType | null
+  }
+
+  export type LootHistoryAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    lootId: number | null
+    raidId: number | null
+    priority: number | null
+    pointsCost: number | null
+  }
+
+  export type LootHistorySumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    lootId: number | null
+    raidId: number | null
+    priority: number | null
+    pointsCost: number | null
+  }
+
+  export type LootHistoryMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    lootId: number | null
+    raidId: number | null
+    priority: number | null
+    pointsCost: number | null
+    createdAt: Date | null
+  }
+
+  export type LootHistoryMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    lootId: number | null
+    raidId: number | null
+    priority: number | null
+    pointsCost: number | null
+    createdAt: Date | null
+  }
+
+  export type LootHistoryCountAggregateOutputType = {
+    id: number
+    userId: number
+    lootId: number
+    raidId: number
+    priority: number
+    pointsCost: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type LootHistoryAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    lootId?: true
+    raidId?: true
+    priority?: true
+    pointsCost?: true
+  }
+
+  export type LootHistorySumAggregateInputType = {
+    id?: true
+    userId?: true
+    lootId?: true
+    raidId?: true
+    priority?: true
+    pointsCost?: true
+  }
+
+  export type LootHistoryMinAggregateInputType = {
+    id?: true
+    userId?: true
+    lootId?: true
+    raidId?: true
+    priority?: true
+    pointsCost?: true
+    createdAt?: true
+  }
+
+  export type LootHistoryMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    lootId?: true
+    raidId?: true
+    priority?: true
+    pointsCost?: true
+    createdAt?: true
+  }
+
+  export type LootHistoryCountAggregateInputType = {
+    id?: true
+    userId?: true
+    lootId?: true
+    raidId?: true
+    priority?: true
+    pointsCost?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type LootHistoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LootHistory to aggregate.
+     */
+    where?: LootHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LootHistories to fetch.
+     */
+    orderBy?: LootHistoryOrderByWithRelationInput | LootHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LootHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LootHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LootHistories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LootHistories
+    **/
+    _count?: true | LootHistoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LootHistoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LootHistorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LootHistoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LootHistoryMaxAggregateInputType
+  }
+
+  export type GetLootHistoryAggregateType<T extends LootHistoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateLootHistory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLootHistory[P]>
+      : GetScalarType<T[P], AggregateLootHistory[P]>
+  }
+
+
+
+
+  export type LootHistoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LootHistoryWhereInput
+    orderBy?: LootHistoryOrderByWithAggregationInput | LootHistoryOrderByWithAggregationInput[]
+    by: LootHistoryScalarFieldEnum[] | LootHistoryScalarFieldEnum
+    having?: LootHistoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LootHistoryCountAggregateInputType | true
+    _avg?: LootHistoryAvgAggregateInputType
+    _sum?: LootHistorySumAggregateInputType
+    _min?: LootHistoryMinAggregateInputType
+    _max?: LootHistoryMaxAggregateInputType
+  }
+
+  export type LootHistoryGroupByOutputType = {
+    id: number
+    userId: number
+    lootId: number
+    raidId: number
+    priority: number
+    pointsCost: number
+    createdAt: Date
+    _count: LootHistoryCountAggregateOutputType | null
+    _avg: LootHistoryAvgAggregateOutputType | null
+    _sum: LootHistorySumAggregateOutputType | null
+    _min: LootHistoryMinAggregateOutputType | null
+    _max: LootHistoryMaxAggregateOutputType | null
+  }
+
+  type GetLootHistoryGroupByPayload<T extends LootHistoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LootHistoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LootHistoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LootHistoryGroupByOutputType[P]>
+            : GetScalarType<T[P], LootHistoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LootHistorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    lootId?: boolean
+    raidId?: boolean
+    priority?: boolean
+    pointsCost?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["lootHistory"]>
+
+  export type LootHistorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    lootId?: boolean
+    raidId?: boolean
+    priority?: boolean
+    pointsCost?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["lootHistory"]>
+
+  export type LootHistorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    lootId?: boolean
+    raidId?: boolean
+    priority?: boolean
+    pointsCost?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["lootHistory"]>
+
+  export type LootHistorySelectScalar = {
+    id?: boolean
+    userId?: boolean
+    lootId?: boolean
+    raidId?: boolean
+    priority?: boolean
+    pointsCost?: boolean
+    createdAt?: boolean
+  }
+
+  export type LootHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "lootId" | "raidId" | "priority" | "pointsCost" | "createdAt", ExtArgs["result"]["lootHistory"]>
+  export type LootHistoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }
+  export type LootHistoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }
+  export type LootHistoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    loot?: boolean | LootDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }
+
+  export type $LootHistoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LootHistory"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      loot: Prisma.$LootPayload<ExtArgs>
+      raid: Prisma.$RaidPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      lootId: number
+      raidId: number
+      priority: number
+      pointsCost: number
+      createdAt: Date
+    }, ExtArgs["result"]["lootHistory"]>
+    composites: {}
+  }
+
+  type LootHistoryGetPayload<S extends boolean | null | undefined | LootHistoryDefaultArgs> = $Result.GetResult<Prisma.$LootHistoryPayload, S>
+
+  type LootHistoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LootHistoryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LootHistoryCountAggregateInputType | true
+    }
+
+  export interface LootHistoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LootHistory'], meta: { name: 'LootHistory' } }
+    /**
+     * Find zero or one LootHistory that matches the filter.
+     * @param {LootHistoryFindUniqueArgs} args - Arguments to find a LootHistory
+     * @example
+     * // Get one LootHistory
+     * const lootHistory = await prisma.lootHistory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LootHistoryFindUniqueArgs>(args: SelectSubset<T, LootHistoryFindUniqueArgs<ExtArgs>>): Prisma__LootHistoryClient<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one LootHistory that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LootHistoryFindUniqueOrThrowArgs} args - Arguments to find a LootHistory
+     * @example
+     * // Get one LootHistory
+     * const lootHistory = await prisma.lootHistory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LootHistoryFindUniqueOrThrowArgs>(args: SelectSubset<T, LootHistoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LootHistoryClient<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LootHistory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LootHistoryFindFirstArgs} args - Arguments to find a LootHistory
+     * @example
+     * // Get one LootHistory
+     * const lootHistory = await prisma.lootHistory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LootHistoryFindFirstArgs>(args?: SelectSubset<T, LootHistoryFindFirstArgs<ExtArgs>>): Prisma__LootHistoryClient<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LootHistory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LootHistoryFindFirstOrThrowArgs} args - Arguments to find a LootHistory
+     * @example
+     * // Get one LootHistory
+     * const lootHistory = await prisma.lootHistory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LootHistoryFindFirstOrThrowArgs>(args?: SelectSubset<T, LootHistoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__LootHistoryClient<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more LootHistories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LootHistoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LootHistories
+     * const lootHistories = await prisma.lootHistory.findMany()
+     * 
+     * // Get first 10 LootHistories
+     * const lootHistories = await prisma.lootHistory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const lootHistoryWithIdOnly = await prisma.lootHistory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LootHistoryFindManyArgs>(args?: SelectSubset<T, LootHistoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a LootHistory.
+     * @param {LootHistoryCreateArgs} args - Arguments to create a LootHistory.
+     * @example
+     * // Create one LootHistory
+     * const LootHistory = await prisma.lootHistory.create({
+     *   data: {
+     *     // ... data to create a LootHistory
+     *   }
+     * })
+     * 
+     */
+    create<T extends LootHistoryCreateArgs>(args: SelectSubset<T, LootHistoryCreateArgs<ExtArgs>>): Prisma__LootHistoryClient<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many LootHistories.
+     * @param {LootHistoryCreateManyArgs} args - Arguments to create many LootHistories.
+     * @example
+     * // Create many LootHistories
+     * const lootHistory = await prisma.lootHistory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LootHistoryCreateManyArgs>(args?: SelectSubset<T, LootHistoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many LootHistories and returns the data saved in the database.
+     * @param {LootHistoryCreateManyAndReturnArgs} args - Arguments to create many LootHistories.
+     * @example
+     * // Create many LootHistories
+     * const lootHistory = await prisma.lootHistory.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many LootHistories and only return the `id`
+     * const lootHistoryWithIdOnly = await prisma.lootHistory.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LootHistoryCreateManyAndReturnArgs>(args?: SelectSubset<T, LootHistoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a LootHistory.
+     * @param {LootHistoryDeleteArgs} args - Arguments to delete one LootHistory.
+     * @example
+     * // Delete one LootHistory
+     * const LootHistory = await prisma.lootHistory.delete({
+     *   where: {
+     *     // ... filter to delete one LootHistory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LootHistoryDeleteArgs>(args: SelectSubset<T, LootHistoryDeleteArgs<ExtArgs>>): Prisma__LootHistoryClient<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one LootHistory.
+     * @param {LootHistoryUpdateArgs} args - Arguments to update one LootHistory.
+     * @example
+     * // Update one LootHistory
+     * const lootHistory = await prisma.lootHistory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LootHistoryUpdateArgs>(args: SelectSubset<T, LootHistoryUpdateArgs<ExtArgs>>): Prisma__LootHistoryClient<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more LootHistories.
+     * @param {LootHistoryDeleteManyArgs} args - Arguments to filter LootHistories to delete.
+     * @example
+     * // Delete a few LootHistories
+     * const { count } = await prisma.lootHistory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LootHistoryDeleteManyArgs>(args?: SelectSubset<T, LootHistoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LootHistories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LootHistoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LootHistories
+     * const lootHistory = await prisma.lootHistory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LootHistoryUpdateManyArgs>(args: SelectSubset<T, LootHistoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LootHistories and returns the data updated in the database.
+     * @param {LootHistoryUpdateManyAndReturnArgs} args - Arguments to update many LootHistories.
+     * @example
+     * // Update many LootHistories
+     * const lootHistory = await prisma.lootHistory.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more LootHistories and only return the `id`
+     * const lootHistoryWithIdOnly = await prisma.lootHistory.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LootHistoryUpdateManyAndReturnArgs>(args: SelectSubset<T, LootHistoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one LootHistory.
+     * @param {LootHistoryUpsertArgs} args - Arguments to update or create a LootHistory.
+     * @example
+     * // Update or create a LootHistory
+     * const lootHistory = await prisma.lootHistory.upsert({
+     *   create: {
+     *     // ... data to create a LootHistory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LootHistory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LootHistoryUpsertArgs>(args: SelectSubset<T, LootHistoryUpsertArgs<ExtArgs>>): Prisma__LootHistoryClient<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of LootHistories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LootHistoryCountArgs} args - Arguments to filter LootHistories to count.
+     * @example
+     * // Count the number of LootHistories
+     * const count = await prisma.lootHistory.count({
+     *   where: {
+     *     // ... the filter for the LootHistories we want to count
+     *   }
+     * })
+    **/
+    count<T extends LootHistoryCountArgs>(
+      args?: Subset<T, LootHistoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LootHistoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LootHistory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LootHistoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LootHistoryAggregateArgs>(args: Subset<T, LootHistoryAggregateArgs>): Prisma.PrismaPromise<GetLootHistoryAggregateType<T>>
+
+    /**
+     * Group by LootHistory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LootHistoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LootHistoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LootHistoryGroupByArgs['orderBy'] }
+        : { orderBy?: LootHistoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LootHistoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLootHistoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LootHistory model
+   */
+  readonly fields: LootHistoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LootHistory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LootHistoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    loot<T extends LootDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LootDefaultArgs<ExtArgs>>): Prisma__LootClient<$Result.GetResult<Prisma.$LootPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    raid<T extends RaidDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RaidDefaultArgs<ExtArgs>>): Prisma__RaidClient<$Result.GetResult<Prisma.$RaidPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LootHistory model
+   */
+  interface LootHistoryFieldRefs {
+    readonly id: FieldRef<"LootHistory", 'Int'>
+    readonly userId: FieldRef<"LootHistory", 'Int'>
+    readonly lootId: FieldRef<"LootHistory", 'Int'>
+    readonly raidId: FieldRef<"LootHistory", 'Int'>
+    readonly priority: FieldRef<"LootHistory", 'Int'>
+    readonly pointsCost: FieldRef<"LootHistory", 'Int'>
+    readonly createdAt: FieldRef<"LootHistory", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LootHistory findUnique
+   */
+  export type LootHistoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which LootHistory to fetch.
+     */
+    where: LootHistoryWhereUniqueInput
+  }
+
+  /**
+   * LootHistory findUniqueOrThrow
+   */
+  export type LootHistoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which LootHistory to fetch.
+     */
+    where: LootHistoryWhereUniqueInput
+  }
+
+  /**
+   * LootHistory findFirst
+   */
+  export type LootHistoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which LootHistory to fetch.
+     */
+    where?: LootHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LootHistories to fetch.
+     */
+    orderBy?: LootHistoryOrderByWithRelationInput | LootHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LootHistories.
+     */
+    cursor?: LootHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LootHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LootHistories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LootHistories.
+     */
+    distinct?: LootHistoryScalarFieldEnum | LootHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * LootHistory findFirstOrThrow
+   */
+  export type LootHistoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which LootHistory to fetch.
+     */
+    where?: LootHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LootHistories to fetch.
+     */
+    orderBy?: LootHistoryOrderByWithRelationInput | LootHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LootHistories.
+     */
+    cursor?: LootHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LootHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LootHistories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LootHistories.
+     */
+    distinct?: LootHistoryScalarFieldEnum | LootHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * LootHistory findMany
+   */
+  export type LootHistoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    /**
+     * Filter, which LootHistories to fetch.
+     */
+    where?: LootHistoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LootHistories to fetch.
+     */
+    orderBy?: LootHistoryOrderByWithRelationInput | LootHistoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LootHistories.
+     */
+    cursor?: LootHistoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LootHistories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LootHistories.
+     */
+    skip?: number
+    distinct?: LootHistoryScalarFieldEnum | LootHistoryScalarFieldEnum[]
+  }
+
+  /**
+   * LootHistory create
+   */
+  export type LootHistoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a LootHistory.
+     */
+    data: XOR<LootHistoryCreateInput, LootHistoryUncheckedCreateInput>
+  }
+
+  /**
+   * LootHistory createMany
+   */
+  export type LootHistoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LootHistories.
+     */
+    data: LootHistoryCreateManyInput | LootHistoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LootHistory createManyAndReturn
+   */
+  export type LootHistoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * The data used to create many LootHistories.
+     */
+    data: LootHistoryCreateManyInput | LootHistoryCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * LootHistory update
+   */
+  export type LootHistoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a LootHistory.
+     */
+    data: XOR<LootHistoryUpdateInput, LootHistoryUncheckedUpdateInput>
+    /**
+     * Choose, which LootHistory to update.
+     */
+    where: LootHistoryWhereUniqueInput
+  }
+
+  /**
+   * LootHistory updateMany
+   */
+  export type LootHistoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LootHistories.
+     */
+    data: XOR<LootHistoryUpdateManyMutationInput, LootHistoryUncheckedUpdateManyInput>
+    /**
+     * Filter which LootHistories to update
+     */
+    where?: LootHistoryWhereInput
+    /**
+     * Limit how many LootHistories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * LootHistory updateManyAndReturn
+   */
+  export type LootHistoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * The data used to update LootHistories.
+     */
+    data: XOR<LootHistoryUpdateManyMutationInput, LootHistoryUncheckedUpdateManyInput>
+    /**
+     * Filter which LootHistories to update
+     */
+    where?: LootHistoryWhereInput
+    /**
+     * Limit how many LootHistories to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * LootHistory upsert
+   */
+  export type LootHistoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the LootHistory to update in case it exists.
+     */
+    where: LootHistoryWhereUniqueInput
+    /**
+     * In case the LootHistory found by the `where` argument doesn't exist, create a new LootHistory with this data.
+     */
+    create: XOR<LootHistoryCreateInput, LootHistoryUncheckedCreateInput>
+    /**
+     * In case the LootHistory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LootHistoryUpdateInput, LootHistoryUncheckedUpdateInput>
+  }
+
+  /**
+   * LootHistory delete
+   */
+  export type LootHistoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    /**
+     * Filter which LootHistory to delete.
+     */
+    where: LootHistoryWhereUniqueInput
+  }
+
+  /**
+   * LootHistory deleteMany
+   */
+  export type LootHistoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LootHistories to delete
+     */
+    where?: LootHistoryWhereInput
+    /**
+     * Limit how many LootHistories to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * LootHistory without action
+   */
+  export type LootHistoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RaidAttendance
+   */
+
+  export type AggregateRaidAttendance = {
+    _count: RaidAttendanceCountAggregateOutputType | null
+    _avg: RaidAttendanceAvgAggregateOutputType | null
+    _sum: RaidAttendanceSumAggregateOutputType | null
+    _min: RaidAttendanceMinAggregateOutputType | null
+    _max: RaidAttendanceMaxAggregateOutputType | null
+  }
+
+  export type RaidAttendanceAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    raidId: number | null
+    pointsGiven: number | null
+  }
+
+  export type RaidAttendanceSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    raidId: number | null
+    pointsGiven: number | null
+  }
+
+  export type RaidAttendanceMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    raidId: number | null
+    pointsGiven: number | null
+    createdAt: Date | null
+  }
+
+  export type RaidAttendanceMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    raidId: number | null
+    pointsGiven: number | null
+    createdAt: Date | null
+  }
+
+  export type RaidAttendanceCountAggregateOutputType = {
+    id: number
+    userId: number
+    raidId: number
+    pointsGiven: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type RaidAttendanceAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    raidId?: true
+    pointsGiven?: true
+  }
+
+  export type RaidAttendanceSumAggregateInputType = {
+    id?: true
+    userId?: true
+    raidId?: true
+    pointsGiven?: true
+  }
+
+  export type RaidAttendanceMinAggregateInputType = {
+    id?: true
+    userId?: true
+    raidId?: true
+    pointsGiven?: true
+    createdAt?: true
+  }
+
+  export type RaidAttendanceMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    raidId?: true
+    pointsGiven?: true
+    createdAt?: true
+  }
+
+  export type RaidAttendanceCountAggregateInputType = {
+    id?: true
+    userId?: true
+    raidId?: true
+    pointsGiven?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type RaidAttendanceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RaidAttendance to aggregate.
+     */
+    where?: RaidAttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RaidAttendances to fetch.
+     */
+    orderBy?: RaidAttendanceOrderByWithRelationInput | RaidAttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RaidAttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RaidAttendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RaidAttendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RaidAttendances
+    **/
+    _count?: true | RaidAttendanceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RaidAttendanceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RaidAttendanceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RaidAttendanceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RaidAttendanceMaxAggregateInputType
+  }
+
+  export type GetRaidAttendanceAggregateType<T extends RaidAttendanceAggregateArgs> = {
+        [P in keyof T & keyof AggregateRaidAttendance]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRaidAttendance[P]>
+      : GetScalarType<T[P], AggregateRaidAttendance[P]>
+  }
+
+
+
+
+  export type RaidAttendanceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RaidAttendanceWhereInput
+    orderBy?: RaidAttendanceOrderByWithAggregationInput | RaidAttendanceOrderByWithAggregationInput[]
+    by: RaidAttendanceScalarFieldEnum[] | RaidAttendanceScalarFieldEnum
+    having?: RaidAttendanceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RaidAttendanceCountAggregateInputType | true
+    _avg?: RaidAttendanceAvgAggregateInputType
+    _sum?: RaidAttendanceSumAggregateInputType
+    _min?: RaidAttendanceMinAggregateInputType
+    _max?: RaidAttendanceMaxAggregateInputType
+  }
+
+  export type RaidAttendanceGroupByOutputType = {
+    id: number
+    userId: number
+    raidId: number
+    pointsGiven: number
+    createdAt: Date
+    _count: RaidAttendanceCountAggregateOutputType | null
+    _avg: RaidAttendanceAvgAggregateOutputType | null
+    _sum: RaidAttendanceSumAggregateOutputType | null
+    _min: RaidAttendanceMinAggregateOutputType | null
+    _max: RaidAttendanceMaxAggregateOutputType | null
+  }
+
+  type GetRaidAttendanceGroupByPayload<T extends RaidAttendanceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RaidAttendanceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RaidAttendanceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RaidAttendanceGroupByOutputType[P]>
+            : GetScalarType<T[P], RaidAttendanceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RaidAttendanceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    raidId?: boolean
+    pointsGiven?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["raidAttendance"]>
+
+  export type RaidAttendanceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    raidId?: boolean
+    pointsGiven?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["raidAttendance"]>
+
+  export type RaidAttendanceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    raidId?: boolean
+    pointsGiven?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["raidAttendance"]>
+
+  export type RaidAttendanceSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    raidId?: boolean
+    pointsGiven?: boolean
+    createdAt?: boolean
+  }
+
+  export type RaidAttendanceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "raidId" | "pointsGiven" | "createdAt", ExtArgs["result"]["raidAttendance"]>
+  export type RaidAttendanceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }
+  export type RaidAttendanceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }
+  export type RaidAttendanceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    raid?: boolean | RaidDefaultArgs<ExtArgs>
+  }
+
+  export type $RaidAttendancePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RaidAttendance"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      raid: Prisma.$RaidPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      raidId: number
+      pointsGiven: number
+      createdAt: Date
+    }, ExtArgs["result"]["raidAttendance"]>
+    composites: {}
+  }
+
+  type RaidAttendanceGetPayload<S extends boolean | null | undefined | RaidAttendanceDefaultArgs> = $Result.GetResult<Prisma.$RaidAttendancePayload, S>
+
+  type RaidAttendanceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RaidAttendanceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RaidAttendanceCountAggregateInputType | true
+    }
+
+  export interface RaidAttendanceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RaidAttendance'], meta: { name: 'RaidAttendance' } }
+    /**
+     * Find zero or one RaidAttendance that matches the filter.
+     * @param {RaidAttendanceFindUniqueArgs} args - Arguments to find a RaidAttendance
+     * @example
+     * // Get one RaidAttendance
+     * const raidAttendance = await prisma.raidAttendance.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RaidAttendanceFindUniqueArgs>(args: SelectSubset<T, RaidAttendanceFindUniqueArgs<ExtArgs>>): Prisma__RaidAttendanceClient<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RaidAttendance that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RaidAttendanceFindUniqueOrThrowArgs} args - Arguments to find a RaidAttendance
+     * @example
+     * // Get one RaidAttendance
+     * const raidAttendance = await prisma.raidAttendance.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RaidAttendanceFindUniqueOrThrowArgs>(args: SelectSubset<T, RaidAttendanceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RaidAttendanceClient<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RaidAttendance that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidAttendanceFindFirstArgs} args - Arguments to find a RaidAttendance
+     * @example
+     * // Get one RaidAttendance
+     * const raidAttendance = await prisma.raidAttendance.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RaidAttendanceFindFirstArgs>(args?: SelectSubset<T, RaidAttendanceFindFirstArgs<ExtArgs>>): Prisma__RaidAttendanceClient<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RaidAttendance that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidAttendanceFindFirstOrThrowArgs} args - Arguments to find a RaidAttendance
+     * @example
+     * // Get one RaidAttendance
+     * const raidAttendance = await prisma.raidAttendance.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RaidAttendanceFindFirstOrThrowArgs>(args?: SelectSubset<T, RaidAttendanceFindFirstOrThrowArgs<ExtArgs>>): Prisma__RaidAttendanceClient<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RaidAttendances that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidAttendanceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RaidAttendances
+     * const raidAttendances = await prisma.raidAttendance.findMany()
+     * 
+     * // Get first 10 RaidAttendances
+     * const raidAttendances = await prisma.raidAttendance.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const raidAttendanceWithIdOnly = await prisma.raidAttendance.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RaidAttendanceFindManyArgs>(args?: SelectSubset<T, RaidAttendanceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RaidAttendance.
+     * @param {RaidAttendanceCreateArgs} args - Arguments to create a RaidAttendance.
+     * @example
+     * // Create one RaidAttendance
+     * const RaidAttendance = await prisma.raidAttendance.create({
+     *   data: {
+     *     // ... data to create a RaidAttendance
+     *   }
+     * })
+     * 
+     */
+    create<T extends RaidAttendanceCreateArgs>(args: SelectSubset<T, RaidAttendanceCreateArgs<ExtArgs>>): Prisma__RaidAttendanceClient<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RaidAttendances.
+     * @param {RaidAttendanceCreateManyArgs} args - Arguments to create many RaidAttendances.
+     * @example
+     * // Create many RaidAttendances
+     * const raidAttendance = await prisma.raidAttendance.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RaidAttendanceCreateManyArgs>(args?: SelectSubset<T, RaidAttendanceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many RaidAttendances and returns the data saved in the database.
+     * @param {RaidAttendanceCreateManyAndReturnArgs} args - Arguments to create many RaidAttendances.
+     * @example
+     * // Create many RaidAttendances
+     * const raidAttendance = await prisma.raidAttendance.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many RaidAttendances and only return the `id`
+     * const raidAttendanceWithIdOnly = await prisma.raidAttendance.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RaidAttendanceCreateManyAndReturnArgs>(args?: SelectSubset<T, RaidAttendanceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a RaidAttendance.
+     * @param {RaidAttendanceDeleteArgs} args - Arguments to delete one RaidAttendance.
+     * @example
+     * // Delete one RaidAttendance
+     * const RaidAttendance = await prisma.raidAttendance.delete({
+     *   where: {
+     *     // ... filter to delete one RaidAttendance
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RaidAttendanceDeleteArgs>(args: SelectSubset<T, RaidAttendanceDeleteArgs<ExtArgs>>): Prisma__RaidAttendanceClient<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RaidAttendance.
+     * @param {RaidAttendanceUpdateArgs} args - Arguments to update one RaidAttendance.
+     * @example
+     * // Update one RaidAttendance
+     * const raidAttendance = await prisma.raidAttendance.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RaidAttendanceUpdateArgs>(args: SelectSubset<T, RaidAttendanceUpdateArgs<ExtArgs>>): Prisma__RaidAttendanceClient<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RaidAttendances.
+     * @param {RaidAttendanceDeleteManyArgs} args - Arguments to filter RaidAttendances to delete.
+     * @example
+     * // Delete a few RaidAttendances
+     * const { count } = await prisma.raidAttendance.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RaidAttendanceDeleteManyArgs>(args?: SelectSubset<T, RaidAttendanceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RaidAttendances.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidAttendanceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RaidAttendances
+     * const raidAttendance = await prisma.raidAttendance.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RaidAttendanceUpdateManyArgs>(args: SelectSubset<T, RaidAttendanceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RaidAttendances and returns the data updated in the database.
+     * @param {RaidAttendanceUpdateManyAndReturnArgs} args - Arguments to update many RaidAttendances.
+     * @example
+     * // Update many RaidAttendances
+     * const raidAttendance = await prisma.raidAttendance.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more RaidAttendances and only return the `id`
+     * const raidAttendanceWithIdOnly = await prisma.raidAttendance.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends RaidAttendanceUpdateManyAndReturnArgs>(args: SelectSubset<T, RaidAttendanceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one RaidAttendance.
+     * @param {RaidAttendanceUpsertArgs} args - Arguments to update or create a RaidAttendance.
+     * @example
+     * // Update or create a RaidAttendance
+     * const raidAttendance = await prisma.raidAttendance.upsert({
+     *   create: {
+     *     // ... data to create a RaidAttendance
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RaidAttendance we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RaidAttendanceUpsertArgs>(args: SelectSubset<T, RaidAttendanceUpsertArgs<ExtArgs>>): Prisma__RaidAttendanceClient<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RaidAttendances.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidAttendanceCountArgs} args - Arguments to filter RaidAttendances to count.
+     * @example
+     * // Count the number of RaidAttendances
+     * const count = await prisma.raidAttendance.count({
+     *   where: {
+     *     // ... the filter for the RaidAttendances we want to count
+     *   }
+     * })
+    **/
+    count<T extends RaidAttendanceCountArgs>(
+      args?: Subset<T, RaidAttendanceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RaidAttendanceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RaidAttendance.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidAttendanceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RaidAttendanceAggregateArgs>(args: Subset<T, RaidAttendanceAggregateArgs>): Prisma.PrismaPromise<GetRaidAttendanceAggregateType<T>>
+
+    /**
+     * Group by RaidAttendance.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RaidAttendanceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RaidAttendanceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RaidAttendanceGroupByArgs['orderBy'] }
+        : { orderBy?: RaidAttendanceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RaidAttendanceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRaidAttendanceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RaidAttendance model
+   */
+  readonly fields: RaidAttendanceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RaidAttendance.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RaidAttendanceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    raid<T extends RaidDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RaidDefaultArgs<ExtArgs>>): Prisma__RaidClient<$Result.GetResult<Prisma.$RaidPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RaidAttendance model
+   */
+  interface RaidAttendanceFieldRefs {
+    readonly id: FieldRef<"RaidAttendance", 'Int'>
+    readonly userId: FieldRef<"RaidAttendance", 'Int'>
+    readonly raidId: FieldRef<"RaidAttendance", 'Int'>
+    readonly pointsGiven: FieldRef<"RaidAttendance", 'Int'>
+    readonly createdAt: FieldRef<"RaidAttendance", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RaidAttendance findUnique
+   */
+  export type RaidAttendanceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which RaidAttendance to fetch.
+     */
+    where: RaidAttendanceWhereUniqueInput
+  }
+
+  /**
+   * RaidAttendance findUniqueOrThrow
+   */
+  export type RaidAttendanceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which RaidAttendance to fetch.
+     */
+    where: RaidAttendanceWhereUniqueInput
+  }
+
+  /**
+   * RaidAttendance findFirst
+   */
+  export type RaidAttendanceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which RaidAttendance to fetch.
+     */
+    where?: RaidAttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RaidAttendances to fetch.
+     */
+    orderBy?: RaidAttendanceOrderByWithRelationInput | RaidAttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RaidAttendances.
+     */
+    cursor?: RaidAttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RaidAttendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RaidAttendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RaidAttendances.
+     */
+    distinct?: RaidAttendanceScalarFieldEnum | RaidAttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * RaidAttendance findFirstOrThrow
+   */
+  export type RaidAttendanceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which RaidAttendance to fetch.
+     */
+    where?: RaidAttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RaidAttendances to fetch.
+     */
+    orderBy?: RaidAttendanceOrderByWithRelationInput | RaidAttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RaidAttendances.
+     */
+    cursor?: RaidAttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RaidAttendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RaidAttendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RaidAttendances.
+     */
+    distinct?: RaidAttendanceScalarFieldEnum | RaidAttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * RaidAttendance findMany
+   */
+  export type RaidAttendanceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which RaidAttendances to fetch.
+     */
+    where?: RaidAttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RaidAttendances to fetch.
+     */
+    orderBy?: RaidAttendanceOrderByWithRelationInput | RaidAttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RaidAttendances.
+     */
+    cursor?: RaidAttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RaidAttendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RaidAttendances.
+     */
+    skip?: number
+    distinct?: RaidAttendanceScalarFieldEnum | RaidAttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * RaidAttendance create
+   */
+  export type RaidAttendanceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RaidAttendance.
+     */
+    data: XOR<RaidAttendanceCreateInput, RaidAttendanceUncheckedCreateInput>
+  }
+
+  /**
+   * RaidAttendance createMany
+   */
+  export type RaidAttendanceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RaidAttendances.
+     */
+    data: RaidAttendanceCreateManyInput | RaidAttendanceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RaidAttendance createManyAndReturn
+   */
+  export type RaidAttendanceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * The data used to create many RaidAttendances.
+     */
+    data: RaidAttendanceCreateManyInput | RaidAttendanceCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RaidAttendance update
+   */
+  export type RaidAttendanceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RaidAttendance.
+     */
+    data: XOR<RaidAttendanceUpdateInput, RaidAttendanceUncheckedUpdateInput>
+    /**
+     * Choose, which RaidAttendance to update.
+     */
+    where: RaidAttendanceWhereUniqueInput
+  }
+
+  /**
+   * RaidAttendance updateMany
+   */
+  export type RaidAttendanceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RaidAttendances.
+     */
+    data: XOR<RaidAttendanceUpdateManyMutationInput, RaidAttendanceUncheckedUpdateManyInput>
+    /**
+     * Filter which RaidAttendances to update
+     */
+    where?: RaidAttendanceWhereInput
+    /**
+     * Limit how many RaidAttendances to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RaidAttendance updateManyAndReturn
+   */
+  export type RaidAttendanceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * The data used to update RaidAttendances.
+     */
+    data: XOR<RaidAttendanceUpdateManyMutationInput, RaidAttendanceUncheckedUpdateManyInput>
+    /**
+     * Filter which RaidAttendances to update
+     */
+    where?: RaidAttendanceWhereInput
+    /**
+     * Limit how many RaidAttendances to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RaidAttendance upsert
+   */
+  export type RaidAttendanceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RaidAttendance to update in case it exists.
+     */
+    where: RaidAttendanceWhereUniqueInput
+    /**
+     * In case the RaidAttendance found by the `where` argument doesn't exist, create a new RaidAttendance with this data.
+     */
+    create: XOR<RaidAttendanceCreateInput, RaidAttendanceUncheckedCreateInput>
+    /**
+     * In case the RaidAttendance was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RaidAttendanceUpdateInput, RaidAttendanceUncheckedUpdateInput>
+  }
+
+  /**
+   * RaidAttendance delete
+   */
+  export type RaidAttendanceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
+    /**
+     * Filter which RaidAttendance to delete.
+     */
+    where: RaidAttendanceWhereUniqueInput
+  }
+
+  /**
+   * RaidAttendance deleteMany
+   */
+  export type RaidAttendanceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RaidAttendances to delete
+     */
+    where?: RaidAttendanceWhereInput
+    /**
+     * Limit how many RaidAttendances to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RaidAttendance without action
+   */
+  export type RaidAttendanceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RaidAttendance
+     */
+    select?: RaidAttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RaidAttendance
+     */
+    omit?: RaidAttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RaidAttendanceInclude<ExtArgs> | null
   }
 
 
@@ -8583,6 +13687,8 @@ export namespace Prisma {
     bossId?: boolean
     boss?: boolean | BossDefaultArgs<ExtArgs>
     users?: boolean | Loot$usersArgs<ExtArgs>
+    WishlistItem?: boolean | Loot$WishlistItemArgs<ExtArgs>
+    LootHistory?: boolean | Loot$LootHistoryArgs<ExtArgs>
     _count?: boolean | LootCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["loot"]>
 
@@ -8613,6 +13719,8 @@ export namespace Prisma {
   export type LootInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     boss?: boolean | BossDefaultArgs<ExtArgs>
     users?: boolean | Loot$usersArgs<ExtArgs>
+    WishlistItem?: boolean | Loot$WishlistItemArgs<ExtArgs>
+    LootHistory?: boolean | Loot$LootHistoryArgs<ExtArgs>
     _count?: boolean | LootCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type LootIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8627,6 +13735,8 @@ export namespace Prisma {
     objects: {
       boss: Prisma.$BossPayload<ExtArgs>
       users: Prisma.$UserPayload<ExtArgs>[]
+      WishlistItem: Prisma.$WishlistItemPayload<ExtArgs>[]
+      LootHistory: Prisma.$LootHistoryPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -9029,6 +14139,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     boss<T extends BossDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BossDefaultArgs<ExtArgs>>): Prisma__BossClient<$Result.GetResult<Prisma.$BossPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     users<T extends Loot$usersArgs<ExtArgs> = {}>(args?: Subset<T, Loot$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    WishlistItem<T extends Loot$WishlistItemArgs<ExtArgs> = {}>(args?: Subset<T, Loot$WishlistItemArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WishlistItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    LootHistory<T extends Loot$LootHistoryArgs<ExtArgs> = {}>(args?: Subset<T, Loot$LootHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9482,6 +14594,54 @@ export namespace Prisma {
   }
 
   /**
+   * Loot.WishlistItem
+   */
+  export type Loot$WishlistItemArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WishlistItem
+     */
+    select?: WishlistItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WishlistItem
+     */
+    omit?: WishlistItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WishlistItemInclude<ExtArgs> | null
+    where?: WishlistItemWhereInput
+    orderBy?: WishlistItemOrderByWithRelationInput | WishlistItemOrderByWithRelationInput[]
+    cursor?: WishlistItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WishlistItemScalarFieldEnum | WishlistItemScalarFieldEnum[]
+  }
+
+  /**
+   * Loot.LootHistory
+   */
+  export type Loot$LootHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LootHistory
+     */
+    select?: LootHistorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LootHistory
+     */
+    omit?: LootHistoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootHistoryInclude<ExtArgs> | null
+    where?: LootHistoryWhereInput
+    orderBy?: LootHistoryOrderByWithRelationInput | LootHistoryOrderByWithRelationInput[]
+    cursor?: LootHistoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: LootHistoryScalarFieldEnum | LootHistoryScalarFieldEnum[]
+  }
+
+  /**
    * Loot without action
    */
   export type LootDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9563,6 +14723,51 @@ export namespace Prisma {
   };
 
   export type JoinRequestScalarFieldEnum = (typeof JoinRequestScalarFieldEnum)[keyof typeof JoinRequestScalarFieldEnum]
+
+
+  export const RaidPointsScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    raidId: 'raidId',
+    points: 'points'
+  };
+
+  export type RaidPointsScalarFieldEnum = (typeof RaidPointsScalarFieldEnum)[keyof typeof RaidPointsScalarFieldEnum]
+
+
+  export const WishlistItemScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    lootId: 'lootId',
+    priority: 'priority',
+    createdAt: 'createdAt'
+  };
+
+  export type WishlistItemScalarFieldEnum = (typeof WishlistItemScalarFieldEnum)[keyof typeof WishlistItemScalarFieldEnum]
+
+
+  export const LootHistoryScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    lootId: 'lootId',
+    raidId: 'raidId',
+    priority: 'priority',
+    pointsCost: 'pointsCost',
+    createdAt: 'createdAt'
+  };
+
+  export type LootHistoryScalarFieldEnum = (typeof LootHistoryScalarFieldEnum)[keyof typeof LootHistoryScalarFieldEnum]
+
+
+  export const RaidAttendanceScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    raidId: 'raidId',
+    pointsGiven: 'pointsGiven',
+    createdAt: 'createdAt'
+  };
+
+  export type RaidAttendanceScalarFieldEnum = (typeof RaidAttendanceScalarFieldEnum)[keyof typeof RaidAttendanceScalarFieldEnum]
 
 
   export const BossScalarFieldEnum: {
@@ -9687,6 +14892,10 @@ export namespace Prisma {
     createdRaids?: RaidListRelationFilter
     joinRequests?: JoinRequestListRelationFilter
     loots?: LootListRelationFilter
+    WishlistItem?: WishlistItemListRelationFilter
+    RaidPoints?: XOR<RaidPointsNullableScalarRelationFilter, RaidPointsWhereInput> | null
+    LootHistory?: LootHistoryListRelationFilter
+    attendances?: RaidAttendanceListRelationFilter
     classe?: XOR<ClasseScalarRelationFilter, ClasseWhereInput>
     specialisation?: XOR<SpecialisationScalarRelationFilter, SpecialisationWhereInput>
   }
@@ -9704,6 +14913,10 @@ export namespace Prisma {
     createdRaids?: RaidOrderByRelationAggregateInput
     joinRequests?: JoinRequestOrderByRelationAggregateInput
     loots?: LootOrderByRelationAggregateInput
+    WishlistItem?: WishlistItemOrderByRelationAggregateInput
+    RaidPoints?: RaidPointsOrderByWithRelationInput
+    LootHistory?: LootHistoryOrderByRelationAggregateInput
+    attendances?: RaidAttendanceOrderByRelationAggregateInput
     classe?: ClasseOrderByWithRelationInput
     specialisation?: SpecialisationOrderByWithRelationInput
   }
@@ -9724,6 +14937,10 @@ export namespace Prisma {
     createdRaids?: RaidListRelationFilter
     joinRequests?: JoinRequestListRelationFilter
     loots?: LootListRelationFilter
+    WishlistItem?: WishlistItemListRelationFilter
+    RaidPoints?: XOR<RaidPointsNullableScalarRelationFilter, RaidPointsWhereInput> | null
+    LootHistory?: LootHistoryListRelationFilter
+    attendances?: RaidAttendanceListRelationFilter
     classe?: XOR<ClasseScalarRelationFilter, ClasseWhereInput>
     specialisation?: XOR<SpecialisationScalarRelationFilter, SpecialisationWhereInput>
   }, "id" | "email">
@@ -9862,6 +15079,9 @@ export namespace Prisma {
     name?: StringFilter<"Raid"> | string
     createdById?: IntFilter<"Raid"> | number
     createdBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+    RaidPoints?: RaidPointsListRelationFilter
+    LootHistory?: LootHistoryListRelationFilter
+    attendances?: RaidAttendanceListRelationFilter
     users?: UserListRelationFilter
     joinRequests?: JoinRequestListRelationFilter
   }
@@ -9871,6 +15091,9 @@ export namespace Prisma {
     name?: SortOrder
     createdById?: SortOrder
     createdBy?: UserOrderByWithRelationInput
+    RaidPoints?: RaidPointsOrderByRelationAggregateInput
+    LootHistory?: LootHistoryOrderByRelationAggregateInput
+    attendances?: RaidAttendanceOrderByRelationAggregateInput
     users?: UserOrderByRelationAggregateInput
     joinRequests?: JoinRequestOrderByRelationAggregateInput
   }
@@ -9883,6 +15106,9 @@ export namespace Prisma {
     name?: StringFilter<"Raid"> | string
     createdById?: IntFilter<"Raid"> | number
     createdBy?: XOR<UserScalarRelationFilter, UserWhereInput>
+    RaidPoints?: RaidPointsListRelationFilter
+    LootHistory?: LootHistoryListRelationFilter
+    attendances?: RaidAttendanceListRelationFilter
     users?: UserListRelationFilter
     joinRequests?: JoinRequestListRelationFilter
   }, "id">
@@ -9968,6 +15194,256 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"JoinRequest"> | Date | string
   }
 
+  export type RaidPointsWhereInput = {
+    AND?: RaidPointsWhereInput | RaidPointsWhereInput[]
+    OR?: RaidPointsWhereInput[]
+    NOT?: RaidPointsWhereInput | RaidPointsWhereInput[]
+    id?: IntFilter<"RaidPoints"> | number
+    userId?: IntFilter<"RaidPoints"> | number
+    raidId?: IntFilter<"RaidPoints"> | number
+    points?: IntFilter<"RaidPoints"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    raid?: XOR<RaidScalarRelationFilter, RaidWhereInput>
+  }
+
+  export type RaidPointsOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    points?: SortOrder
+    user?: UserOrderByWithRelationInput
+    raid?: RaidOrderByWithRelationInput
+  }
+
+  export type RaidPointsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    userId?: number
+    userId_raidId?: RaidPointsUserIdRaidIdCompoundUniqueInput
+    AND?: RaidPointsWhereInput | RaidPointsWhereInput[]
+    OR?: RaidPointsWhereInput[]
+    NOT?: RaidPointsWhereInput | RaidPointsWhereInput[]
+    raidId?: IntFilter<"RaidPoints"> | number
+    points?: IntFilter<"RaidPoints"> | number
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    raid?: XOR<RaidScalarRelationFilter, RaidWhereInput>
+  }, "id" | "userId" | "userId_raidId">
+
+  export type RaidPointsOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    points?: SortOrder
+    _count?: RaidPointsCountOrderByAggregateInput
+    _avg?: RaidPointsAvgOrderByAggregateInput
+    _max?: RaidPointsMaxOrderByAggregateInput
+    _min?: RaidPointsMinOrderByAggregateInput
+    _sum?: RaidPointsSumOrderByAggregateInput
+  }
+
+  export type RaidPointsScalarWhereWithAggregatesInput = {
+    AND?: RaidPointsScalarWhereWithAggregatesInput | RaidPointsScalarWhereWithAggregatesInput[]
+    OR?: RaidPointsScalarWhereWithAggregatesInput[]
+    NOT?: RaidPointsScalarWhereWithAggregatesInput | RaidPointsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"RaidPoints"> | number
+    userId?: IntWithAggregatesFilter<"RaidPoints"> | number
+    raidId?: IntWithAggregatesFilter<"RaidPoints"> | number
+    points?: IntWithAggregatesFilter<"RaidPoints"> | number
+  }
+
+  export type WishlistItemWhereInput = {
+    AND?: WishlistItemWhereInput | WishlistItemWhereInput[]
+    OR?: WishlistItemWhereInput[]
+    NOT?: WishlistItemWhereInput | WishlistItemWhereInput[]
+    id?: IntFilter<"WishlistItem"> | number
+    userId?: IntFilter<"WishlistItem"> | number
+    lootId?: IntFilter<"WishlistItem"> | number
+    priority?: IntFilter<"WishlistItem"> | number
+    createdAt?: DateTimeFilter<"WishlistItem"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    loot?: XOR<LootScalarRelationFilter, LootWhereInput>
+  }
+
+  export type WishlistItemOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    priority?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    loot?: LootOrderByWithRelationInput
+  }
+
+  export type WishlistItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    userId_lootId?: WishlistItemUserIdLootIdCompoundUniqueInput
+    AND?: WishlistItemWhereInput | WishlistItemWhereInput[]
+    OR?: WishlistItemWhereInput[]
+    NOT?: WishlistItemWhereInput | WishlistItemWhereInput[]
+    userId?: IntFilter<"WishlistItem"> | number
+    lootId?: IntFilter<"WishlistItem"> | number
+    priority?: IntFilter<"WishlistItem"> | number
+    createdAt?: DateTimeFilter<"WishlistItem"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    loot?: XOR<LootScalarRelationFilter, LootWhereInput>
+  }, "id" | "userId_lootId">
+
+  export type WishlistItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    priority?: SortOrder
+    createdAt?: SortOrder
+    _count?: WishlistItemCountOrderByAggregateInput
+    _avg?: WishlistItemAvgOrderByAggregateInput
+    _max?: WishlistItemMaxOrderByAggregateInput
+    _min?: WishlistItemMinOrderByAggregateInput
+    _sum?: WishlistItemSumOrderByAggregateInput
+  }
+
+  export type WishlistItemScalarWhereWithAggregatesInput = {
+    AND?: WishlistItemScalarWhereWithAggregatesInput | WishlistItemScalarWhereWithAggregatesInput[]
+    OR?: WishlistItemScalarWhereWithAggregatesInput[]
+    NOT?: WishlistItemScalarWhereWithAggregatesInput | WishlistItemScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"WishlistItem"> | number
+    userId?: IntWithAggregatesFilter<"WishlistItem"> | number
+    lootId?: IntWithAggregatesFilter<"WishlistItem"> | number
+    priority?: IntWithAggregatesFilter<"WishlistItem"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"WishlistItem"> | Date | string
+  }
+
+  export type LootHistoryWhereInput = {
+    AND?: LootHistoryWhereInput | LootHistoryWhereInput[]
+    OR?: LootHistoryWhereInput[]
+    NOT?: LootHistoryWhereInput | LootHistoryWhereInput[]
+    id?: IntFilter<"LootHistory"> | number
+    userId?: IntFilter<"LootHistory"> | number
+    lootId?: IntFilter<"LootHistory"> | number
+    raidId?: IntFilter<"LootHistory"> | number
+    priority?: IntFilter<"LootHistory"> | number
+    pointsCost?: IntFilter<"LootHistory"> | number
+    createdAt?: DateTimeFilter<"LootHistory"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    loot?: XOR<LootScalarRelationFilter, LootWhereInput>
+    raid?: XOR<RaidScalarRelationFilter, RaidWhereInput>
+  }
+
+  export type LootHistoryOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    raidId?: SortOrder
+    priority?: SortOrder
+    pointsCost?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    loot?: LootOrderByWithRelationInput
+    raid?: RaidOrderByWithRelationInput
+  }
+
+  export type LootHistoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: LootHistoryWhereInput | LootHistoryWhereInput[]
+    OR?: LootHistoryWhereInput[]
+    NOT?: LootHistoryWhereInput | LootHistoryWhereInput[]
+    userId?: IntFilter<"LootHistory"> | number
+    lootId?: IntFilter<"LootHistory"> | number
+    raidId?: IntFilter<"LootHistory"> | number
+    priority?: IntFilter<"LootHistory"> | number
+    pointsCost?: IntFilter<"LootHistory"> | number
+    createdAt?: DateTimeFilter<"LootHistory"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    loot?: XOR<LootScalarRelationFilter, LootWhereInput>
+    raid?: XOR<RaidScalarRelationFilter, RaidWhereInput>
+  }, "id">
+
+  export type LootHistoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    raidId?: SortOrder
+    priority?: SortOrder
+    pointsCost?: SortOrder
+    createdAt?: SortOrder
+    _count?: LootHistoryCountOrderByAggregateInput
+    _avg?: LootHistoryAvgOrderByAggregateInput
+    _max?: LootHistoryMaxOrderByAggregateInput
+    _min?: LootHistoryMinOrderByAggregateInput
+    _sum?: LootHistorySumOrderByAggregateInput
+  }
+
+  export type LootHistoryScalarWhereWithAggregatesInput = {
+    AND?: LootHistoryScalarWhereWithAggregatesInput | LootHistoryScalarWhereWithAggregatesInput[]
+    OR?: LootHistoryScalarWhereWithAggregatesInput[]
+    NOT?: LootHistoryScalarWhereWithAggregatesInput | LootHistoryScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"LootHistory"> | number
+    userId?: IntWithAggregatesFilter<"LootHistory"> | number
+    lootId?: IntWithAggregatesFilter<"LootHistory"> | number
+    raidId?: IntWithAggregatesFilter<"LootHistory"> | number
+    priority?: IntWithAggregatesFilter<"LootHistory"> | number
+    pointsCost?: IntWithAggregatesFilter<"LootHistory"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"LootHistory"> | Date | string
+  }
+
+  export type RaidAttendanceWhereInput = {
+    AND?: RaidAttendanceWhereInput | RaidAttendanceWhereInput[]
+    OR?: RaidAttendanceWhereInput[]
+    NOT?: RaidAttendanceWhereInput | RaidAttendanceWhereInput[]
+    id?: IntFilter<"RaidAttendance"> | number
+    userId?: IntFilter<"RaidAttendance"> | number
+    raidId?: IntFilter<"RaidAttendance"> | number
+    pointsGiven?: IntFilter<"RaidAttendance"> | number
+    createdAt?: DateTimeFilter<"RaidAttendance"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    raid?: XOR<RaidScalarRelationFilter, RaidWhereInput>
+  }
+
+  export type RaidAttendanceOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    pointsGiven?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    raid?: RaidOrderByWithRelationInput
+  }
+
+  export type RaidAttendanceWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: RaidAttendanceWhereInput | RaidAttendanceWhereInput[]
+    OR?: RaidAttendanceWhereInput[]
+    NOT?: RaidAttendanceWhereInput | RaidAttendanceWhereInput[]
+    userId?: IntFilter<"RaidAttendance"> | number
+    raidId?: IntFilter<"RaidAttendance"> | number
+    pointsGiven?: IntFilter<"RaidAttendance"> | number
+    createdAt?: DateTimeFilter<"RaidAttendance"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    raid?: XOR<RaidScalarRelationFilter, RaidWhereInput>
+  }, "id">
+
+  export type RaidAttendanceOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    pointsGiven?: SortOrder
+    createdAt?: SortOrder
+    _count?: RaidAttendanceCountOrderByAggregateInput
+    _avg?: RaidAttendanceAvgOrderByAggregateInput
+    _max?: RaidAttendanceMaxOrderByAggregateInput
+    _min?: RaidAttendanceMinOrderByAggregateInput
+    _sum?: RaidAttendanceSumOrderByAggregateInput
+  }
+
+  export type RaidAttendanceScalarWhereWithAggregatesInput = {
+    AND?: RaidAttendanceScalarWhereWithAggregatesInput | RaidAttendanceScalarWhereWithAggregatesInput[]
+    OR?: RaidAttendanceScalarWhereWithAggregatesInput[]
+    NOT?: RaidAttendanceScalarWhereWithAggregatesInput | RaidAttendanceScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"RaidAttendance"> | number
+    userId?: IntWithAggregatesFilter<"RaidAttendance"> | number
+    raidId?: IntWithAggregatesFilter<"RaidAttendance"> | number
+    pointsGiven?: IntWithAggregatesFilter<"RaidAttendance"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"RaidAttendance"> | Date | string
+  }
+
   export type BossWhereInput = {
     AND?: BossWhereInput | BossWhereInput[]
     OR?: BossWhereInput[]
@@ -10020,6 +15496,8 @@ export namespace Prisma {
     bossId?: IntFilter<"Loot"> | number
     boss?: XOR<BossScalarRelationFilter, BossWhereInput>
     users?: UserListRelationFilter
+    WishlistItem?: WishlistItemListRelationFilter
+    LootHistory?: LootHistoryListRelationFilter
   }
 
   export type LootOrderByWithRelationInput = {
@@ -10029,6 +15507,8 @@ export namespace Prisma {
     bossId?: SortOrder
     boss?: BossOrderByWithRelationInput
     users?: UserOrderByRelationAggregateInput
+    WishlistItem?: WishlistItemOrderByRelationAggregateInput
+    LootHistory?: LootHistoryOrderByRelationAggregateInput
   }
 
   export type LootWhereUniqueInput = Prisma.AtLeast<{
@@ -10042,6 +15522,8 @@ export namespace Prisma {
     bossId?: IntFilter<"Loot"> | number
     boss?: XOR<BossScalarRelationFilter, BossWhereInput>
     users?: UserListRelationFilter
+    WishlistItem?: WishlistItemListRelationFilter
+    LootHistory?: LootHistoryListRelationFilter
   }, "id" | "name_bossId">
 
   export type LootOrderByWithAggregationInput = {
@@ -10075,6 +15557,10 @@ export namespace Prisma {
     createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
     joinRequests?: JoinRequestCreateNestedManyWithoutUserInput
     loots?: LootCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -10091,6 +15577,10 @@ export namespace Prisma {
     createdRaids?: RaidUncheckedCreateNestedManyWithoutCreatedByInput
     joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutUserInput
     loots?: LootUncheckedCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -10102,6 +15592,10 @@ export namespace Prisma {
     createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
     joinRequests?: JoinRequestUpdateManyWithoutUserNestedInput
     loots?: LootUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -10118,6 +15612,10 @@ export namespace Prisma {
     createdRaids?: RaidUncheckedUpdateManyWithoutCreatedByNestedInput
     joinRequests?: JoinRequestUncheckedUpdateManyWithoutUserNestedInput
     loots?: LootUncheckedUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -10234,6 +15732,9 @@ export namespace Prisma {
   export type RaidCreateInput = {
     name: string
     createdBy: UserCreateNestedOneWithoutCreatedRaidsInput
+    RaidPoints?: RaidPointsCreateNestedManyWithoutRaidInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutRaidInput
     users?: UserCreateNestedManyWithoutRaidInput
     joinRequests?: JoinRequestCreateNestedManyWithoutRaidInput
   }
@@ -10242,6 +15743,9 @@ export namespace Prisma {
     id?: number
     name: string
     createdById: number
+    RaidPoints?: RaidPointsUncheckedCreateNestedManyWithoutRaidInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutRaidInput
     users?: UserUncheckedCreateNestedManyWithoutRaidInput
     joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutRaidInput
   }
@@ -10249,6 +15753,9 @@ export namespace Prisma {
   export type RaidUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     createdBy?: UserUpdateOneRequiredWithoutCreatedRaidsNestedInput
+    RaidPoints?: RaidPointsUpdateManyWithoutRaidNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutRaidNestedInput
     users?: UserUpdateManyWithoutRaidNestedInput
     joinRequests?: JoinRequestUpdateManyWithoutRaidNestedInput
   }
@@ -10257,6 +15764,9 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     createdById?: IntFieldUpdateOperationsInput | number
+    RaidPoints?: RaidPointsUncheckedUpdateManyWithoutRaidNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutRaidNestedInput
     users?: UserUncheckedUpdateManyWithoutRaidNestedInput
     joinRequests?: JoinRequestUncheckedUpdateManyWithoutRaidNestedInput
   }
@@ -10328,6 +15838,216 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type RaidPointsCreateInput = {
+    points?: number
+    user: UserCreateNestedOneWithoutRaidPointsInput
+    raid: RaidCreateNestedOneWithoutRaidPointsInput
+  }
+
+  export type RaidPointsUncheckedCreateInput = {
+    id?: number
+    userId: number
+    raidId: number
+    points?: number
+  }
+
+  export type RaidPointsUpdateInput = {
+    points?: IntFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutRaidPointsNestedInput
+    raid?: RaidUpdateOneRequiredWithoutRaidPointsNestedInput
+  }
+
+  export type RaidPointsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    points?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RaidPointsCreateManyInput = {
+    id?: number
+    userId: number
+    raidId: number
+    points?: number
+  }
+
+  export type RaidPointsUpdateManyMutationInput = {
+    points?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RaidPointsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    points?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type WishlistItemCreateInput = {
+    priority: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutWishlistItemInput
+    loot: LootCreateNestedOneWithoutWishlistItemInput
+  }
+
+  export type WishlistItemUncheckedCreateInput = {
+    id?: number
+    userId: number
+    lootId: number
+    priority: number
+    createdAt?: Date | string
+  }
+
+  export type WishlistItemUpdateInput = {
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutWishlistItemNestedInput
+    loot?: LootUpdateOneRequiredWithoutWishlistItemNestedInput
+  }
+
+  export type WishlistItemUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    lootId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WishlistItemCreateManyInput = {
+    id?: number
+    userId: number
+    lootId: number
+    priority: number
+    createdAt?: Date | string
+  }
+
+  export type WishlistItemUpdateManyMutationInput = {
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WishlistItemUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    lootId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LootHistoryCreateInput = {
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutLootHistoryInput
+    loot: LootCreateNestedOneWithoutLootHistoryInput
+    raid: RaidCreateNestedOneWithoutLootHistoryInput
+  }
+
+  export type LootHistoryUncheckedCreateInput = {
+    id?: number
+    userId: number
+    lootId: number
+    raidId: number
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
+  }
+
+  export type LootHistoryUpdateInput = {
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLootHistoryNestedInput
+    loot?: LootUpdateOneRequiredWithoutLootHistoryNestedInput
+    raid?: RaidUpdateOneRequiredWithoutLootHistoryNestedInput
+  }
+
+  export type LootHistoryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    lootId?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LootHistoryCreateManyInput = {
+    id?: number
+    userId: number
+    lootId: number
+    raidId: number
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
+  }
+
+  export type LootHistoryUpdateManyMutationInput = {
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LootHistoryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    lootId?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RaidAttendanceCreateInput = {
+    pointsGiven?: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutAttendancesInput
+    raid: RaidCreateNestedOneWithoutAttendancesInput
+  }
+
+  export type RaidAttendanceUncheckedCreateInput = {
+    id?: number
+    userId: number
+    raidId: number
+    pointsGiven?: number
+    createdAt?: Date | string
+  }
+
+  export type RaidAttendanceUpdateInput = {
+    pointsGiven?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAttendancesNestedInput
+    raid?: RaidUpdateOneRequiredWithoutAttendancesNestedInput
+  }
+
+  export type RaidAttendanceUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    pointsGiven?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RaidAttendanceCreateManyInput = {
+    id?: number
+    userId: number
+    raidId: number
+    pointsGiven?: number
+    createdAt?: Date | string
+  }
+
+  export type RaidAttendanceUpdateManyMutationInput = {
+    pointsGiven?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RaidAttendanceUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    pointsGiven?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type BossCreateInput = {
     name: string
     loots?: LootCreateNestedManyWithoutBossInput
@@ -10369,6 +16089,8 @@ export namespace Prisma {
     url: string
     boss: BossCreateNestedOneWithoutLootsInput
     users?: UserCreateNestedManyWithoutLootsInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutLootInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutLootInput
   }
 
   export type LootUncheckedCreateInput = {
@@ -10377,6 +16099,8 @@ export namespace Prisma {
     url: string
     bossId: number
     users?: UserUncheckedCreateNestedManyWithoutLootsInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutLootInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutLootInput
   }
 
   export type LootUpdateInput = {
@@ -10384,6 +16108,8 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     boss?: BossUpdateOneRequiredWithoutLootsNestedInput
     users?: UserUpdateManyWithoutLootsNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutLootNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutLootNestedInput
   }
 
   export type LootUncheckedUpdateInput = {
@@ -10392,6 +16118,8 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     bossId?: IntFieldUpdateOperationsInput | number
     users?: UserUncheckedUpdateManyWithoutLootsNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutLootNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutLootNestedInput
   }
 
   export type LootCreateManyInput = {
@@ -10499,6 +16227,29 @@ export namespace Prisma {
     none?: LootWhereInput
   }
 
+  export type WishlistItemListRelationFilter = {
+    every?: WishlistItemWhereInput
+    some?: WishlistItemWhereInput
+    none?: WishlistItemWhereInput
+  }
+
+  export type RaidPointsNullableScalarRelationFilter = {
+    is?: RaidPointsWhereInput | null
+    isNot?: RaidPointsWhereInput | null
+  }
+
+  export type LootHistoryListRelationFilter = {
+    every?: LootHistoryWhereInput
+    some?: LootHistoryWhereInput
+    none?: LootHistoryWhereInput
+  }
+
+  export type RaidAttendanceListRelationFilter = {
+    every?: RaidAttendanceWhereInput
+    some?: RaidAttendanceWhereInput
+    none?: RaidAttendanceWhereInput
+  }
+
   export type ClasseScalarRelationFilter = {
     is?: ClasseWhereInput
     isNot?: ClasseWhereInput
@@ -10523,6 +16274,18 @@ export namespace Prisma {
   }
 
   export type LootOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WishlistItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type LootHistoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RaidAttendanceOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10736,6 +16499,16 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
+  export type RaidPointsListRelationFilter = {
+    every?: RaidPointsWhereInput
+    some?: RaidPointsWhereInput
+    none?: RaidPointsWhereInput
+  }
+
+  export type RaidPointsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type RaidCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -10808,6 +16581,180 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     raidId?: SortOrder
+  }
+
+  export type RaidPointsUserIdRaidIdCompoundUniqueInput = {
+    userId: number
+    raidId: number
+  }
+
+  export type RaidPointsCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    points?: SortOrder
+  }
+
+  export type RaidPointsAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    points?: SortOrder
+  }
+
+  export type RaidPointsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    points?: SortOrder
+  }
+
+  export type RaidPointsMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    points?: SortOrder
+  }
+
+  export type RaidPointsSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    points?: SortOrder
+  }
+
+  export type LootScalarRelationFilter = {
+    is?: LootWhereInput
+    isNot?: LootWhereInput
+  }
+
+  export type WishlistItemUserIdLootIdCompoundUniqueInput = {
+    userId: number
+    lootId: number
+  }
+
+  export type WishlistItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    priority?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WishlistItemAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    priority?: SortOrder
+  }
+
+  export type WishlistItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    priority?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WishlistItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    priority?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WishlistItemSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    priority?: SortOrder
+  }
+
+  export type LootHistoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    raidId?: SortOrder
+    priority?: SortOrder
+    pointsCost?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LootHistoryAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    raidId?: SortOrder
+    priority?: SortOrder
+    pointsCost?: SortOrder
+  }
+
+  export type LootHistoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    raidId?: SortOrder
+    priority?: SortOrder
+    pointsCost?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LootHistoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    raidId?: SortOrder
+    priority?: SortOrder
+    pointsCost?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LootHistorySumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lootId?: SortOrder
+    raidId?: SortOrder
+    priority?: SortOrder
+    pointsCost?: SortOrder
+  }
+
+  export type RaidAttendanceCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    pointsGiven?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RaidAttendanceAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    pointsGiven?: SortOrder
+  }
+
+  export type RaidAttendanceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    pointsGiven?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RaidAttendanceMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    pointsGiven?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RaidAttendanceSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    raidId?: SortOrder
+    pointsGiven?: SortOrder
   }
 
   export type BossCountOrderByAggregateInput = {
@@ -10900,6 +16847,33 @@ export namespace Prisma {
     connect?: LootWhereUniqueInput | LootWhereUniqueInput[]
   }
 
+  export type WishlistItemCreateNestedManyWithoutUserInput = {
+    create?: XOR<WishlistItemCreateWithoutUserInput, WishlistItemUncheckedCreateWithoutUserInput> | WishlistItemCreateWithoutUserInput[] | WishlistItemUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WishlistItemCreateOrConnectWithoutUserInput | WishlistItemCreateOrConnectWithoutUserInput[]
+    createMany?: WishlistItemCreateManyUserInputEnvelope
+    connect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+  }
+
+  export type RaidPointsCreateNestedOneWithoutUserInput = {
+    create?: XOR<RaidPointsCreateWithoutUserInput, RaidPointsUncheckedCreateWithoutUserInput>
+    connectOrCreate?: RaidPointsCreateOrConnectWithoutUserInput
+    connect?: RaidPointsWhereUniqueInput
+  }
+
+  export type LootHistoryCreateNestedManyWithoutUserInput = {
+    create?: XOR<LootHistoryCreateWithoutUserInput, LootHistoryUncheckedCreateWithoutUserInput> | LootHistoryCreateWithoutUserInput[] | LootHistoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutUserInput | LootHistoryCreateOrConnectWithoutUserInput[]
+    createMany?: LootHistoryCreateManyUserInputEnvelope
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+  }
+
+  export type RaidAttendanceCreateNestedManyWithoutUserInput = {
+    create?: XOR<RaidAttendanceCreateWithoutUserInput, RaidAttendanceUncheckedCreateWithoutUserInput> | RaidAttendanceCreateWithoutUserInput[] | RaidAttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RaidAttendanceCreateOrConnectWithoutUserInput | RaidAttendanceCreateOrConnectWithoutUserInput[]
+    createMany?: RaidAttendanceCreateManyUserInputEnvelope
+    connect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+  }
+
   export type ClasseCreateNestedOneWithoutUsersInput = {
     create?: XOR<ClasseCreateWithoutUsersInput, ClasseUncheckedCreateWithoutUsersInput>
     connectOrCreate?: ClasseCreateOrConnectWithoutUsersInput
@@ -10930,6 +16904,33 @@ export namespace Prisma {
     create?: XOR<LootCreateWithoutUsersInput, LootUncheckedCreateWithoutUsersInput> | LootCreateWithoutUsersInput[] | LootUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: LootCreateOrConnectWithoutUsersInput | LootCreateOrConnectWithoutUsersInput[]
     connect?: LootWhereUniqueInput | LootWhereUniqueInput[]
+  }
+
+  export type WishlistItemUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<WishlistItemCreateWithoutUserInput, WishlistItemUncheckedCreateWithoutUserInput> | WishlistItemCreateWithoutUserInput[] | WishlistItemUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WishlistItemCreateOrConnectWithoutUserInput | WishlistItemCreateOrConnectWithoutUserInput[]
+    createMany?: WishlistItemCreateManyUserInputEnvelope
+    connect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+  }
+
+  export type RaidPointsUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<RaidPointsCreateWithoutUserInput, RaidPointsUncheckedCreateWithoutUserInput>
+    connectOrCreate?: RaidPointsCreateOrConnectWithoutUserInput
+    connect?: RaidPointsWhereUniqueInput
+  }
+
+  export type LootHistoryUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<LootHistoryCreateWithoutUserInput, LootHistoryUncheckedCreateWithoutUserInput> | LootHistoryCreateWithoutUserInput[] | LootHistoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutUserInput | LootHistoryCreateOrConnectWithoutUserInput[]
+    createMany?: LootHistoryCreateManyUserInputEnvelope
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+  }
+
+  export type RaidAttendanceUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<RaidAttendanceCreateWithoutUserInput, RaidAttendanceUncheckedCreateWithoutUserInput> | RaidAttendanceCreateWithoutUserInput[] | RaidAttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RaidAttendanceCreateOrConnectWithoutUserInput | RaidAttendanceCreateOrConnectWithoutUserInput[]
+    createMany?: RaidAttendanceCreateManyUserInputEnvelope
+    connect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -10993,6 +16994,58 @@ export namespace Prisma {
     update?: LootUpdateWithWhereUniqueWithoutUsersInput | LootUpdateWithWhereUniqueWithoutUsersInput[]
     updateMany?: LootUpdateManyWithWhereWithoutUsersInput | LootUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: LootScalarWhereInput | LootScalarWhereInput[]
+  }
+
+  export type WishlistItemUpdateManyWithoutUserNestedInput = {
+    create?: XOR<WishlistItemCreateWithoutUserInput, WishlistItemUncheckedCreateWithoutUserInput> | WishlistItemCreateWithoutUserInput[] | WishlistItemUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WishlistItemCreateOrConnectWithoutUserInput | WishlistItemCreateOrConnectWithoutUserInput[]
+    upsert?: WishlistItemUpsertWithWhereUniqueWithoutUserInput | WishlistItemUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: WishlistItemCreateManyUserInputEnvelope
+    set?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    disconnect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    delete?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    connect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    update?: WishlistItemUpdateWithWhereUniqueWithoutUserInput | WishlistItemUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: WishlistItemUpdateManyWithWhereWithoutUserInput | WishlistItemUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: WishlistItemScalarWhereInput | WishlistItemScalarWhereInput[]
+  }
+
+  export type RaidPointsUpdateOneWithoutUserNestedInput = {
+    create?: XOR<RaidPointsCreateWithoutUserInput, RaidPointsUncheckedCreateWithoutUserInput>
+    connectOrCreate?: RaidPointsCreateOrConnectWithoutUserInput
+    upsert?: RaidPointsUpsertWithoutUserInput
+    disconnect?: RaidPointsWhereInput | boolean
+    delete?: RaidPointsWhereInput | boolean
+    connect?: RaidPointsWhereUniqueInput
+    update?: XOR<XOR<RaidPointsUpdateToOneWithWhereWithoutUserInput, RaidPointsUpdateWithoutUserInput>, RaidPointsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type LootHistoryUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LootHistoryCreateWithoutUserInput, LootHistoryUncheckedCreateWithoutUserInput> | LootHistoryCreateWithoutUserInput[] | LootHistoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutUserInput | LootHistoryCreateOrConnectWithoutUserInput[]
+    upsert?: LootHistoryUpsertWithWhereUniqueWithoutUserInput | LootHistoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LootHistoryCreateManyUserInputEnvelope
+    set?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    disconnect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    delete?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    update?: LootHistoryUpdateWithWhereUniqueWithoutUserInput | LootHistoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LootHistoryUpdateManyWithWhereWithoutUserInput | LootHistoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LootHistoryScalarWhereInput | LootHistoryScalarWhereInput[]
+  }
+
+  export type RaidAttendanceUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RaidAttendanceCreateWithoutUserInput, RaidAttendanceUncheckedCreateWithoutUserInput> | RaidAttendanceCreateWithoutUserInput[] | RaidAttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RaidAttendanceCreateOrConnectWithoutUserInput | RaidAttendanceCreateOrConnectWithoutUserInput[]
+    upsert?: RaidAttendanceUpsertWithWhereUniqueWithoutUserInput | RaidAttendanceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RaidAttendanceCreateManyUserInputEnvelope
+    set?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    disconnect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    delete?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    connect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    update?: RaidAttendanceUpdateWithWhereUniqueWithoutUserInput | RaidAttendanceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RaidAttendanceUpdateManyWithWhereWithoutUserInput | RaidAttendanceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RaidAttendanceScalarWhereInput | RaidAttendanceScalarWhereInput[]
   }
 
   export type ClasseUpdateOneRequiredWithoutUsersNestedInput = {
@@ -11066,6 +17119,58 @@ export namespace Prisma {
     update?: LootUpdateWithWhereUniqueWithoutUsersInput | LootUpdateWithWhereUniqueWithoutUsersInput[]
     updateMany?: LootUpdateManyWithWhereWithoutUsersInput | LootUpdateManyWithWhereWithoutUsersInput[]
     deleteMany?: LootScalarWhereInput | LootScalarWhereInput[]
+  }
+
+  export type WishlistItemUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<WishlistItemCreateWithoutUserInput, WishlistItemUncheckedCreateWithoutUserInput> | WishlistItemCreateWithoutUserInput[] | WishlistItemUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WishlistItemCreateOrConnectWithoutUserInput | WishlistItemCreateOrConnectWithoutUserInput[]
+    upsert?: WishlistItemUpsertWithWhereUniqueWithoutUserInput | WishlistItemUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: WishlistItemCreateManyUserInputEnvelope
+    set?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    disconnect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    delete?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    connect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    update?: WishlistItemUpdateWithWhereUniqueWithoutUserInput | WishlistItemUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: WishlistItemUpdateManyWithWhereWithoutUserInput | WishlistItemUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: WishlistItemScalarWhereInput | WishlistItemScalarWhereInput[]
+  }
+
+  export type RaidPointsUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<RaidPointsCreateWithoutUserInput, RaidPointsUncheckedCreateWithoutUserInput>
+    connectOrCreate?: RaidPointsCreateOrConnectWithoutUserInput
+    upsert?: RaidPointsUpsertWithoutUserInput
+    disconnect?: RaidPointsWhereInput | boolean
+    delete?: RaidPointsWhereInput | boolean
+    connect?: RaidPointsWhereUniqueInput
+    update?: XOR<XOR<RaidPointsUpdateToOneWithWhereWithoutUserInput, RaidPointsUpdateWithoutUserInput>, RaidPointsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type LootHistoryUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<LootHistoryCreateWithoutUserInput, LootHistoryUncheckedCreateWithoutUserInput> | LootHistoryCreateWithoutUserInput[] | LootHistoryUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutUserInput | LootHistoryCreateOrConnectWithoutUserInput[]
+    upsert?: LootHistoryUpsertWithWhereUniqueWithoutUserInput | LootHistoryUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: LootHistoryCreateManyUserInputEnvelope
+    set?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    disconnect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    delete?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    update?: LootHistoryUpdateWithWhereUniqueWithoutUserInput | LootHistoryUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: LootHistoryUpdateManyWithWhereWithoutUserInput | LootHistoryUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: LootHistoryScalarWhereInput | LootHistoryScalarWhereInput[]
+  }
+
+  export type RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RaidAttendanceCreateWithoutUserInput, RaidAttendanceUncheckedCreateWithoutUserInput> | RaidAttendanceCreateWithoutUserInput[] | RaidAttendanceUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RaidAttendanceCreateOrConnectWithoutUserInput | RaidAttendanceCreateOrConnectWithoutUserInput[]
+    upsert?: RaidAttendanceUpsertWithWhereUniqueWithoutUserInput | RaidAttendanceUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RaidAttendanceCreateManyUserInputEnvelope
+    set?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    disconnect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    delete?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    connect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    update?: RaidAttendanceUpdateWithWhereUniqueWithoutUserInput | RaidAttendanceUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RaidAttendanceUpdateManyWithWhereWithoutUserInput | RaidAttendanceUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RaidAttendanceScalarWhereInput | RaidAttendanceScalarWhereInput[]
   }
 
   export type SpecialisationCreateNestedManyWithoutClasseInput = {
@@ -11214,6 +17319,27 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type RaidPointsCreateNestedManyWithoutRaidInput = {
+    create?: XOR<RaidPointsCreateWithoutRaidInput, RaidPointsUncheckedCreateWithoutRaidInput> | RaidPointsCreateWithoutRaidInput[] | RaidPointsUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: RaidPointsCreateOrConnectWithoutRaidInput | RaidPointsCreateOrConnectWithoutRaidInput[]
+    createMany?: RaidPointsCreateManyRaidInputEnvelope
+    connect?: RaidPointsWhereUniqueInput | RaidPointsWhereUniqueInput[]
+  }
+
+  export type LootHistoryCreateNestedManyWithoutRaidInput = {
+    create?: XOR<LootHistoryCreateWithoutRaidInput, LootHistoryUncheckedCreateWithoutRaidInput> | LootHistoryCreateWithoutRaidInput[] | LootHistoryUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutRaidInput | LootHistoryCreateOrConnectWithoutRaidInput[]
+    createMany?: LootHistoryCreateManyRaidInputEnvelope
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+  }
+
+  export type RaidAttendanceCreateNestedManyWithoutRaidInput = {
+    create?: XOR<RaidAttendanceCreateWithoutRaidInput, RaidAttendanceUncheckedCreateWithoutRaidInput> | RaidAttendanceCreateWithoutRaidInput[] | RaidAttendanceUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: RaidAttendanceCreateOrConnectWithoutRaidInput | RaidAttendanceCreateOrConnectWithoutRaidInput[]
+    createMany?: RaidAttendanceCreateManyRaidInputEnvelope
+    connect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+  }
+
   export type UserCreateNestedManyWithoutRaidInput = {
     create?: XOR<UserCreateWithoutRaidInput, UserUncheckedCreateWithoutRaidInput> | UserCreateWithoutRaidInput[] | UserUncheckedCreateWithoutRaidInput[]
     connectOrCreate?: UserCreateOrConnectWithoutRaidInput | UserCreateOrConnectWithoutRaidInput[]
@@ -11226,6 +17352,27 @@ export namespace Prisma {
     connectOrCreate?: JoinRequestCreateOrConnectWithoutRaidInput | JoinRequestCreateOrConnectWithoutRaidInput[]
     createMany?: JoinRequestCreateManyRaidInputEnvelope
     connect?: JoinRequestWhereUniqueInput | JoinRequestWhereUniqueInput[]
+  }
+
+  export type RaidPointsUncheckedCreateNestedManyWithoutRaidInput = {
+    create?: XOR<RaidPointsCreateWithoutRaidInput, RaidPointsUncheckedCreateWithoutRaidInput> | RaidPointsCreateWithoutRaidInput[] | RaidPointsUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: RaidPointsCreateOrConnectWithoutRaidInput | RaidPointsCreateOrConnectWithoutRaidInput[]
+    createMany?: RaidPointsCreateManyRaidInputEnvelope
+    connect?: RaidPointsWhereUniqueInput | RaidPointsWhereUniqueInput[]
+  }
+
+  export type LootHistoryUncheckedCreateNestedManyWithoutRaidInput = {
+    create?: XOR<LootHistoryCreateWithoutRaidInput, LootHistoryUncheckedCreateWithoutRaidInput> | LootHistoryCreateWithoutRaidInput[] | LootHistoryUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutRaidInput | LootHistoryCreateOrConnectWithoutRaidInput[]
+    createMany?: LootHistoryCreateManyRaidInputEnvelope
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+  }
+
+  export type RaidAttendanceUncheckedCreateNestedManyWithoutRaidInput = {
+    create?: XOR<RaidAttendanceCreateWithoutRaidInput, RaidAttendanceUncheckedCreateWithoutRaidInput> | RaidAttendanceCreateWithoutRaidInput[] | RaidAttendanceUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: RaidAttendanceCreateOrConnectWithoutRaidInput | RaidAttendanceCreateOrConnectWithoutRaidInput[]
+    createMany?: RaidAttendanceCreateManyRaidInputEnvelope
+    connect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
   }
 
   export type UserUncheckedCreateNestedManyWithoutRaidInput = {
@@ -11248,6 +17395,48 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutCreatedRaidsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatedRaidsInput, UserUpdateWithoutCreatedRaidsInput>, UserUncheckedUpdateWithoutCreatedRaidsInput>
+  }
+
+  export type RaidPointsUpdateManyWithoutRaidNestedInput = {
+    create?: XOR<RaidPointsCreateWithoutRaidInput, RaidPointsUncheckedCreateWithoutRaidInput> | RaidPointsCreateWithoutRaidInput[] | RaidPointsUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: RaidPointsCreateOrConnectWithoutRaidInput | RaidPointsCreateOrConnectWithoutRaidInput[]
+    upsert?: RaidPointsUpsertWithWhereUniqueWithoutRaidInput | RaidPointsUpsertWithWhereUniqueWithoutRaidInput[]
+    createMany?: RaidPointsCreateManyRaidInputEnvelope
+    set?: RaidPointsWhereUniqueInput | RaidPointsWhereUniqueInput[]
+    disconnect?: RaidPointsWhereUniqueInput | RaidPointsWhereUniqueInput[]
+    delete?: RaidPointsWhereUniqueInput | RaidPointsWhereUniqueInput[]
+    connect?: RaidPointsWhereUniqueInput | RaidPointsWhereUniqueInput[]
+    update?: RaidPointsUpdateWithWhereUniqueWithoutRaidInput | RaidPointsUpdateWithWhereUniqueWithoutRaidInput[]
+    updateMany?: RaidPointsUpdateManyWithWhereWithoutRaidInput | RaidPointsUpdateManyWithWhereWithoutRaidInput[]
+    deleteMany?: RaidPointsScalarWhereInput | RaidPointsScalarWhereInput[]
+  }
+
+  export type LootHistoryUpdateManyWithoutRaidNestedInput = {
+    create?: XOR<LootHistoryCreateWithoutRaidInput, LootHistoryUncheckedCreateWithoutRaidInput> | LootHistoryCreateWithoutRaidInput[] | LootHistoryUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutRaidInput | LootHistoryCreateOrConnectWithoutRaidInput[]
+    upsert?: LootHistoryUpsertWithWhereUniqueWithoutRaidInput | LootHistoryUpsertWithWhereUniqueWithoutRaidInput[]
+    createMany?: LootHistoryCreateManyRaidInputEnvelope
+    set?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    disconnect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    delete?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    update?: LootHistoryUpdateWithWhereUniqueWithoutRaidInput | LootHistoryUpdateWithWhereUniqueWithoutRaidInput[]
+    updateMany?: LootHistoryUpdateManyWithWhereWithoutRaidInput | LootHistoryUpdateManyWithWhereWithoutRaidInput[]
+    deleteMany?: LootHistoryScalarWhereInput | LootHistoryScalarWhereInput[]
+  }
+
+  export type RaidAttendanceUpdateManyWithoutRaidNestedInput = {
+    create?: XOR<RaidAttendanceCreateWithoutRaidInput, RaidAttendanceUncheckedCreateWithoutRaidInput> | RaidAttendanceCreateWithoutRaidInput[] | RaidAttendanceUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: RaidAttendanceCreateOrConnectWithoutRaidInput | RaidAttendanceCreateOrConnectWithoutRaidInput[]
+    upsert?: RaidAttendanceUpsertWithWhereUniqueWithoutRaidInput | RaidAttendanceUpsertWithWhereUniqueWithoutRaidInput[]
+    createMany?: RaidAttendanceCreateManyRaidInputEnvelope
+    set?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    disconnect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    delete?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    connect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    update?: RaidAttendanceUpdateWithWhereUniqueWithoutRaidInput | RaidAttendanceUpdateWithWhereUniqueWithoutRaidInput[]
+    updateMany?: RaidAttendanceUpdateManyWithWhereWithoutRaidInput | RaidAttendanceUpdateManyWithWhereWithoutRaidInput[]
+    deleteMany?: RaidAttendanceScalarWhereInput | RaidAttendanceScalarWhereInput[]
   }
 
   export type UserUpdateManyWithoutRaidNestedInput = {
@@ -11276,6 +17465,48 @@ export namespace Prisma {
     update?: JoinRequestUpdateWithWhereUniqueWithoutRaidInput | JoinRequestUpdateWithWhereUniqueWithoutRaidInput[]
     updateMany?: JoinRequestUpdateManyWithWhereWithoutRaidInput | JoinRequestUpdateManyWithWhereWithoutRaidInput[]
     deleteMany?: JoinRequestScalarWhereInput | JoinRequestScalarWhereInput[]
+  }
+
+  export type RaidPointsUncheckedUpdateManyWithoutRaidNestedInput = {
+    create?: XOR<RaidPointsCreateWithoutRaidInput, RaidPointsUncheckedCreateWithoutRaidInput> | RaidPointsCreateWithoutRaidInput[] | RaidPointsUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: RaidPointsCreateOrConnectWithoutRaidInput | RaidPointsCreateOrConnectWithoutRaidInput[]
+    upsert?: RaidPointsUpsertWithWhereUniqueWithoutRaidInput | RaidPointsUpsertWithWhereUniqueWithoutRaidInput[]
+    createMany?: RaidPointsCreateManyRaidInputEnvelope
+    set?: RaidPointsWhereUniqueInput | RaidPointsWhereUniqueInput[]
+    disconnect?: RaidPointsWhereUniqueInput | RaidPointsWhereUniqueInput[]
+    delete?: RaidPointsWhereUniqueInput | RaidPointsWhereUniqueInput[]
+    connect?: RaidPointsWhereUniqueInput | RaidPointsWhereUniqueInput[]
+    update?: RaidPointsUpdateWithWhereUniqueWithoutRaidInput | RaidPointsUpdateWithWhereUniqueWithoutRaidInput[]
+    updateMany?: RaidPointsUpdateManyWithWhereWithoutRaidInput | RaidPointsUpdateManyWithWhereWithoutRaidInput[]
+    deleteMany?: RaidPointsScalarWhereInput | RaidPointsScalarWhereInput[]
+  }
+
+  export type LootHistoryUncheckedUpdateManyWithoutRaidNestedInput = {
+    create?: XOR<LootHistoryCreateWithoutRaidInput, LootHistoryUncheckedCreateWithoutRaidInput> | LootHistoryCreateWithoutRaidInput[] | LootHistoryUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutRaidInput | LootHistoryCreateOrConnectWithoutRaidInput[]
+    upsert?: LootHistoryUpsertWithWhereUniqueWithoutRaidInput | LootHistoryUpsertWithWhereUniqueWithoutRaidInput[]
+    createMany?: LootHistoryCreateManyRaidInputEnvelope
+    set?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    disconnect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    delete?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    update?: LootHistoryUpdateWithWhereUniqueWithoutRaidInput | LootHistoryUpdateWithWhereUniqueWithoutRaidInput[]
+    updateMany?: LootHistoryUpdateManyWithWhereWithoutRaidInput | LootHistoryUpdateManyWithWhereWithoutRaidInput[]
+    deleteMany?: LootHistoryScalarWhereInput | LootHistoryScalarWhereInput[]
+  }
+
+  export type RaidAttendanceUncheckedUpdateManyWithoutRaidNestedInput = {
+    create?: XOR<RaidAttendanceCreateWithoutRaidInput, RaidAttendanceUncheckedCreateWithoutRaidInput> | RaidAttendanceCreateWithoutRaidInput[] | RaidAttendanceUncheckedCreateWithoutRaidInput[]
+    connectOrCreate?: RaidAttendanceCreateOrConnectWithoutRaidInput | RaidAttendanceCreateOrConnectWithoutRaidInput[]
+    upsert?: RaidAttendanceUpsertWithWhereUniqueWithoutRaidInput | RaidAttendanceUpsertWithWhereUniqueWithoutRaidInput[]
+    createMany?: RaidAttendanceCreateManyRaidInputEnvelope
+    set?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    disconnect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    delete?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    connect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+    update?: RaidAttendanceUpdateWithWhereUniqueWithoutRaidInput | RaidAttendanceUpdateWithWhereUniqueWithoutRaidInput[]
+    updateMany?: RaidAttendanceUpdateManyWithWhereWithoutRaidInput | RaidAttendanceUpdateManyWithWhereWithoutRaidInput[]
+    deleteMany?: RaidAttendanceScalarWhereInput | RaidAttendanceScalarWhereInput[]
   }
 
   export type UserUncheckedUpdateManyWithoutRaidNestedInput = {
@@ -11334,6 +17565,132 @@ export namespace Prisma {
     update?: XOR<XOR<RaidUpdateToOneWithWhereWithoutJoinRequestsInput, RaidUpdateWithoutJoinRequestsInput>, RaidUncheckedUpdateWithoutJoinRequestsInput>
   }
 
+  export type UserCreateNestedOneWithoutRaidPointsInput = {
+    create?: XOR<UserCreateWithoutRaidPointsInput, UserUncheckedCreateWithoutRaidPointsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRaidPointsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type RaidCreateNestedOneWithoutRaidPointsInput = {
+    create?: XOR<RaidCreateWithoutRaidPointsInput, RaidUncheckedCreateWithoutRaidPointsInput>
+    connectOrCreate?: RaidCreateOrConnectWithoutRaidPointsInput
+    connect?: RaidWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutRaidPointsNestedInput = {
+    create?: XOR<UserCreateWithoutRaidPointsInput, UserUncheckedCreateWithoutRaidPointsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRaidPointsInput
+    upsert?: UserUpsertWithoutRaidPointsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRaidPointsInput, UserUpdateWithoutRaidPointsInput>, UserUncheckedUpdateWithoutRaidPointsInput>
+  }
+
+  export type RaidUpdateOneRequiredWithoutRaidPointsNestedInput = {
+    create?: XOR<RaidCreateWithoutRaidPointsInput, RaidUncheckedCreateWithoutRaidPointsInput>
+    connectOrCreate?: RaidCreateOrConnectWithoutRaidPointsInput
+    upsert?: RaidUpsertWithoutRaidPointsInput
+    connect?: RaidWhereUniqueInput
+    update?: XOR<XOR<RaidUpdateToOneWithWhereWithoutRaidPointsInput, RaidUpdateWithoutRaidPointsInput>, RaidUncheckedUpdateWithoutRaidPointsInput>
+  }
+
+  export type UserCreateNestedOneWithoutWishlistItemInput = {
+    create?: XOR<UserCreateWithoutWishlistItemInput, UserUncheckedCreateWithoutWishlistItemInput>
+    connectOrCreate?: UserCreateOrConnectWithoutWishlistItemInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type LootCreateNestedOneWithoutWishlistItemInput = {
+    create?: XOR<LootCreateWithoutWishlistItemInput, LootUncheckedCreateWithoutWishlistItemInput>
+    connectOrCreate?: LootCreateOrConnectWithoutWishlistItemInput
+    connect?: LootWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutWishlistItemNestedInput = {
+    create?: XOR<UserCreateWithoutWishlistItemInput, UserUncheckedCreateWithoutWishlistItemInput>
+    connectOrCreate?: UserCreateOrConnectWithoutWishlistItemInput
+    upsert?: UserUpsertWithoutWishlistItemInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutWishlistItemInput, UserUpdateWithoutWishlistItemInput>, UserUncheckedUpdateWithoutWishlistItemInput>
+  }
+
+  export type LootUpdateOneRequiredWithoutWishlistItemNestedInput = {
+    create?: XOR<LootCreateWithoutWishlistItemInput, LootUncheckedCreateWithoutWishlistItemInput>
+    connectOrCreate?: LootCreateOrConnectWithoutWishlistItemInput
+    upsert?: LootUpsertWithoutWishlistItemInput
+    connect?: LootWhereUniqueInput
+    update?: XOR<XOR<LootUpdateToOneWithWhereWithoutWishlistItemInput, LootUpdateWithoutWishlistItemInput>, LootUncheckedUpdateWithoutWishlistItemInput>
+  }
+
+  export type UserCreateNestedOneWithoutLootHistoryInput = {
+    create?: XOR<UserCreateWithoutLootHistoryInput, UserUncheckedCreateWithoutLootHistoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLootHistoryInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type LootCreateNestedOneWithoutLootHistoryInput = {
+    create?: XOR<LootCreateWithoutLootHistoryInput, LootUncheckedCreateWithoutLootHistoryInput>
+    connectOrCreate?: LootCreateOrConnectWithoutLootHistoryInput
+    connect?: LootWhereUniqueInput
+  }
+
+  export type RaidCreateNestedOneWithoutLootHistoryInput = {
+    create?: XOR<RaidCreateWithoutLootHistoryInput, RaidUncheckedCreateWithoutLootHistoryInput>
+    connectOrCreate?: RaidCreateOrConnectWithoutLootHistoryInput
+    connect?: RaidWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutLootHistoryNestedInput = {
+    create?: XOR<UserCreateWithoutLootHistoryInput, UserUncheckedCreateWithoutLootHistoryInput>
+    connectOrCreate?: UserCreateOrConnectWithoutLootHistoryInput
+    upsert?: UserUpsertWithoutLootHistoryInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLootHistoryInput, UserUpdateWithoutLootHistoryInput>, UserUncheckedUpdateWithoutLootHistoryInput>
+  }
+
+  export type LootUpdateOneRequiredWithoutLootHistoryNestedInput = {
+    create?: XOR<LootCreateWithoutLootHistoryInput, LootUncheckedCreateWithoutLootHistoryInput>
+    connectOrCreate?: LootCreateOrConnectWithoutLootHistoryInput
+    upsert?: LootUpsertWithoutLootHistoryInput
+    connect?: LootWhereUniqueInput
+    update?: XOR<XOR<LootUpdateToOneWithWhereWithoutLootHistoryInput, LootUpdateWithoutLootHistoryInput>, LootUncheckedUpdateWithoutLootHistoryInput>
+  }
+
+  export type RaidUpdateOneRequiredWithoutLootHistoryNestedInput = {
+    create?: XOR<RaidCreateWithoutLootHistoryInput, RaidUncheckedCreateWithoutLootHistoryInput>
+    connectOrCreate?: RaidCreateOrConnectWithoutLootHistoryInput
+    upsert?: RaidUpsertWithoutLootHistoryInput
+    connect?: RaidWhereUniqueInput
+    update?: XOR<XOR<RaidUpdateToOneWithWhereWithoutLootHistoryInput, RaidUpdateWithoutLootHistoryInput>, RaidUncheckedUpdateWithoutLootHistoryInput>
+  }
+
+  export type UserCreateNestedOneWithoutAttendancesInput = {
+    create?: XOR<UserCreateWithoutAttendancesInput, UserUncheckedCreateWithoutAttendancesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAttendancesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type RaidCreateNestedOneWithoutAttendancesInput = {
+    create?: XOR<RaidCreateWithoutAttendancesInput, RaidUncheckedCreateWithoutAttendancesInput>
+    connectOrCreate?: RaidCreateOrConnectWithoutAttendancesInput
+    connect?: RaidWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutAttendancesNestedInput = {
+    create?: XOR<UserCreateWithoutAttendancesInput, UserUncheckedCreateWithoutAttendancesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAttendancesInput
+    upsert?: UserUpsertWithoutAttendancesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAttendancesInput, UserUpdateWithoutAttendancesInput>, UserUncheckedUpdateWithoutAttendancesInput>
+  }
+
+  export type RaidUpdateOneRequiredWithoutAttendancesNestedInput = {
+    create?: XOR<RaidCreateWithoutAttendancesInput, RaidUncheckedCreateWithoutAttendancesInput>
+    connectOrCreate?: RaidCreateOrConnectWithoutAttendancesInput
+    upsert?: RaidUpsertWithoutAttendancesInput
+    connect?: RaidWhereUniqueInput
+    update?: XOR<XOR<RaidUpdateToOneWithWhereWithoutAttendancesInput, RaidUpdateWithoutAttendancesInput>, RaidUncheckedUpdateWithoutAttendancesInput>
+  }
+
   export type LootCreateNestedManyWithoutBossInput = {
     create?: XOR<LootCreateWithoutBossInput, LootUncheckedCreateWithoutBossInput> | LootCreateWithoutBossInput[] | LootUncheckedCreateWithoutBossInput[]
     connectOrCreate?: LootCreateOrConnectWithoutBossInput | LootCreateOrConnectWithoutBossInput[]
@@ -11388,10 +17745,38 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
+  export type WishlistItemCreateNestedManyWithoutLootInput = {
+    create?: XOR<WishlistItemCreateWithoutLootInput, WishlistItemUncheckedCreateWithoutLootInput> | WishlistItemCreateWithoutLootInput[] | WishlistItemUncheckedCreateWithoutLootInput[]
+    connectOrCreate?: WishlistItemCreateOrConnectWithoutLootInput | WishlistItemCreateOrConnectWithoutLootInput[]
+    createMany?: WishlistItemCreateManyLootInputEnvelope
+    connect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+  }
+
+  export type LootHistoryCreateNestedManyWithoutLootInput = {
+    create?: XOR<LootHistoryCreateWithoutLootInput, LootHistoryUncheckedCreateWithoutLootInput> | LootHistoryCreateWithoutLootInput[] | LootHistoryUncheckedCreateWithoutLootInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutLootInput | LootHistoryCreateOrConnectWithoutLootInput[]
+    createMany?: LootHistoryCreateManyLootInputEnvelope
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+  }
+
   export type UserUncheckedCreateNestedManyWithoutLootsInput = {
     create?: XOR<UserCreateWithoutLootsInput, UserUncheckedCreateWithoutLootsInput> | UserCreateWithoutLootsInput[] | UserUncheckedCreateWithoutLootsInput[]
     connectOrCreate?: UserCreateOrConnectWithoutLootsInput | UserCreateOrConnectWithoutLootsInput[]
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
+  }
+
+  export type WishlistItemUncheckedCreateNestedManyWithoutLootInput = {
+    create?: XOR<WishlistItemCreateWithoutLootInput, WishlistItemUncheckedCreateWithoutLootInput> | WishlistItemCreateWithoutLootInput[] | WishlistItemUncheckedCreateWithoutLootInput[]
+    connectOrCreate?: WishlistItemCreateOrConnectWithoutLootInput | WishlistItemCreateOrConnectWithoutLootInput[]
+    createMany?: WishlistItemCreateManyLootInputEnvelope
+    connect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+  }
+
+  export type LootHistoryUncheckedCreateNestedManyWithoutLootInput = {
+    create?: XOR<LootHistoryCreateWithoutLootInput, LootHistoryUncheckedCreateWithoutLootInput> | LootHistoryCreateWithoutLootInput[] | LootHistoryUncheckedCreateWithoutLootInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutLootInput | LootHistoryCreateOrConnectWithoutLootInput[]
+    createMany?: LootHistoryCreateManyLootInputEnvelope
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
   }
 
   export type BossUpdateOneRequiredWithoutLootsNestedInput = {
@@ -11415,6 +17800,34 @@ export namespace Prisma {
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
   }
 
+  export type WishlistItemUpdateManyWithoutLootNestedInput = {
+    create?: XOR<WishlistItemCreateWithoutLootInput, WishlistItemUncheckedCreateWithoutLootInput> | WishlistItemCreateWithoutLootInput[] | WishlistItemUncheckedCreateWithoutLootInput[]
+    connectOrCreate?: WishlistItemCreateOrConnectWithoutLootInput | WishlistItemCreateOrConnectWithoutLootInput[]
+    upsert?: WishlistItemUpsertWithWhereUniqueWithoutLootInput | WishlistItemUpsertWithWhereUniqueWithoutLootInput[]
+    createMany?: WishlistItemCreateManyLootInputEnvelope
+    set?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    disconnect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    delete?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    connect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    update?: WishlistItemUpdateWithWhereUniqueWithoutLootInput | WishlistItemUpdateWithWhereUniqueWithoutLootInput[]
+    updateMany?: WishlistItemUpdateManyWithWhereWithoutLootInput | WishlistItemUpdateManyWithWhereWithoutLootInput[]
+    deleteMany?: WishlistItemScalarWhereInput | WishlistItemScalarWhereInput[]
+  }
+
+  export type LootHistoryUpdateManyWithoutLootNestedInput = {
+    create?: XOR<LootHistoryCreateWithoutLootInput, LootHistoryUncheckedCreateWithoutLootInput> | LootHistoryCreateWithoutLootInput[] | LootHistoryUncheckedCreateWithoutLootInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutLootInput | LootHistoryCreateOrConnectWithoutLootInput[]
+    upsert?: LootHistoryUpsertWithWhereUniqueWithoutLootInput | LootHistoryUpsertWithWhereUniqueWithoutLootInput[]
+    createMany?: LootHistoryCreateManyLootInputEnvelope
+    set?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    disconnect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    delete?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    update?: LootHistoryUpdateWithWhereUniqueWithoutLootInput | LootHistoryUpdateWithWhereUniqueWithoutLootInput[]
+    updateMany?: LootHistoryUpdateManyWithWhereWithoutLootInput | LootHistoryUpdateManyWithWhereWithoutLootInput[]
+    deleteMany?: LootHistoryScalarWhereInput | LootHistoryScalarWhereInput[]
+  }
+
   export type UserUncheckedUpdateManyWithoutLootsNestedInput = {
     create?: XOR<UserCreateWithoutLootsInput, UserUncheckedCreateWithoutLootsInput> | UserCreateWithoutLootsInput[] | UserUncheckedCreateWithoutLootsInput[]
     connectOrCreate?: UserCreateOrConnectWithoutLootsInput | UserCreateOrConnectWithoutLootsInput[]
@@ -11426,6 +17839,34 @@ export namespace Prisma {
     update?: UserUpdateWithWhereUniqueWithoutLootsInput | UserUpdateWithWhereUniqueWithoutLootsInput[]
     updateMany?: UserUpdateManyWithWhereWithoutLootsInput | UserUpdateManyWithWhereWithoutLootsInput[]
     deleteMany?: UserScalarWhereInput | UserScalarWhereInput[]
+  }
+
+  export type WishlistItemUncheckedUpdateManyWithoutLootNestedInput = {
+    create?: XOR<WishlistItemCreateWithoutLootInput, WishlistItemUncheckedCreateWithoutLootInput> | WishlistItemCreateWithoutLootInput[] | WishlistItemUncheckedCreateWithoutLootInput[]
+    connectOrCreate?: WishlistItemCreateOrConnectWithoutLootInput | WishlistItemCreateOrConnectWithoutLootInput[]
+    upsert?: WishlistItemUpsertWithWhereUniqueWithoutLootInput | WishlistItemUpsertWithWhereUniqueWithoutLootInput[]
+    createMany?: WishlistItemCreateManyLootInputEnvelope
+    set?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    disconnect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    delete?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    connect?: WishlistItemWhereUniqueInput | WishlistItemWhereUniqueInput[]
+    update?: WishlistItemUpdateWithWhereUniqueWithoutLootInput | WishlistItemUpdateWithWhereUniqueWithoutLootInput[]
+    updateMany?: WishlistItemUpdateManyWithWhereWithoutLootInput | WishlistItemUpdateManyWithWhereWithoutLootInput[]
+    deleteMany?: WishlistItemScalarWhereInput | WishlistItemScalarWhereInput[]
+  }
+
+  export type LootHistoryUncheckedUpdateManyWithoutLootNestedInput = {
+    create?: XOR<LootHistoryCreateWithoutLootInput, LootHistoryUncheckedCreateWithoutLootInput> | LootHistoryCreateWithoutLootInput[] | LootHistoryUncheckedCreateWithoutLootInput[]
+    connectOrCreate?: LootHistoryCreateOrConnectWithoutLootInput | LootHistoryCreateOrConnectWithoutLootInput[]
+    upsert?: LootHistoryUpsertWithWhereUniqueWithoutLootInput | LootHistoryUpsertWithWhereUniqueWithoutLootInput[]
+    createMany?: LootHistoryCreateManyLootInputEnvelope
+    set?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    disconnect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    delete?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    connect?: LootHistoryWhereUniqueInput | LootHistoryWhereUniqueInput[]
+    update?: LootHistoryUpdateWithWhereUniqueWithoutLootInput | LootHistoryUpdateWithWhereUniqueWithoutLootInput[]
+    updateMany?: LootHistoryUpdateManyWithWhereWithoutLootInput | LootHistoryUpdateManyWithWhereWithoutLootInput[]
+    deleteMany?: LootHistoryScalarWhereInput | LootHistoryScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -11594,6 +18035,9 @@ export namespace Prisma {
   export type RaidCreateWithoutUsersInput = {
     name: string
     createdBy: UserCreateNestedOneWithoutCreatedRaidsInput
+    RaidPoints?: RaidPointsCreateNestedManyWithoutRaidInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutRaidInput
     joinRequests?: JoinRequestCreateNestedManyWithoutRaidInput
   }
 
@@ -11601,6 +18045,9 @@ export namespace Prisma {
     id?: number
     name: string
     createdById: number
+    RaidPoints?: RaidPointsUncheckedCreateNestedManyWithoutRaidInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutRaidInput
     joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutRaidInput
   }
 
@@ -11611,6 +18058,9 @@ export namespace Prisma {
 
   export type RaidCreateWithoutCreatedByInput = {
     name: string
+    RaidPoints?: RaidPointsCreateNestedManyWithoutRaidInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutRaidInput
     users?: UserCreateNestedManyWithoutRaidInput
     joinRequests?: JoinRequestCreateNestedManyWithoutRaidInput
   }
@@ -11618,6 +18068,9 @@ export namespace Prisma {
   export type RaidUncheckedCreateWithoutCreatedByInput = {
     id?: number
     name: string
+    RaidPoints?: RaidPointsUncheckedCreateNestedManyWithoutRaidInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutRaidInput
     users?: UserUncheckedCreateNestedManyWithoutRaidInput
     joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutRaidInput
   }
@@ -11659,6 +18112,8 @@ export namespace Prisma {
     name: string
     url: string
     boss: BossCreateNestedOneWithoutLootsInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutLootInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutLootInput
   }
 
   export type LootUncheckedCreateWithoutUsersInput = {
@@ -11666,11 +18121,102 @@ export namespace Prisma {
     name: string
     url: string
     bossId: number
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutLootInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutLootInput
   }
 
   export type LootCreateOrConnectWithoutUsersInput = {
     where: LootWhereUniqueInput
     create: XOR<LootCreateWithoutUsersInput, LootUncheckedCreateWithoutUsersInput>
+  }
+
+  export type WishlistItemCreateWithoutUserInput = {
+    priority: number
+    createdAt?: Date | string
+    loot: LootCreateNestedOneWithoutWishlistItemInput
+  }
+
+  export type WishlistItemUncheckedCreateWithoutUserInput = {
+    id?: number
+    lootId: number
+    priority: number
+    createdAt?: Date | string
+  }
+
+  export type WishlistItemCreateOrConnectWithoutUserInput = {
+    where: WishlistItemWhereUniqueInput
+    create: XOR<WishlistItemCreateWithoutUserInput, WishlistItemUncheckedCreateWithoutUserInput>
+  }
+
+  export type WishlistItemCreateManyUserInputEnvelope = {
+    data: WishlistItemCreateManyUserInput | WishlistItemCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RaidPointsCreateWithoutUserInput = {
+    points?: number
+    raid: RaidCreateNestedOneWithoutRaidPointsInput
+  }
+
+  export type RaidPointsUncheckedCreateWithoutUserInput = {
+    id?: number
+    raidId: number
+    points?: number
+  }
+
+  export type RaidPointsCreateOrConnectWithoutUserInput = {
+    where: RaidPointsWhereUniqueInput
+    create: XOR<RaidPointsCreateWithoutUserInput, RaidPointsUncheckedCreateWithoutUserInput>
+  }
+
+  export type LootHistoryCreateWithoutUserInput = {
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
+    loot: LootCreateNestedOneWithoutLootHistoryInput
+    raid: RaidCreateNestedOneWithoutLootHistoryInput
+  }
+
+  export type LootHistoryUncheckedCreateWithoutUserInput = {
+    id?: number
+    lootId: number
+    raidId: number
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
+  }
+
+  export type LootHistoryCreateOrConnectWithoutUserInput = {
+    where: LootHistoryWhereUniqueInput
+    create: XOR<LootHistoryCreateWithoutUserInput, LootHistoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type LootHistoryCreateManyUserInputEnvelope = {
+    data: LootHistoryCreateManyUserInput | LootHistoryCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RaidAttendanceCreateWithoutUserInput = {
+    pointsGiven?: number
+    createdAt?: Date | string
+    raid: RaidCreateNestedOneWithoutAttendancesInput
+  }
+
+  export type RaidAttendanceUncheckedCreateWithoutUserInput = {
+    id?: number
+    raidId: number
+    pointsGiven?: number
+    createdAt?: Date | string
+  }
+
+  export type RaidAttendanceCreateOrConnectWithoutUserInput = {
+    where: RaidAttendanceWhereUniqueInput
+    create: XOR<RaidAttendanceCreateWithoutUserInput, RaidAttendanceUncheckedCreateWithoutUserInput>
+  }
+
+  export type RaidAttendanceCreateManyUserInputEnvelope = {
+    data: RaidAttendanceCreateManyUserInput | RaidAttendanceCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type ClasseCreateWithoutUsersInput = {
@@ -11719,6 +18265,9 @@ export namespace Prisma {
   export type RaidUpdateWithoutUsersInput = {
     name?: StringFieldUpdateOperationsInput | string
     createdBy?: UserUpdateOneRequiredWithoutCreatedRaidsNestedInput
+    RaidPoints?: RaidPointsUpdateManyWithoutRaidNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutRaidNestedInput
     joinRequests?: JoinRequestUpdateManyWithoutRaidNestedInput
   }
 
@@ -11726,6 +18275,9 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     createdById?: IntFieldUpdateOperationsInput | number
+    RaidPoints?: RaidPointsUncheckedUpdateManyWithoutRaidNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutRaidNestedInput
     joinRequests?: JoinRequestUncheckedUpdateManyWithoutRaidNestedInput
   }
 
@@ -11807,6 +18359,111 @@ export namespace Prisma {
     bossId?: IntFilter<"Loot"> | number
   }
 
+  export type WishlistItemUpsertWithWhereUniqueWithoutUserInput = {
+    where: WishlistItemWhereUniqueInput
+    update: XOR<WishlistItemUpdateWithoutUserInput, WishlistItemUncheckedUpdateWithoutUserInput>
+    create: XOR<WishlistItemCreateWithoutUserInput, WishlistItemUncheckedCreateWithoutUserInput>
+  }
+
+  export type WishlistItemUpdateWithWhereUniqueWithoutUserInput = {
+    where: WishlistItemWhereUniqueInput
+    data: XOR<WishlistItemUpdateWithoutUserInput, WishlistItemUncheckedUpdateWithoutUserInput>
+  }
+
+  export type WishlistItemUpdateManyWithWhereWithoutUserInput = {
+    where: WishlistItemScalarWhereInput
+    data: XOR<WishlistItemUpdateManyMutationInput, WishlistItemUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type WishlistItemScalarWhereInput = {
+    AND?: WishlistItemScalarWhereInput | WishlistItemScalarWhereInput[]
+    OR?: WishlistItemScalarWhereInput[]
+    NOT?: WishlistItemScalarWhereInput | WishlistItemScalarWhereInput[]
+    id?: IntFilter<"WishlistItem"> | number
+    userId?: IntFilter<"WishlistItem"> | number
+    lootId?: IntFilter<"WishlistItem"> | number
+    priority?: IntFilter<"WishlistItem"> | number
+    createdAt?: DateTimeFilter<"WishlistItem"> | Date | string
+  }
+
+  export type RaidPointsUpsertWithoutUserInput = {
+    update: XOR<RaidPointsUpdateWithoutUserInput, RaidPointsUncheckedUpdateWithoutUserInput>
+    create: XOR<RaidPointsCreateWithoutUserInput, RaidPointsUncheckedCreateWithoutUserInput>
+    where?: RaidPointsWhereInput
+  }
+
+  export type RaidPointsUpdateToOneWithWhereWithoutUserInput = {
+    where?: RaidPointsWhereInput
+    data: XOR<RaidPointsUpdateWithoutUserInput, RaidPointsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type RaidPointsUpdateWithoutUserInput = {
+    points?: IntFieldUpdateOperationsInput | number
+    raid?: RaidUpdateOneRequiredWithoutRaidPointsNestedInput
+  }
+
+  export type RaidPointsUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    points?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LootHistoryUpsertWithWhereUniqueWithoutUserInput = {
+    where: LootHistoryWhereUniqueInput
+    update: XOR<LootHistoryUpdateWithoutUserInput, LootHistoryUncheckedUpdateWithoutUserInput>
+    create: XOR<LootHistoryCreateWithoutUserInput, LootHistoryUncheckedCreateWithoutUserInput>
+  }
+
+  export type LootHistoryUpdateWithWhereUniqueWithoutUserInput = {
+    where: LootHistoryWhereUniqueInput
+    data: XOR<LootHistoryUpdateWithoutUserInput, LootHistoryUncheckedUpdateWithoutUserInput>
+  }
+
+  export type LootHistoryUpdateManyWithWhereWithoutUserInput = {
+    where: LootHistoryScalarWhereInput
+    data: XOR<LootHistoryUpdateManyMutationInput, LootHistoryUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type LootHistoryScalarWhereInput = {
+    AND?: LootHistoryScalarWhereInput | LootHistoryScalarWhereInput[]
+    OR?: LootHistoryScalarWhereInput[]
+    NOT?: LootHistoryScalarWhereInput | LootHistoryScalarWhereInput[]
+    id?: IntFilter<"LootHistory"> | number
+    userId?: IntFilter<"LootHistory"> | number
+    lootId?: IntFilter<"LootHistory"> | number
+    raidId?: IntFilter<"LootHistory"> | number
+    priority?: IntFilter<"LootHistory"> | number
+    pointsCost?: IntFilter<"LootHistory"> | number
+    createdAt?: DateTimeFilter<"LootHistory"> | Date | string
+  }
+
+  export type RaidAttendanceUpsertWithWhereUniqueWithoutUserInput = {
+    where: RaidAttendanceWhereUniqueInput
+    update: XOR<RaidAttendanceUpdateWithoutUserInput, RaidAttendanceUncheckedUpdateWithoutUserInput>
+    create: XOR<RaidAttendanceCreateWithoutUserInput, RaidAttendanceUncheckedCreateWithoutUserInput>
+  }
+
+  export type RaidAttendanceUpdateWithWhereUniqueWithoutUserInput = {
+    where: RaidAttendanceWhereUniqueInput
+    data: XOR<RaidAttendanceUpdateWithoutUserInput, RaidAttendanceUncheckedUpdateWithoutUserInput>
+  }
+
+  export type RaidAttendanceUpdateManyWithWhereWithoutUserInput = {
+    where: RaidAttendanceScalarWhereInput
+    data: XOR<RaidAttendanceUpdateManyMutationInput, RaidAttendanceUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type RaidAttendanceScalarWhereInput = {
+    AND?: RaidAttendanceScalarWhereInput | RaidAttendanceScalarWhereInput[]
+    OR?: RaidAttendanceScalarWhereInput[]
+    NOT?: RaidAttendanceScalarWhereInput | RaidAttendanceScalarWhereInput[]
+    id?: IntFilter<"RaidAttendance"> | number
+    userId?: IntFilter<"RaidAttendance"> | number
+    raidId?: IntFilter<"RaidAttendance"> | number
+    pointsGiven?: IntFilter<"RaidAttendance"> | number
+    createdAt?: DateTimeFilter<"RaidAttendance"> | Date | string
+  }
+
   export type ClasseUpsertWithoutUsersInput = {
     update: XOR<ClasseUpdateWithoutUsersInput, ClasseUncheckedUpdateWithoutUsersInput>
     create: XOR<ClasseCreateWithoutUsersInput, ClasseUncheckedCreateWithoutUsersInput>
@@ -11881,6 +18538,10 @@ export namespace Prisma {
     createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
     joinRequests?: JoinRequestCreateNestedManyWithoutUserInput
     loots?: LootCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
 
@@ -11895,6 +18556,10 @@ export namespace Prisma {
     createdRaids?: RaidUncheckedCreateNestedManyWithoutCreatedByInput
     joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutUserInput
     loots?: LootUncheckedCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutClasseInput = {
@@ -11987,6 +18652,10 @@ export namespace Prisma {
     createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
     joinRequests?: JoinRequestCreateNestedManyWithoutUserInput
     loots?: LootCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
   }
 
@@ -12001,6 +18670,10 @@ export namespace Prisma {
     createdRaids?: RaidUncheckedCreateNestedManyWithoutCreatedByInput
     joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutUserInput
     loots?: LootUncheckedCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSpecialisationInput = {
@@ -12059,6 +18732,10 @@ export namespace Prisma {
     raid?: RaidCreateNestedOneWithoutUsersInput
     joinRequests?: JoinRequestCreateNestedManyWithoutUserInput
     loots?: LootCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -12074,11 +18751,86 @@ export namespace Prisma {
     createdAt?: Date | string
     joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutUserInput
     loots?: LootUncheckedCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCreatedRaidsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutCreatedRaidsInput, UserUncheckedCreateWithoutCreatedRaidsInput>
+  }
+
+  export type RaidPointsCreateWithoutRaidInput = {
+    points?: number
+    user: UserCreateNestedOneWithoutRaidPointsInput
+  }
+
+  export type RaidPointsUncheckedCreateWithoutRaidInput = {
+    id?: number
+    userId: number
+    points?: number
+  }
+
+  export type RaidPointsCreateOrConnectWithoutRaidInput = {
+    where: RaidPointsWhereUniqueInput
+    create: XOR<RaidPointsCreateWithoutRaidInput, RaidPointsUncheckedCreateWithoutRaidInput>
+  }
+
+  export type RaidPointsCreateManyRaidInputEnvelope = {
+    data: RaidPointsCreateManyRaidInput | RaidPointsCreateManyRaidInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type LootHistoryCreateWithoutRaidInput = {
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutLootHistoryInput
+    loot: LootCreateNestedOneWithoutLootHistoryInput
+  }
+
+  export type LootHistoryUncheckedCreateWithoutRaidInput = {
+    id?: number
+    userId: number
+    lootId: number
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
+  }
+
+  export type LootHistoryCreateOrConnectWithoutRaidInput = {
+    where: LootHistoryWhereUniqueInput
+    create: XOR<LootHistoryCreateWithoutRaidInput, LootHistoryUncheckedCreateWithoutRaidInput>
+  }
+
+  export type LootHistoryCreateManyRaidInputEnvelope = {
+    data: LootHistoryCreateManyRaidInput | LootHistoryCreateManyRaidInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RaidAttendanceCreateWithoutRaidInput = {
+    pointsGiven?: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutAttendancesInput
+  }
+
+  export type RaidAttendanceUncheckedCreateWithoutRaidInput = {
+    id?: number
+    userId: number
+    pointsGiven?: number
+    createdAt?: Date | string
+  }
+
+  export type RaidAttendanceCreateOrConnectWithoutRaidInput = {
+    where: RaidAttendanceWhereUniqueInput
+    create: XOR<RaidAttendanceCreateWithoutRaidInput, RaidAttendanceUncheckedCreateWithoutRaidInput>
+  }
+
+  export type RaidAttendanceCreateManyRaidInputEnvelope = {
+    data: RaidAttendanceCreateManyRaidInput | RaidAttendanceCreateManyRaidInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserCreateWithoutRaidInput = {
@@ -12089,6 +18841,10 @@ export namespace Prisma {
     createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
     joinRequests?: JoinRequestCreateNestedManyWithoutUserInput
     loots?: LootCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -12104,6 +18860,10 @@ export namespace Prisma {
     createdRaids?: RaidUncheckedCreateNestedManyWithoutCreatedByInput
     joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutUserInput
     loots?: LootUncheckedCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRaidInput = {
@@ -12158,6 +18918,10 @@ export namespace Prisma {
     raid?: RaidUpdateOneWithoutUsersNestedInput
     joinRequests?: JoinRequestUpdateManyWithoutUserNestedInput
     loots?: LootUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -12173,6 +18937,68 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     joinRequests?: JoinRequestUncheckedUpdateManyWithoutUserNestedInput
     loots?: LootUncheckedUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type RaidPointsUpsertWithWhereUniqueWithoutRaidInput = {
+    where: RaidPointsWhereUniqueInput
+    update: XOR<RaidPointsUpdateWithoutRaidInput, RaidPointsUncheckedUpdateWithoutRaidInput>
+    create: XOR<RaidPointsCreateWithoutRaidInput, RaidPointsUncheckedCreateWithoutRaidInput>
+  }
+
+  export type RaidPointsUpdateWithWhereUniqueWithoutRaidInput = {
+    where: RaidPointsWhereUniqueInput
+    data: XOR<RaidPointsUpdateWithoutRaidInput, RaidPointsUncheckedUpdateWithoutRaidInput>
+  }
+
+  export type RaidPointsUpdateManyWithWhereWithoutRaidInput = {
+    where: RaidPointsScalarWhereInput
+    data: XOR<RaidPointsUpdateManyMutationInput, RaidPointsUncheckedUpdateManyWithoutRaidInput>
+  }
+
+  export type RaidPointsScalarWhereInput = {
+    AND?: RaidPointsScalarWhereInput | RaidPointsScalarWhereInput[]
+    OR?: RaidPointsScalarWhereInput[]
+    NOT?: RaidPointsScalarWhereInput | RaidPointsScalarWhereInput[]
+    id?: IntFilter<"RaidPoints"> | number
+    userId?: IntFilter<"RaidPoints"> | number
+    raidId?: IntFilter<"RaidPoints"> | number
+    points?: IntFilter<"RaidPoints"> | number
+  }
+
+  export type LootHistoryUpsertWithWhereUniqueWithoutRaidInput = {
+    where: LootHistoryWhereUniqueInput
+    update: XOR<LootHistoryUpdateWithoutRaidInput, LootHistoryUncheckedUpdateWithoutRaidInput>
+    create: XOR<LootHistoryCreateWithoutRaidInput, LootHistoryUncheckedCreateWithoutRaidInput>
+  }
+
+  export type LootHistoryUpdateWithWhereUniqueWithoutRaidInput = {
+    where: LootHistoryWhereUniqueInput
+    data: XOR<LootHistoryUpdateWithoutRaidInput, LootHistoryUncheckedUpdateWithoutRaidInput>
+  }
+
+  export type LootHistoryUpdateManyWithWhereWithoutRaidInput = {
+    where: LootHistoryScalarWhereInput
+    data: XOR<LootHistoryUpdateManyMutationInput, LootHistoryUncheckedUpdateManyWithoutRaidInput>
+  }
+
+  export type RaidAttendanceUpsertWithWhereUniqueWithoutRaidInput = {
+    where: RaidAttendanceWhereUniqueInput
+    update: XOR<RaidAttendanceUpdateWithoutRaidInput, RaidAttendanceUncheckedUpdateWithoutRaidInput>
+    create: XOR<RaidAttendanceCreateWithoutRaidInput, RaidAttendanceUncheckedCreateWithoutRaidInput>
+  }
+
+  export type RaidAttendanceUpdateWithWhereUniqueWithoutRaidInput = {
+    where: RaidAttendanceWhereUniqueInput
+    data: XOR<RaidAttendanceUpdateWithoutRaidInput, RaidAttendanceUncheckedUpdateWithoutRaidInput>
+  }
+
+  export type RaidAttendanceUpdateManyWithWhereWithoutRaidInput = {
+    where: RaidAttendanceScalarWhereInput
+    data: XOR<RaidAttendanceUpdateManyMutationInput, RaidAttendanceUncheckedUpdateManyWithoutRaidInput>
   }
 
   export type UserUpsertWithWhereUniqueWithoutRaidInput = {
@@ -12215,6 +19041,10 @@ export namespace Prisma {
     raid?: RaidCreateNestedOneWithoutUsersInput
     createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
     loots?: LootCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -12230,6 +19060,10 @@ export namespace Prisma {
     createdAt?: Date | string
     createdRaids?: RaidUncheckedCreateNestedManyWithoutCreatedByInput
     loots?: LootUncheckedCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutJoinRequestsInput = {
@@ -12240,6 +19074,9 @@ export namespace Prisma {
   export type RaidCreateWithoutJoinRequestsInput = {
     name: string
     createdBy: UserCreateNestedOneWithoutCreatedRaidsInput
+    RaidPoints?: RaidPointsCreateNestedManyWithoutRaidInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutRaidInput
     users?: UserCreateNestedManyWithoutRaidInput
   }
 
@@ -12247,6 +19084,9 @@ export namespace Prisma {
     id?: number
     name: string
     createdById: number
+    RaidPoints?: RaidPointsUncheckedCreateNestedManyWithoutRaidInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutRaidInput
     users?: UserUncheckedCreateNestedManyWithoutRaidInput
   }
 
@@ -12274,6 +19114,10 @@ export namespace Prisma {
     raid?: RaidUpdateOneWithoutUsersNestedInput
     createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
     loots?: LootUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -12289,6 +19133,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdRaids?: RaidUncheckedUpdateManyWithoutCreatedByNestedInput
     loots?: LootUncheckedUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type RaidUpsertWithoutJoinRequestsInput = {
@@ -12305,6 +19153,9 @@ export namespace Prisma {
   export type RaidUpdateWithoutJoinRequestsInput = {
     name?: StringFieldUpdateOperationsInput | string
     createdBy?: UserUpdateOneRequiredWithoutCreatedRaidsNestedInput
+    RaidPoints?: RaidPointsUpdateManyWithoutRaidNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutRaidNestedInput
     users?: UserUpdateManyWithoutRaidNestedInput
   }
 
@@ -12312,13 +19163,608 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     createdById?: IntFieldUpdateOperationsInput | number
+    RaidPoints?: RaidPointsUncheckedUpdateManyWithoutRaidNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutRaidNestedInput
     users?: UserUncheckedUpdateManyWithoutRaidNestedInput
+  }
+
+  export type UserCreateWithoutRaidPointsInput = {
+    email: string
+    name?: string | null
+    password: string
+    createdAt?: Date | string
+    raid?: RaidCreateNestedOneWithoutUsersInput
+    createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
+    joinRequests?: JoinRequestCreateNestedManyWithoutUserInput
+    loots?: LootCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    classe: ClasseCreateNestedOneWithoutUsersInput
+    specialisation: SpecialisationCreateNestedOneWithoutUsersInput
+  }
+
+  export type UserUncheckedCreateWithoutRaidPointsInput = {
+    id?: number
+    email: string
+    name?: string | null
+    password: string
+    classeId: number
+    specialisationId: number
+    raidId?: number | null
+    createdAt?: Date | string
+    createdRaids?: RaidUncheckedCreateNestedManyWithoutCreatedByInput
+    joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutUserInput
+    loots?: LootUncheckedCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRaidPointsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRaidPointsInput, UserUncheckedCreateWithoutRaidPointsInput>
+  }
+
+  export type RaidCreateWithoutRaidPointsInput = {
+    name: string
+    createdBy: UserCreateNestedOneWithoutCreatedRaidsInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutRaidInput
+    users?: UserCreateNestedManyWithoutRaidInput
+    joinRequests?: JoinRequestCreateNestedManyWithoutRaidInput
+  }
+
+  export type RaidUncheckedCreateWithoutRaidPointsInput = {
+    id?: number
+    name: string
+    createdById: number
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutRaidInput
+    users?: UserUncheckedCreateNestedManyWithoutRaidInput
+    joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutRaidInput
+  }
+
+  export type RaidCreateOrConnectWithoutRaidPointsInput = {
+    where: RaidWhereUniqueInput
+    create: XOR<RaidCreateWithoutRaidPointsInput, RaidUncheckedCreateWithoutRaidPointsInput>
+  }
+
+  export type UserUpsertWithoutRaidPointsInput = {
+    update: XOR<UserUpdateWithoutRaidPointsInput, UserUncheckedUpdateWithoutRaidPointsInput>
+    create: XOR<UserCreateWithoutRaidPointsInput, UserUncheckedCreateWithoutRaidPointsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRaidPointsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRaidPointsInput, UserUncheckedUpdateWithoutRaidPointsInput>
+  }
+
+  export type UserUpdateWithoutRaidPointsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    raid?: RaidUpdateOneWithoutUsersNestedInput
+    createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
+    joinRequests?: JoinRequestUpdateManyWithoutUserNestedInput
+    loots?: LootUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
+    specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRaidPointsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    classeId?: IntFieldUpdateOperationsInput | number
+    specialisationId?: IntFieldUpdateOperationsInput | number
+    raidId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdRaids?: RaidUncheckedUpdateManyWithoutCreatedByNestedInput
+    joinRequests?: JoinRequestUncheckedUpdateManyWithoutUserNestedInput
+    loots?: LootUncheckedUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type RaidUpsertWithoutRaidPointsInput = {
+    update: XOR<RaidUpdateWithoutRaidPointsInput, RaidUncheckedUpdateWithoutRaidPointsInput>
+    create: XOR<RaidCreateWithoutRaidPointsInput, RaidUncheckedCreateWithoutRaidPointsInput>
+    where?: RaidWhereInput
+  }
+
+  export type RaidUpdateToOneWithWhereWithoutRaidPointsInput = {
+    where?: RaidWhereInput
+    data: XOR<RaidUpdateWithoutRaidPointsInput, RaidUncheckedUpdateWithoutRaidPointsInput>
+  }
+
+  export type RaidUpdateWithoutRaidPointsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdBy?: UserUpdateOneRequiredWithoutCreatedRaidsNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutRaidNestedInput
+    users?: UserUpdateManyWithoutRaidNestedInput
+    joinRequests?: JoinRequestUpdateManyWithoutRaidNestedInput
+  }
+
+  export type RaidUncheckedUpdateWithoutRaidPointsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdById?: IntFieldUpdateOperationsInput | number
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutRaidNestedInput
+    users?: UserUncheckedUpdateManyWithoutRaidNestedInput
+    joinRequests?: JoinRequestUncheckedUpdateManyWithoutRaidNestedInput
+  }
+
+  export type UserCreateWithoutWishlistItemInput = {
+    email: string
+    name?: string | null
+    password: string
+    createdAt?: Date | string
+    raid?: RaidCreateNestedOneWithoutUsersInput
+    createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
+    joinRequests?: JoinRequestCreateNestedManyWithoutUserInput
+    loots?: LootCreateNestedManyWithoutUsersInput
+    RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    classe: ClasseCreateNestedOneWithoutUsersInput
+    specialisation: SpecialisationCreateNestedOneWithoutUsersInput
+  }
+
+  export type UserUncheckedCreateWithoutWishlistItemInput = {
+    id?: number
+    email: string
+    name?: string | null
+    password: string
+    classeId: number
+    specialisationId: number
+    raidId?: number | null
+    createdAt?: Date | string
+    createdRaids?: RaidUncheckedCreateNestedManyWithoutCreatedByInput
+    joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutUserInput
+    loots?: LootUncheckedCreateNestedManyWithoutUsersInput
+    RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutWishlistItemInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutWishlistItemInput, UserUncheckedCreateWithoutWishlistItemInput>
+  }
+
+  export type LootCreateWithoutWishlistItemInput = {
+    name: string
+    url: string
+    boss: BossCreateNestedOneWithoutLootsInput
+    users?: UserCreateNestedManyWithoutLootsInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutLootInput
+  }
+
+  export type LootUncheckedCreateWithoutWishlistItemInput = {
+    id?: number
+    name: string
+    url: string
+    bossId: number
+    users?: UserUncheckedCreateNestedManyWithoutLootsInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutLootInput
+  }
+
+  export type LootCreateOrConnectWithoutWishlistItemInput = {
+    where: LootWhereUniqueInput
+    create: XOR<LootCreateWithoutWishlistItemInput, LootUncheckedCreateWithoutWishlistItemInput>
+  }
+
+  export type UserUpsertWithoutWishlistItemInput = {
+    update: XOR<UserUpdateWithoutWishlistItemInput, UserUncheckedUpdateWithoutWishlistItemInput>
+    create: XOR<UserCreateWithoutWishlistItemInput, UserUncheckedCreateWithoutWishlistItemInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutWishlistItemInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutWishlistItemInput, UserUncheckedUpdateWithoutWishlistItemInput>
+  }
+
+  export type UserUpdateWithoutWishlistItemInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    raid?: RaidUpdateOneWithoutUsersNestedInput
+    createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
+    joinRequests?: JoinRequestUpdateManyWithoutUserNestedInput
+    loots?: LootUpdateManyWithoutUsersNestedInput
+    RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
+    specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutWishlistItemInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    classeId?: IntFieldUpdateOperationsInput | number
+    specialisationId?: IntFieldUpdateOperationsInput | number
+    raidId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdRaids?: RaidUncheckedUpdateManyWithoutCreatedByNestedInput
+    joinRequests?: JoinRequestUncheckedUpdateManyWithoutUserNestedInput
+    loots?: LootUncheckedUpdateManyWithoutUsersNestedInput
+    RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type LootUpsertWithoutWishlistItemInput = {
+    update: XOR<LootUpdateWithoutWishlistItemInput, LootUncheckedUpdateWithoutWishlistItemInput>
+    create: XOR<LootCreateWithoutWishlistItemInput, LootUncheckedCreateWithoutWishlistItemInput>
+    where?: LootWhereInput
+  }
+
+  export type LootUpdateToOneWithWhereWithoutWishlistItemInput = {
+    where?: LootWhereInput
+    data: XOR<LootUpdateWithoutWishlistItemInput, LootUncheckedUpdateWithoutWishlistItemInput>
+  }
+
+  export type LootUpdateWithoutWishlistItemInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    boss?: BossUpdateOneRequiredWithoutLootsNestedInput
+    users?: UserUpdateManyWithoutLootsNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutLootNestedInput
+  }
+
+  export type LootUncheckedUpdateWithoutWishlistItemInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    bossId?: IntFieldUpdateOperationsInput | number
+    users?: UserUncheckedUpdateManyWithoutLootsNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutLootNestedInput
+  }
+
+  export type UserCreateWithoutLootHistoryInput = {
+    email: string
+    name?: string | null
+    password: string
+    createdAt?: Date | string
+    raid?: RaidCreateNestedOneWithoutUsersInput
+    createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
+    joinRequests?: JoinRequestCreateNestedManyWithoutUserInput
+    loots?: LootCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    classe: ClasseCreateNestedOneWithoutUsersInput
+    specialisation: SpecialisationCreateNestedOneWithoutUsersInput
+  }
+
+  export type UserUncheckedCreateWithoutLootHistoryInput = {
+    id?: number
+    email: string
+    name?: string | null
+    password: string
+    classeId: number
+    specialisationId: number
+    raidId?: number | null
+    createdAt?: Date | string
+    createdRaids?: RaidUncheckedCreateNestedManyWithoutCreatedByInput
+    joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutUserInput
+    loots?: LootUncheckedCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutLootHistoryInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutLootHistoryInput, UserUncheckedCreateWithoutLootHistoryInput>
+  }
+
+  export type LootCreateWithoutLootHistoryInput = {
+    name: string
+    url: string
+    boss: BossCreateNestedOneWithoutLootsInput
+    users?: UserCreateNestedManyWithoutLootsInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutLootInput
+  }
+
+  export type LootUncheckedCreateWithoutLootHistoryInput = {
+    id?: number
+    name: string
+    url: string
+    bossId: number
+    users?: UserUncheckedCreateNestedManyWithoutLootsInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutLootInput
+  }
+
+  export type LootCreateOrConnectWithoutLootHistoryInput = {
+    where: LootWhereUniqueInput
+    create: XOR<LootCreateWithoutLootHistoryInput, LootUncheckedCreateWithoutLootHistoryInput>
+  }
+
+  export type RaidCreateWithoutLootHistoryInput = {
+    name: string
+    createdBy: UserCreateNestedOneWithoutCreatedRaidsInput
+    RaidPoints?: RaidPointsCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutRaidInput
+    users?: UserCreateNestedManyWithoutRaidInput
+    joinRequests?: JoinRequestCreateNestedManyWithoutRaidInput
+  }
+
+  export type RaidUncheckedCreateWithoutLootHistoryInput = {
+    id?: number
+    name: string
+    createdById: number
+    RaidPoints?: RaidPointsUncheckedCreateNestedManyWithoutRaidInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutRaidInput
+    users?: UserUncheckedCreateNestedManyWithoutRaidInput
+    joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutRaidInput
+  }
+
+  export type RaidCreateOrConnectWithoutLootHistoryInput = {
+    where: RaidWhereUniqueInput
+    create: XOR<RaidCreateWithoutLootHistoryInput, RaidUncheckedCreateWithoutLootHistoryInput>
+  }
+
+  export type UserUpsertWithoutLootHistoryInput = {
+    update: XOR<UserUpdateWithoutLootHistoryInput, UserUncheckedUpdateWithoutLootHistoryInput>
+    create: XOR<UserCreateWithoutLootHistoryInput, UserUncheckedCreateWithoutLootHistoryInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutLootHistoryInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutLootHistoryInput, UserUncheckedUpdateWithoutLootHistoryInput>
+  }
+
+  export type UserUpdateWithoutLootHistoryInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    raid?: RaidUpdateOneWithoutUsersNestedInput
+    createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
+    joinRequests?: JoinRequestUpdateManyWithoutUserNestedInput
+    loots?: LootUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
+    specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutLootHistoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    classeId?: IntFieldUpdateOperationsInput | number
+    specialisationId?: IntFieldUpdateOperationsInput | number
+    raidId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdRaids?: RaidUncheckedUpdateManyWithoutCreatedByNestedInput
+    joinRequests?: JoinRequestUncheckedUpdateManyWithoutUserNestedInput
+    loots?: LootUncheckedUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type LootUpsertWithoutLootHistoryInput = {
+    update: XOR<LootUpdateWithoutLootHistoryInput, LootUncheckedUpdateWithoutLootHistoryInput>
+    create: XOR<LootCreateWithoutLootHistoryInput, LootUncheckedCreateWithoutLootHistoryInput>
+    where?: LootWhereInput
+  }
+
+  export type LootUpdateToOneWithWhereWithoutLootHistoryInput = {
+    where?: LootWhereInput
+    data: XOR<LootUpdateWithoutLootHistoryInput, LootUncheckedUpdateWithoutLootHistoryInput>
+  }
+
+  export type LootUpdateWithoutLootHistoryInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    boss?: BossUpdateOneRequiredWithoutLootsNestedInput
+    users?: UserUpdateManyWithoutLootsNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutLootNestedInput
+  }
+
+  export type LootUncheckedUpdateWithoutLootHistoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    bossId?: IntFieldUpdateOperationsInput | number
+    users?: UserUncheckedUpdateManyWithoutLootsNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutLootNestedInput
+  }
+
+  export type RaidUpsertWithoutLootHistoryInput = {
+    update: XOR<RaidUpdateWithoutLootHistoryInput, RaidUncheckedUpdateWithoutLootHistoryInput>
+    create: XOR<RaidCreateWithoutLootHistoryInput, RaidUncheckedCreateWithoutLootHistoryInput>
+    where?: RaidWhereInput
+  }
+
+  export type RaidUpdateToOneWithWhereWithoutLootHistoryInput = {
+    where?: RaidWhereInput
+    data: XOR<RaidUpdateWithoutLootHistoryInput, RaidUncheckedUpdateWithoutLootHistoryInput>
+  }
+
+  export type RaidUpdateWithoutLootHistoryInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdBy?: UserUpdateOneRequiredWithoutCreatedRaidsNestedInput
+    RaidPoints?: RaidPointsUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutRaidNestedInput
+    users?: UserUpdateManyWithoutRaidNestedInput
+    joinRequests?: JoinRequestUpdateManyWithoutRaidNestedInput
+  }
+
+  export type RaidUncheckedUpdateWithoutLootHistoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdById?: IntFieldUpdateOperationsInput | number
+    RaidPoints?: RaidPointsUncheckedUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutRaidNestedInput
+    users?: UserUncheckedUpdateManyWithoutRaidNestedInput
+    joinRequests?: JoinRequestUncheckedUpdateManyWithoutRaidNestedInput
+  }
+
+  export type UserCreateWithoutAttendancesInput = {
+    email: string
+    name?: string | null
+    password: string
+    createdAt?: Date | string
+    raid?: RaidCreateNestedOneWithoutUsersInput
+    createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
+    joinRequests?: JoinRequestCreateNestedManyWithoutUserInput
+    loots?: LootCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    classe: ClasseCreateNestedOneWithoutUsersInput
+    specialisation: SpecialisationCreateNestedOneWithoutUsersInput
+  }
+
+  export type UserUncheckedCreateWithoutAttendancesInput = {
+    id?: number
+    email: string
+    name?: string | null
+    password: string
+    classeId: number
+    specialisationId: number
+    raidId?: number | null
+    createdAt?: Date | string
+    createdRaids?: RaidUncheckedCreateNestedManyWithoutCreatedByInput
+    joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutUserInput
+    loots?: LootUncheckedCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutAttendancesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAttendancesInput, UserUncheckedCreateWithoutAttendancesInput>
+  }
+
+  export type RaidCreateWithoutAttendancesInput = {
+    name: string
+    createdBy: UserCreateNestedOneWithoutCreatedRaidsInput
+    RaidPoints?: RaidPointsCreateNestedManyWithoutRaidInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutRaidInput
+    users?: UserCreateNestedManyWithoutRaidInput
+    joinRequests?: JoinRequestCreateNestedManyWithoutRaidInput
+  }
+
+  export type RaidUncheckedCreateWithoutAttendancesInput = {
+    id?: number
+    name: string
+    createdById: number
+    RaidPoints?: RaidPointsUncheckedCreateNestedManyWithoutRaidInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutRaidInput
+    users?: UserUncheckedCreateNestedManyWithoutRaidInput
+    joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutRaidInput
+  }
+
+  export type RaidCreateOrConnectWithoutAttendancesInput = {
+    where: RaidWhereUniqueInput
+    create: XOR<RaidCreateWithoutAttendancesInput, RaidUncheckedCreateWithoutAttendancesInput>
+  }
+
+  export type UserUpsertWithoutAttendancesInput = {
+    update: XOR<UserUpdateWithoutAttendancesInput, UserUncheckedUpdateWithoutAttendancesInput>
+    create: XOR<UserCreateWithoutAttendancesInput, UserUncheckedCreateWithoutAttendancesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAttendancesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAttendancesInput, UserUncheckedUpdateWithoutAttendancesInput>
+  }
+
+  export type UserUpdateWithoutAttendancesInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    raid?: RaidUpdateOneWithoutUsersNestedInput
+    createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
+    joinRequests?: JoinRequestUpdateManyWithoutUserNestedInput
+    loots?: LootUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
+    specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAttendancesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    classeId?: IntFieldUpdateOperationsInput | number
+    specialisationId?: IntFieldUpdateOperationsInput | number
+    raidId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdRaids?: RaidUncheckedUpdateManyWithoutCreatedByNestedInput
+    joinRequests?: JoinRequestUncheckedUpdateManyWithoutUserNestedInput
+    loots?: LootUncheckedUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type RaidUpsertWithoutAttendancesInput = {
+    update: XOR<RaidUpdateWithoutAttendancesInput, RaidUncheckedUpdateWithoutAttendancesInput>
+    create: XOR<RaidCreateWithoutAttendancesInput, RaidUncheckedCreateWithoutAttendancesInput>
+    where?: RaidWhereInput
+  }
+
+  export type RaidUpdateToOneWithWhereWithoutAttendancesInput = {
+    where?: RaidWhereInput
+    data: XOR<RaidUpdateWithoutAttendancesInput, RaidUncheckedUpdateWithoutAttendancesInput>
+  }
+
+  export type RaidUpdateWithoutAttendancesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    createdBy?: UserUpdateOneRequiredWithoutCreatedRaidsNestedInput
+    RaidPoints?: RaidPointsUpdateManyWithoutRaidNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutRaidNestedInput
+    users?: UserUpdateManyWithoutRaidNestedInput
+    joinRequests?: JoinRequestUpdateManyWithoutRaidNestedInput
+  }
+
+  export type RaidUncheckedUpdateWithoutAttendancesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    createdById?: IntFieldUpdateOperationsInput | number
+    RaidPoints?: RaidPointsUncheckedUpdateManyWithoutRaidNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutRaidNestedInput
+    users?: UserUncheckedUpdateManyWithoutRaidNestedInput
+    joinRequests?: JoinRequestUncheckedUpdateManyWithoutRaidNestedInput
   }
 
   export type LootCreateWithoutBossInput = {
     name: string
     url: string
     users?: UserCreateNestedManyWithoutLootsInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutLootInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutLootInput
   }
 
   export type LootUncheckedCreateWithoutBossInput = {
@@ -12326,6 +19772,8 @@ export namespace Prisma {
     name: string
     url: string
     users?: UserUncheckedCreateNestedManyWithoutLootsInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutLootInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutLootInput
   }
 
   export type LootCreateOrConnectWithoutBossInput = {
@@ -12376,6 +19824,10 @@ export namespace Prisma {
     raid?: RaidCreateNestedOneWithoutUsersInput
     createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
     joinRequests?: JoinRequestCreateNestedManyWithoutUserInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -12391,11 +19843,65 @@ export namespace Prisma {
     createdAt?: Date | string
     createdRaids?: RaidUncheckedCreateNestedManyWithoutCreatedByInput
     joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutUserInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutLootsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutLootsInput, UserUncheckedCreateWithoutLootsInput>
+  }
+
+  export type WishlistItemCreateWithoutLootInput = {
+    priority: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutWishlistItemInput
+  }
+
+  export type WishlistItemUncheckedCreateWithoutLootInput = {
+    id?: number
+    userId: number
+    priority: number
+    createdAt?: Date | string
+  }
+
+  export type WishlistItemCreateOrConnectWithoutLootInput = {
+    where: WishlistItemWhereUniqueInput
+    create: XOR<WishlistItemCreateWithoutLootInput, WishlistItemUncheckedCreateWithoutLootInput>
+  }
+
+  export type WishlistItemCreateManyLootInputEnvelope = {
+    data: WishlistItemCreateManyLootInput | WishlistItemCreateManyLootInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type LootHistoryCreateWithoutLootInput = {
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutLootHistoryInput
+    raid: RaidCreateNestedOneWithoutLootHistoryInput
+  }
+
+  export type LootHistoryUncheckedCreateWithoutLootInput = {
+    id?: number
+    userId: number
+    raidId: number
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
+  }
+
+  export type LootHistoryCreateOrConnectWithoutLootInput = {
+    where: LootHistoryWhereUniqueInput
+    create: XOR<LootHistoryCreateWithoutLootInput, LootHistoryUncheckedCreateWithoutLootInput>
+  }
+
+  export type LootHistoryCreateManyLootInputEnvelope = {
+    data: LootHistoryCreateManyLootInput | LootHistoryCreateManyLootInput[]
+    skipDuplicates?: boolean
   }
 
   export type BossUpsertWithoutLootsInput = {
@@ -12434,6 +19940,38 @@ export namespace Prisma {
     data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyWithoutLootsInput>
   }
 
+  export type WishlistItemUpsertWithWhereUniqueWithoutLootInput = {
+    where: WishlistItemWhereUniqueInput
+    update: XOR<WishlistItemUpdateWithoutLootInput, WishlistItemUncheckedUpdateWithoutLootInput>
+    create: XOR<WishlistItemCreateWithoutLootInput, WishlistItemUncheckedCreateWithoutLootInput>
+  }
+
+  export type WishlistItemUpdateWithWhereUniqueWithoutLootInput = {
+    where: WishlistItemWhereUniqueInput
+    data: XOR<WishlistItemUpdateWithoutLootInput, WishlistItemUncheckedUpdateWithoutLootInput>
+  }
+
+  export type WishlistItemUpdateManyWithWhereWithoutLootInput = {
+    where: WishlistItemScalarWhereInput
+    data: XOR<WishlistItemUpdateManyMutationInput, WishlistItemUncheckedUpdateManyWithoutLootInput>
+  }
+
+  export type LootHistoryUpsertWithWhereUniqueWithoutLootInput = {
+    where: LootHistoryWhereUniqueInput
+    update: XOR<LootHistoryUpdateWithoutLootInput, LootHistoryUncheckedUpdateWithoutLootInput>
+    create: XOR<LootHistoryCreateWithoutLootInput, LootHistoryUncheckedCreateWithoutLootInput>
+  }
+
+  export type LootHistoryUpdateWithWhereUniqueWithoutLootInput = {
+    where: LootHistoryWhereUniqueInput
+    data: XOR<LootHistoryUpdateWithoutLootInput, LootHistoryUncheckedUpdateWithoutLootInput>
+  }
+
+  export type LootHistoryUpdateManyWithWhereWithoutLootInput = {
+    where: LootHistoryScalarWhereInput
+    data: XOR<LootHistoryUpdateManyMutationInput, LootHistoryUncheckedUpdateManyWithoutLootInput>
+  }
+
   export type RaidCreateManyCreatedByInput = {
     id?: number
     name: string
@@ -12446,8 +19984,34 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type WishlistItemCreateManyUserInput = {
+    id?: number
+    lootId: number
+    priority: number
+    createdAt?: Date | string
+  }
+
+  export type LootHistoryCreateManyUserInput = {
+    id?: number
+    lootId: number
+    raidId: number
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
+  }
+
+  export type RaidAttendanceCreateManyUserInput = {
+    id?: number
+    raidId: number
+    pointsGiven?: number
+    createdAt?: Date | string
+  }
+
   export type RaidUpdateWithoutCreatedByInput = {
     name?: StringFieldUpdateOperationsInput | string
+    RaidPoints?: RaidPointsUpdateManyWithoutRaidNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutRaidNestedInput
     users?: UserUpdateManyWithoutRaidNestedInput
     joinRequests?: JoinRequestUpdateManyWithoutRaidNestedInput
   }
@@ -12455,6 +20019,9 @@ export namespace Prisma {
   export type RaidUncheckedUpdateWithoutCreatedByInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    RaidPoints?: RaidPointsUncheckedUpdateManyWithoutRaidNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutRaidNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutRaidNestedInput
     users?: UserUncheckedUpdateManyWithoutRaidNestedInput
     joinRequests?: JoinRequestUncheckedUpdateManyWithoutRaidNestedInput
   }
@@ -12488,6 +20055,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     boss?: BossUpdateOneRequiredWithoutLootsNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutLootNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutLootNestedInput
   }
 
   export type LootUncheckedUpdateWithoutUsersInput = {
@@ -12495,6 +20064,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     bossId?: IntFieldUpdateOperationsInput | number
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutLootNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutLootNestedInput
   }
 
   export type LootUncheckedUpdateManyWithoutUsersInput = {
@@ -12502,6 +20073,72 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     bossId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type WishlistItemUpdateWithoutUserInput = {
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    loot?: LootUpdateOneRequiredWithoutWishlistItemNestedInput
+  }
+
+  export type WishlistItemUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    lootId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WishlistItemUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    lootId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LootHistoryUpdateWithoutUserInput = {
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    loot?: LootUpdateOneRequiredWithoutLootHistoryNestedInput
+    raid?: RaidUpdateOneRequiredWithoutLootHistoryNestedInput
+  }
+
+  export type LootHistoryUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    lootId?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LootHistoryUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    lootId?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RaidAttendanceUpdateWithoutUserInput = {
+    pointsGiven?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    raid?: RaidUpdateOneRequiredWithoutAttendancesNestedInput
+  }
+
+  export type RaidAttendanceUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    pointsGiven?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RaidAttendanceUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    pointsGiven?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SpecialisationCreateManyClasseInput = {
@@ -12544,6 +20181,10 @@ export namespace Prisma {
     createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
     joinRequests?: JoinRequestUpdateManyWithoutUserNestedInput
     loots?: LootUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
 
@@ -12558,6 +20199,10 @@ export namespace Prisma {
     createdRaids?: RaidUncheckedUpdateManyWithoutCreatedByNestedInput
     joinRequests?: JoinRequestUncheckedUpdateManyWithoutUserNestedInput
     loots?: LootUncheckedUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutClasseInput = {
@@ -12589,6 +20234,10 @@ export namespace Prisma {
     createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
     joinRequests?: JoinRequestUpdateManyWithoutUserNestedInput
     loots?: LootUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
   }
 
@@ -12603,6 +20252,10 @@ export namespace Prisma {
     createdRaids?: RaidUncheckedUpdateManyWithoutCreatedByNestedInput
     joinRequests?: JoinRequestUncheckedUpdateManyWithoutUserNestedInput
     loots?: LootUncheckedUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutSpecialisationInput = {
@@ -12613,6 +20266,28 @@ export namespace Prisma {
     classeId?: IntFieldUpdateOperationsInput | number
     raidId?: NullableIntFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RaidPointsCreateManyRaidInput = {
+    id?: number
+    userId: number
+    points?: number
+  }
+
+  export type LootHistoryCreateManyRaidInput = {
+    id?: number
+    userId: number
+    lootId: number
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
+  }
+
+  export type RaidAttendanceCreateManyRaidInput = {
+    id?: number
+    userId: number
+    pointsGiven?: number
+    createdAt?: Date | string
   }
 
   export type UserCreateManyRaidInput = {
@@ -12632,6 +20307,69 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
+  export type RaidPointsUpdateWithoutRaidInput = {
+    points?: IntFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutRaidPointsNestedInput
+  }
+
+  export type RaidPointsUncheckedUpdateWithoutRaidInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    points?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RaidPointsUncheckedUpdateManyWithoutRaidInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    points?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type LootHistoryUpdateWithoutRaidInput = {
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLootHistoryNestedInput
+    loot?: LootUpdateOneRequiredWithoutLootHistoryNestedInput
+  }
+
+  export type LootHistoryUncheckedUpdateWithoutRaidInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    lootId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LootHistoryUncheckedUpdateManyWithoutRaidInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    lootId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RaidAttendanceUpdateWithoutRaidInput = {
+    pointsGiven?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAttendancesNestedInput
+  }
+
+  export type RaidAttendanceUncheckedUpdateWithoutRaidInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    pointsGiven?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RaidAttendanceUncheckedUpdateManyWithoutRaidInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    pointsGiven?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserUpdateWithoutRaidInput = {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12640,6 +20378,10 @@ export namespace Prisma {
     createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
     joinRequests?: JoinRequestUpdateManyWithoutUserNestedInput
     loots?: LootUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -12655,6 +20397,10 @@ export namespace Prisma {
     createdRaids?: RaidUncheckedUpdateManyWithoutCreatedByNestedInput
     joinRequests?: JoinRequestUncheckedUpdateManyWithoutUserNestedInput
     loots?: LootUncheckedUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRaidInput = {
@@ -12697,6 +20443,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     users?: UserUpdateManyWithoutLootsNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutLootNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutLootNestedInput
   }
 
   export type LootUncheckedUpdateWithoutBossInput = {
@@ -12704,12 +20452,30 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     users?: UserUncheckedUpdateManyWithoutLootsNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutLootNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutLootNestedInput
   }
 
   export type LootUncheckedUpdateManyWithoutBossInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WishlistItemCreateManyLootInput = {
+    id?: number
+    userId: number
+    priority: number
+    createdAt?: Date | string
+  }
+
+  export type LootHistoryCreateManyLootInput = {
+    id?: number
+    userId: number
+    raidId: number
+    priority: number
+    pointsCost: number
+    createdAt?: Date | string
   }
 
   export type UserUpdateWithoutLootsInput = {
@@ -12720,6 +20486,10 @@ export namespace Prisma {
     raid?: RaidUpdateOneWithoutUsersNestedInput
     createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
     joinRequests?: JoinRequestUpdateManyWithoutUserNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -12735,6 +20505,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdRaids?: RaidUncheckedUpdateManyWithoutCreatedByNestedInput
     joinRequests?: JoinRequestUncheckedUpdateManyWithoutUserNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutLootsInput = {
@@ -12745,6 +20519,52 @@ export namespace Prisma {
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
     raidId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WishlistItemUpdateWithoutLootInput = {
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutWishlistItemNestedInput
+  }
+
+  export type WishlistItemUncheckedUpdateWithoutLootInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WishlistItemUncheckedUpdateManyWithoutLootInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LootHistoryUpdateWithoutLootInput = {
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutLootHistoryNestedInput
+    raid?: RaidUpdateOneRequiredWithoutLootHistoryNestedInput
+  }
+
+  export type LootHistoryUncheckedUpdateWithoutLootInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LootHistoryUncheckedUpdateManyWithoutLootInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    raidId?: IntFieldUpdateOperationsInput | number
+    priority?: IntFieldUpdateOperationsInput | number
+    pointsCost?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

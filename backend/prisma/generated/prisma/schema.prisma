@@ -8,20 +8,24 @@ datasource db {
 }
 
 model User {
-  id               Int            @id @default(autoincrement())
-  email            String         @unique
+  id               Int              @id @default(autoincrement())
+  email            String           @unique
   name             String?
   password         String
   classeId         Int
   specialisationId Int
   raidId           Int?
-  raid             Raid?          @relation(fields: [raidId], references: [id])
-  createdRaids     Raid[]         @relation("RaidCreator")
+  raid             Raid?            @relation(fields: [raidId], references: [id])
+  createdRaids     Raid[]           @relation("RaidCreator")
   joinRequests     JoinRequest[]
   loots            Loot[]
-  classe           Classe         @relation(fields: [classeId], references: [id])
-  specialisation   Specialisation @relation(fields: [specialisationId], references: [id])
-  createdAt        DateTime       @default(now())
+  WishlistItem     WishlistItem[]
+  RaidPoints       RaidPoints?
+  LootHistory      LootHistory[]
+  attendances      RaidAttendance[]
+  classe           Classe           @relation(fields: [classeId], references: [id])
+  specialisation   Specialisation   @relation(fields: [specialisationId], references: [id])
+  createdAt        DateTime         @default(now())
 }
 
 model Classe {
@@ -42,10 +46,13 @@ model Specialisation {
 }
 
 model Raid {
-  id           Int           @id @default(autoincrement())
+  id           Int              @id @default(autoincrement())
   name         String
   createdById  Int
-  createdBy    User          @relation("RaidCreator", fields: [createdById], references: [id])
+  createdBy    User             @relation("RaidCreator", fields: [createdById], references: [id])
+  RaidPoints   RaidPoints[]
+  LootHistory  LootHistory[]
+  attendances  RaidAttendance[]
   users        User[]
   joinRequests JoinRequest[]
 }
@@ -62,6 +69,52 @@ model JoinRequest {
   @@unique([userId, raidId])
 }
 
+model RaidPoints {
+  id     Int  @id @default(autoincrement())
+  userId Int  @unique
+  raidId Int
+  points Int  @default(0)
+  user   User @relation(fields: [userId], references: [id])
+  raid   Raid @relation(fields: [raidId], references: [id])
+
+  @@unique([userId, raidId])
+}
+
+model WishlistItem {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  lootId    Int
+  priority  Int // 1, 2, or 3
+  user      User     @relation(fields: [userId], references: [id])
+  loot      Loot     @relation(fields: [lootId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, lootId])
+}
+
+model LootHistory {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  lootId     Int
+  raidId     Int
+  priority   Int // priority at the time of attribution
+  pointsCost Int // points deducted
+  user       User     @relation(fields: [userId], references: [id])
+  loot       Loot     @relation(fields: [lootId], references: [id])
+  raid       Raid     @relation(fields: [raidId], references: [id])
+  createdAt  DateTime @default(now())
+}
+
+model RaidAttendance {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  raidId      Int
+  pointsGiven Int      @default(5)
+  user        User     @relation(fields: [userId], references: [id])
+  raid        Raid     @relation(fields: [raidId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
 model Boss {
   id    Int    @id @default(autoincrement())
   name  String
@@ -69,12 +122,14 @@ model Boss {
 }
 
 model Loot {
-  id     Int    @id @default(autoincrement())
-  name   String
-  url    String
-  bossId Int
-  boss   Boss   @relation(fields: [bossId], references: [id])
-  users  User[]
+  id           Int            @id @default(autoincrement())
+  name         String
+  url          String
+  bossId       Int
+  boss         Boss           @relation(fields: [bossId], references: [id])
+  users        User[]
+  WishlistItem WishlistItem[]
+  LootHistory  LootHistory[]
 
   @@unique([name, bossId])
 }
