@@ -272,7 +272,7 @@ export class DkpService {
       .sort((a, b) => b.points - a.points);
   }
 
-  async getLootCandidatesByBoss(bossId: number) {
+  async getLootCandidatesByBoss(bossId: number, raidId?: number) {
     const boss = await this.prisma.boss.findUnique({
       where: { id: bossId },
       include: {
@@ -287,17 +287,15 @@ export class DkpService {
         const users = await this.prisma.user.findMany({
           where: {
             loots: { some: { id: loot.id } },
-            raidId: { not: null },
+            ...(raidId ? { raidId } : { raidId: { not: null } }),
           },
           select: {
             id: true,
             name: true,
             classe: true,
             specialisation: true,
-            RaidPoints: true,
-            WishlistItem: {
-              where: { lootId: loot.id },
-            },
+            RaidPoints: raidId ? { where: { raidId } } : true,
+            WishlistItem: { where: { lootId: loot.id } },
           },
         });
 
@@ -312,7 +310,8 @@ export class DkpService {
               classe: user.classe,
               specialisation: user.specialisation,
               priority: user.WishlistItem[0]?.priority ?? 2,
-              points: user.RaidPoints?.points ?? 0,
+              points:
+                user.RaidPoints?.[0]?.points ?? user.RaidPoints?.points ?? 0,
             }))
             .sort((a, b) => b.points - a.points),
         };

@@ -1,8 +1,3 @@
-// =============================================
-// backend/src/dkp/dkp.controller.ts
-// Module SÉPARÉ — LootController reste intact
-// =============================================
-
 import {
   Controller,
   Get,
@@ -12,6 +7,7 @@ import {
   ParseIntPipe,
   UseGuards,
   Request,
+  Query,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
@@ -79,7 +75,10 @@ export class DkpController {
   }
 
   @Get('boss/:bossId/loot-candidates')
-  getLootCandidatesByBoss(@Param('bossId', ParseIntPipe) bossId: number) {
-    return this.dkpService.getLootCandidatesByBoss(bossId);
+  getLootCandidatesByBoss(
+    @Param('bossId', ParseIntPipe) bossId: number,
+    @Query('raidId', new ParseIntPipe({ optional: true })) raidId?: number,
+  ) {
+    return this.dkpService.getLootCandidatesByBoss(bossId, raidId);
   }
 }
