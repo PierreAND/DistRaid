@@ -90,7 +90,7 @@
           }
 
           <div class="raid-card-actions">
-            <button class="btn-details" routerLink="/boss">📋 Boss</button>
+           <button class="btn-details" [routerLink]="['/boss']" [queryParams]="{ raidId: raid.id }">📋 Boss</button>
 
             @if (isUserInRaid(raid)) {
               <button class="btn-dkp" [routerLink]="['/dkp', raid.id]">📊 DKP</button>

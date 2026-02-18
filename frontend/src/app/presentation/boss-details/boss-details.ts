@@ -52,17 +52,17 @@ export class BossDetail implements OnInit {
     });
   }
 
-  loadCandidates(bossId: number): void {
-    this.getLootCandidates.execute(bossId).subscribe({
-      next: (loots) => {
-        this.lootCandidatesMap = {};
-        loots.forEach((loot) => {
-          this.lootCandidatesMap[loot.id] = loot;
-        });
-        this.cdr.detectChanges();
-      },
-    });
-  }
+loadCandidates(bossId: number): void {
+  this.getLootCandidates.execute(bossId).subscribe({
+    next: (loots) => {
+      this.lootCandidatesMap = {};
+      loots.forEach((loot) => {
+        this.lootCandidatesMap[loot.id] = loot;
+      });
+      this.cdr.detectChanges();
+    },
+  });
+}
 
   getCandidates(lootId: number) {
     return this.lootCandidatesMap[lootId]?.candidates ?? [];

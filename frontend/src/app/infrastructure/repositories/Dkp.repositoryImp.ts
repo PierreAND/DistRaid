@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { DkpRepository } from '../../domain/repositories/Dkp.repository';
 import {
   DkpTable,
@@ -58,7 +58,15 @@ export class DkpRepositoryImpl extends DkpRepository {
     );
   }
 
-  getLootCandidatesByBoss(bossId: number): Observable<LootWithCandidates[]> {
-    return this.http.get<LootWithCandidates[]>(`${this.apiUrl}/boss/${bossId}/loot-candidates`);
+  getLootCandidatesByBoss(bossId: number, raidId?: number): Observable<LootWithCandidates[]> {
+    const params = raidId ? `?raidId=${raidId}` : '';
+    return this.http.get<LootWithCandidates[]>(
+      `${this.apiUrl}/boss/${bossId}/loot-candidates${params}`,
+    );
+  }
+  getUserRaidId(): Observable<number | null> {
+    return this.http
+      .get<any>(`${this.apiUrl}/auth/profile`)
+      .pipe(map((user: { raidId: any; }) => user.raidId ?? null));
   }
 }

@@ -18,5 +18,6 @@ export abstract class DkpRepository {
   abstract recordAttendance(raidId: number, payload: RecordAttendancePayload): Observable<AttendanceResponse>;
   abstract getLootHistory(raidId: number): Observable<LootHistoryEntry[]>;
   abstract getAttendanceHistory(raidId: number): Observable<AttendanceEntry[]>;
-  abstract getLootCandidatesByBoss(bossId: number): Observable<LootWithCandidates[]>;
+  abstract getLootCandidatesByBoss(bossId: number, raidId?: number): Observable<LootWithCandidates[]>;
+  abstract getUserRaidId(): Observable<number | null>;
 }
