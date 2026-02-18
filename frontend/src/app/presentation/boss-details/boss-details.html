@@ -25,6 +25,43 @@
           @for (loot of boss.loots; track loot.id) {
             <div class="loot-card">
               <a [href]="loot.url" target="_blank" class="loot-link">{{ loot.name }}</a>
+
+            
+              @if (getTopCandidate(loot.id); as top) {
+                <div class="loot-top-candidate">
+                  <span class="crown">👑</span>
+                  <span class="top-name">{{ top.name }}</span>
+                  <span class="top-info">({{ top.classe?.name }} · {{ top.points }} pts)</span>
+                </div>
+              }
+
+             
+              @if (getCandidates(loot.id).length > 0) {
+                <button class="btn-candidates" (click)="toggleCandidates(loot.id)">
+                  {{ getCandidates(loot.id).length }} joueur(s) intéressé(s)
+                  {{ expandedLootId === loot.id ? '▲' : '▼' }}
+                </button>
+              } @else {
+                <span class="no-candidates">Aucun joueur intéressé</span>
+              }
+
+             
+              @if (expandedLootId === loot.id) {
+                <div class="candidates-list">
+                  @for (candidate of getCandidates(loot.id); track candidate.userId; let i = $index) {
+                    <div class="candidate-row" [class.is-top]="i === 0">
+                      <span class="candidate-rank">
+                        @if (i === 0) { 👑 } @else if (i === 1) { 🥈 } @else if (i === 2) { 🥉 } @else { #{{ i + 1 }} }
+                      </span>
+                      <span class="candidate-name">{{ candidate.name }}</span>
+                      <span class="candidate-class">{{ candidate.classe?.name }}</span>
+                      <span class="candidate-spec">{{ candidate.specialisation?.name }}</span>
+                      <span class="candidate-points">{{ candidate.points }} pts</span>
+                    </div>
+                  }
+                </div>
+              }
+
               <button
                 class="btn-wishlist"
                 [disabled]="addingLootId === loot.id"

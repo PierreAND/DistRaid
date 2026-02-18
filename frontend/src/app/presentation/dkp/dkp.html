@@ -1,0 +1,182 @@
+<div class="dkp-wrapper">
+  <header class="top-bar">
+    <button class="btn-back" routerLink="/home">← Retour aux raids</button>
+    @if (dkpData) {
+      <h1 class="page-title">📊 DKP — {{ dkpData.raid.name }}</h1>
+    }
+  </header>
+
+  @if (successMessage) {
+    <div class="alert alert-success">{{ successMessage }}</div>
+  }
+  @if (errorMessage) {
+    <div class="alert alert-error">{{ errorMessage }}</div>
+  }
+
+  @if (loading) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Chargement du tableau DKP...</p>
+    </div>
+  }
+
+  @if (dkpData) {
+    <!-- Info badges -->
+    <div class="dkp-info">
+      <span class="info-badge">P1 = -{{ dkpData.priorityCosts[1] }} pts</span>
+      <span class="info-badge">P2 = -{{ dkpData.priorityCosts[2] }} pts</span>
+      <span class="info-badge">P3 = -{{ dkpData.priorityCosts[3] }} pts</span>
+      <span class="info-badge accent">Participation = +{{ dkpData.attendancePoints }} pts</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button [class.active]="activeTab === 'dkp'" (click)="switchTab('dkp')">📊 Tableau DKP</button>
+      <button [class.active]="activeTab === 'loot-history'" (click)="switchTab('loot-history')">📜 Historique Loots</button>
+      <button [class.active]="activeTab === 'attendance-history'" (click)="switchTab('attendance-history')">📅 Participations</button>
+    </div>
+
+    <!-- ═══ TAB: DKP TABLE ═══ -->
+    @if (activeTab === 'dkp') {
+      <!-- Attendance bar -->
+      <div class="attendance-bar">
+        <label class="check-all">
+          <input type="checkbox" [checked]="isAllSelected()" (change)="selectAllMembers()" />
+          Tout sélectionner
+        </label>
+        <button class="btn-attendance" [disabled]="selectedMembers.size === 0" (click)="submitAttendance()">
+          ✅ Participation (+{{ dkpData.attendancePoints }} pts)
+        </button>
+      </div>
+
+      <!-- Table -->
+      <div class="table-scroll">
+        <table class="dkp-table">
+          <thead>
+            <tr>
+              <th class="col-check">✓</th>
+              <th class="col-rank">#</th>
+              <th>Joueur</th>
+              <th>Classe</th>
+              <th>Spé</th>
+              <th>Points</th>
+              <th>Loots</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (member of dkpData.members; track member.id; let i = $index) {
+              <tr [class.low-points]="member.points === 0">
+                <td class="col-check">
+                  <input type="checkbox" [checked]="selectedMembers.has(member.id)" (change)="toggleMemberSelection(member.id)" />
+                </td>
+                <td class="col-rank">
+                  <span class="rank" [class.rank-1]="i === 0" [class.rank-2]="i === 1" [class.rank-3]="i === 2">
+                    @if (i === 0) { 👑 } @else if (i === 1) { 🥈 } @else if (i === 2) { 🥉 } @else { {{ i + 1 }} }
+                  </span>
+                </td>
+                <td><strong>{{ member.name || member.email }}</strong></td>
+                <td class="muted">{{ member.classe?.name }}</td>
+                <td class="muted">{{ member.specialisation?.name }}</td>
+                <td>
+                  @if (editingPointsFor !== member.id) {
+                    <span class="points-value">{{ member.points }}</span>
+                    <button class="btn-icon" (click)="startEditPoints(member)" title="Modifier">✏️</button>
+                  } @else {
+                    <div class="points-edit">
+                      <input type="number" [(ngModel)]="editPointsValue" min="0" class="input-points" />
+                      <button class="btn-icon" (click)="savePoints(member)">✅</button>
+                      <button class="btn-icon" (click)="cancelEditPoints()">❌</button>
+                    </div>
+                  }
+                </td>
+                <td class="col-loots">
+                  <span class="loot-count" (click)="hoveredMember = hoveredMember === member.id ? null : member.id">
+                    {{ member.loots?.length || 0 }} loot(s) {{ hoveredMember === member.id ? '▲' : '▼' }}
+                  </span>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+
+    <!-- ═══ TAB: LOOT HISTORY ═══ -->
+    @if (activeTab === 'loot-history') {
+      @if (lootHistory.length > 0) {
+        <div class="history-list">
+          @for (entry of lootHistory; track entry.id) {
+            <div class="history-card">
+              <span class="history-icon">🎁</span>
+              <div class="history-content">
+                <strong>{{ entry.loot.name }}</strong>
+                <span class="history-detail">
+                  attribué à <strong>{{ entry.user.name }}</strong>
+                  ({{ entry.user.classe?.name }} — {{ entry.user.specialisation?.name }})
+                </span>
+                <span class="history-meta">Priorité {{ entry.priority }} · -{{ entry.pointsCost }} pts · Boss: {{ entry.loot.boss?.name }}</span>
+              </div>
+              <span class="history-date">{{ entry.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="empty-state"><p>Aucun loot attribué pour le moment.</p></div>
+      }
+    }
+
+    <!-- ═══ TAB: ATTENDANCE HISTORY ═══ -->
+    @if (activeTab === 'attendance-history') {
+      @if (attendanceHistory.length > 0) {
+        <div class="history-list">
+          @for (entry of attendanceHistory; track entry.id) {
+            <div class="history-card">
+              <span class="history-icon">📅</span>
+              <div class="history-content">
+                <strong>{{ entry.user.name }}</strong>
+                <span class="history-detail">+{{ entry.pointsGiven }} points</span>
+              </div>
+              <span class="history-date">{{ entry.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="empty-state"><p>Aucune participation enregistrée.</p></div>
+      }
+    }
+  }
+</div>
+
+<!-- ═══ WISHLIST POPOVER ═══ -->
+@if (hoveredMember !== null && getHoveredMember()) {
+  <div class="popover-overlay" (click)="hoveredMember = null">
+    <div class="loots-popover" (click)="$event.stopPropagation()">
+      <div class="popover-title">🎁 Wishlist de {{ getHoveredMember()!.name }}</div>
+      @if (getHoveredMember()!.loots && getHoveredMember()!.loots.length > 0) {
+        @for (loot of getHoveredMember()!.loots; track loot.id) {
+          <div class="popover-loot" (click)="onLootClick(getHoveredMember()!, loot); hoveredMember = null">
+            <span class="popover-loot-name">{{ loot.name }}</span>
+            <span class="popover-boss">{{ loot.boss?.name }}</span>
+            <span class="popover-action">🎁 Attribuer ce loot</span>
+          </div>
+        }
+      } @else {
+        <div class="popover-empty">Wishlist vide</div>
+      }
+    </div>
+  </div>
+}
+
+<!-- ═══ MODAL CONFIRMATION ═══ -->
+@if (confirmLoot) {
+  <div class="modal-overlay" (click)="cancelAttributeLoot()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <h2>🎁 Confirmer l'attribution</h2>
+      <p>Attribuer <strong>{{ confirmLoot.lootName }}</strong> à <strong>{{ confirmLoot.userName }}</strong> ?</p>
+      <div class="modal-actions">
+        <button class="btn-cancel" (click)="cancelAttributeLoot()">Annuler</button>
+        <button class="btn-confirm" (click)="confirmAttributeLoot()">Confirmer</button>
+      </div>
+    </div>
+  </div>
+}

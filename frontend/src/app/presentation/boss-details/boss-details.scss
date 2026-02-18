@@ -168,3 +168,97 @@
   from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.loot-top-candidate {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0 4px;
+  padding: 6px 10px;
+  background: rgba($gold-primary, 0.06);
+  @include gold-border;
+  border-radius: 6px;
+  font-size: 0.8rem;
+
+  .crown { font-size: 0.9rem; }
+  .top-name {
+    font-weight: bold;
+    @include gold-glow-text;
+  }
+  .top-info {
+    color: $text-secondary;
+    font-size: 0.75rem;
+  }
+}
+
+.btn-candidates {
+  background: none;
+  border: 1px solid $border-default;
+  border-radius: 4px;
+  color: $gold-primary;
+  padding: 4px 10px;
+  font-family: $font-body;
+  font-size: 0.75rem;
+  cursor: pointer;
+  margin: 4px 0;
+  transition: all 0.2s;
+  &:hover {
+    border-color: $border-gold;
+    background: rgba($gold-primary, 0.06);
+    box-shadow: 0 0 6px $gold-glow;
+  }
+}
+
+.no-candidates {
+  display: block;
+  margin: 4px 0;
+  font-size: 0.75rem;
+  color: $text-muted;
+  font-style: italic;
+}
+
+.candidates-list {
+  margin: 6px 0;
+  @include gold-border;
+  border-radius: 6px;
+  overflow: hidden;
+  background: $bg-primary;
+}
+
+.candidate-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  font-family: $font-body;
+  border-bottom: 1px solid $border-default;
+  transition: background 0.2s;
+  &:last-child { border-bottom: none; }
+  &:hover { background: rgba($gold-primary, 0.03); }
+  &.is-top { background: rgba($gold-primary, 0.05); }
+}
+
+.candidate-rank {
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.candidate-name {
+  font-weight: bold;
+  flex: 1;
+  color: $text-primary;
+}
+
+.candidate-class,
+.candidate-spec {
+  color: $text-secondary;
+  font-size: 0.72rem;
+}
+
+.candidate-points {
+  font-weight: bold;
+  @include gold-glow-text;
+  font-size: 0.8rem;
+}

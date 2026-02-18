@@ -6,6 +6,7 @@ import { BossComponent } from './presentation/boss/boss';
 import { BossDetail } from './presentation/boss-details/boss-details';
 import { ProfilComponent } from './presentation/profil/profil';
 import { RaidAdminComponent } from './presentation/raid-admin/raid-admin';
+import { DkpTableComponent } from './presentation/dkp/dkp';
 
 export const routes: Routes = [
   { path: 'register', component: Register },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   {path: 'boss/:id', component: BossDetail},
   { path: 'profil', component: ProfilComponent },
   { path: 'raid-admin/:id', component: RaidAdminComponent },
+  { path: 'dkp/:raidId', component: DkpTableComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];

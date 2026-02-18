@@ -613,3 +613,19 @@
     opacity: 1;
   }
 }
+
+.btn-dkp {
+  padding: 7px 14px;
+  border-radius: 4px;
+  border: 1px solid $border-gold;
+  background: rgba($gold-primary, 0.08);
+  color: $gold-primary;
+  font-family: $font-body;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    background: rgba($gold-primary, 0.15);
+    box-shadow: 0 0 8px $gold-glow;
+  }
+}

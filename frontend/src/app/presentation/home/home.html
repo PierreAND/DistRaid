@@ -52,7 +52,11 @@
   @if (raids.length > 0) {
     <div class="raids-grid">
       @for (raid of raids; track raid.id) {
-        <div class="raid-card" [class.joined]="isUserInRaid(raid)" [class.admin]="isRaidAdmin(raid)">
+        <div
+          class="raid-card"
+          [class.joined]="isUserInRaid(raid)"
+          [class.admin]="isRaidAdmin(raid)"
+        >
           <div class="card-top-line"></div>
 
           <div class="raid-card-header">
@@ -70,7 +74,9 @@
           <div class="raid-members">
             <span class="members-icon">👥</span>
             <span class="members-count">{{ raid.users?.length || 0 }} membre(s)</span>
-            <span class="raid-creator">— créé par {{ raid.createdBy?.name || raid.createdBy?.email }}</span>
+            <span class="raid-creator"
+              >— créé par {{ raid.createdBy?.name || raid.createdBy?.email }}</span
+            >
           </div>
 
           @if (raid.users && raid.users.length > 0) {
@@ -86,10 +92,12 @@
           <div class="raid-card-actions">
             <button class="btn-details" routerLink="/boss">📋 Boss</button>
 
+            @if (isUserInRaid(raid)) {
+              <button class="btn-dkp" [routerLink]="['/dkp', raid.id]">📊 DKP</button>
+            }
+
             @if (isRaidAdmin(raid)) {
-              <button class="btn-admin" [routerLink]="['/raid-admin', raid.id]">
-                👑 Gérer
-              </button>
+              <button class="btn-admin" [routerLink]="['/raid-admin', raid.id]">👑 Gérer</button>
             }
 
             @if (isUserInRaid(raid) && !isRaidAdmin(raid)) {

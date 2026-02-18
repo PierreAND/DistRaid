@@ -8,6 +8,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './infrastructure/services/auth.interceptor';
 import { BOSS_REPOSITORY_PROVIDER } from './domain/Implement/boss.provider';
 import { LOOT_REPOSITORY_PROVIDER } from './domain/Implement/loot.provider';
+import { DKP_PROVIDER_REPOSITORY } from './domain/Implement/dkp.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,6 +19,7 @@ export const appConfig: ApplicationConfig = {
     CLASS_REPOSITORY_PROVIDER,
     RAID_REPOSITORY_PROVIDER,
     BOSS_REPOSITORY_PROVIDER,
-    LOOT_REPOSITORY_PROVIDER
+    LOOT_REPOSITORY_PROVIDER,
+    DKP_PROVIDER_REPOSITORY,
   ]
 };

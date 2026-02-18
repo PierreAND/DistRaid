@@ -4,6 +4,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Boss } from '../../domain/models/boss/boss.model';
 import { GetOneBossUseCase } from '../../application/usecases/boss/getOneBoss.usecase';
 import { AddOneLootUseCase } from '../../application/usecases/loots/addOneLoot.usecase';
+import { GetLootCandidatesByBossUseCase } from '../../application/usecases/dkp/getLootCandidateBoss.usecase';
+import { LootWithCandidates } from '../../domain/models/dkp/dkp.model';
 declare const $WowheadPower: any;
 
 @Component({
@@ -18,12 +20,15 @@ export class BossDetail implements OnInit {
   errorMessage = '';
   sucessMessage = '';
   addingLootId: number | null = null;
+  lootCandidatesMap: Record<number, LootWithCandidates> = {};
+  expandedLootId: number | null = null;
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly getOneBossUseCase: GetOneBossUseCase,
     private readonly cdr: ChangeDetectorRef,
-    private readonly addOneLootUseCase: AddOneLootUseCase
+    private readonly addOneLootUseCase: AddOneLootUseCase,
+    private readonly getLootCandidates: GetLootCandidatesByBossUseCase,
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +42,7 @@ export class BossDetail implements OnInit {
         this.boss = data;
         this.cdr.detectChanges();
         this.refreshWowheadTooltips();
+        this.loadCandidates(id);
       },
       error: (err) => {
         console.error('Erreur chargement boss', err);
@@ -45,24 +51,51 @@ export class BossDetail implements OnInit {
       },
     });
   }
+
+  loadCandidates(bossId: number): void {
+    this.getLootCandidates.execute(bossId).subscribe({
+      next: (loots) => {
+        this.lootCandidatesMap = {};
+        loots.forEach((loot) => {
+          this.lootCandidatesMap[loot.id] = loot;
+        });
+        this.cdr.detectChanges();
+      },
+    });
+  }
+
+  getCandidates(lootId: number) {
+    return this.lootCandidatesMap[lootId]?.candidates ?? [];
+  }
+
+  getTopCandidate(lootId: number) {
+    const candidates = this.getCandidates(lootId);
+    return candidates.length > 0 ? candidates[0] : null;
+  }
+
+  toggleCandidates(lootId: number): void {
+    this.expandedLootId = this.expandedLootId === lootId ? null : lootId;
+  }
+
   addLoot(lootId: number): void {
     this.addingLootId = lootId;
     this.clearMessages();
 
     this.addOneLootUseCase.execute(lootId).subscribe({
       next: () => {
-         
         this.sucessMessage = 'Loot Ajouté à votre wishList ! ';
         this.addingLootId = null;
+        if (this.boss) this.loadCandidates(this.boss.id);
         this.cdr.detectChanges();
       },
       error: (err) => {
-        this.errorMessage = err.errror?.message || "Erreur lors de l'ajout";
+        this.errorMessage = err.error?.message || "Erreur lors de l'ajout";
         this.addingLootId = null;
         this.cdr.detectChanges();
       },
     });
   }
+
   private clearMessages(): void {
     this.errorMessage = '';
     this.sucessMessage = '';
