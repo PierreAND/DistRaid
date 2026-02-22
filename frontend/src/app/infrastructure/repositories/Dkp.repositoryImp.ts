@@ -12,6 +12,8 @@ import {
   LootHistoryEntry,
   AttendanceEntry,
   LootWithCandidates,
+  HeroicMarkMember,
+  HeroicMarksStatus,
 } from '../../domain/models/dkp/dkp.model';
 import { environment } from '../../../environments';
 
@@ -68,5 +70,21 @@ export class DkpRepositoryImpl extends DkpRepository {
     return this.http
       .get<any>(`${this.apiUrl}/auth/profile`)
       .pipe(map((user: { raidId: any; }) => user.raidId ?? null));
+  }
+
+   getMyHeroicMarks(): Observable<HeroicMarksStatus> {
+    return this.http.get<HeroicMarksStatus>(`${this.apiUrl}/heroic-marks/me`);
+  }
+
+  setHeroicMarksWanted(quantity: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/heroic-marks`, { quantity });
+  }
+
+  getHeroicMarksForRaid(raidId: number): Observable<HeroicMarkMember[]> {
+    return this.http.get<HeroicMarkMember[]>(`${this.apiUrl}/raids/${raidId}/heroic-marks`);
+  }
+
+  attributeHeroicMark(raidId: number, userId: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/raids/${raidId}/heroic-marks/attribute/${userId}`, {});
   }
 }

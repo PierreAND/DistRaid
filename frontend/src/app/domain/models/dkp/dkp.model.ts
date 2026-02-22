@@ -72,3 +72,18 @@ export interface AttributeLootPayload {
 export interface RecordAttendancePayload {
   userIds: number[];
 }
+
+export interface HeroicMarksStatus {
+  quantity: number;
+  received: number;
+}
+
+export interface HeroicMarkMember {
+  userId: number;
+  name: string;
+  classe: { id: number; name: string };
+  specialisation: { id: number; name: string };
+  quantity: number;
+  received: number;
+  points: number;
+}
