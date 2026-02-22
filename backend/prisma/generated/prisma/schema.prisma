@@ -8,24 +8,25 @@ datasource db {
 }
 
 model User {
-  id               Int              @id @default(autoincrement())
-  email            String           @unique
-  name             String?
-  password         String
-  classeId         Int
-  specialisationId Int
-  raidId           Int?
-  raid             Raid?            @relation(fields: [raidId], references: [id])
-  createdRaids     Raid[]           @relation("RaidCreator")
-  joinRequests     JoinRequest[]
-  loots            Loot[]
-  WishlistItem     WishlistItem[]
-  RaidPoints       RaidPoints?
-  LootHistory      LootHistory[]
-  attendances      RaidAttendance[]
-  classe           Classe           @relation(fields: [classeId], references: [id])
-  specialisation   Specialisation   @relation(fields: [specialisationId], references: [id])
-  createdAt        DateTime         @default(now())
+  id                Int                @id @default(autoincrement())
+  email             String             @unique
+  name              String?
+  password          String
+  classeId          Int
+  specialisationId  Int
+  raidId            Int?
+  raid              Raid?              @relation(fields: [raidId], references: [id])
+  createdRaids      Raid[]             @relation("RaidCreator")
+  joinRequests      JoinRequest[]
+  loots             Loot[]
+  WishlistItem      WishlistItem[]
+  RaidPoints        RaidPoints?
+  LootHistory       LootHistory[]
+  attendances       RaidAttendance[]
+  heroicMarkRequest HeroicMarkRequest?
+  classe            Classe             @relation(fields: [classeId], references: [id])
+  specialisation    Specialisation     @relation(fields: [specialisationId], references: [id])
+  createdAt         DateTime           @default(now())
 }
 
 model Classe {
@@ -93,16 +94,17 @@ model WishlistItem {
 }
 
 model LootHistory {
-  id         Int      @id @default(autoincrement())
-  userId     Int
-  lootId     Int
-  raidId     Int
-  priority   Int // priority at the time of attribution
-  pointsCost Int // points deducted
-  user       User     @relation(fields: [userId], references: [id])
-  loot       Loot     @relation(fields: [lootId], references: [id])
-  raid       Raid     @relation(fields: [raidId], references: [id])
-  createdAt  DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  description String
+  lootId      Int?
+  raidId      Int
+  priority    Int // priority at the time of attribution
+  pointsCost  Int // points deducted
+  user        User     @relation(fields: [userId], references: [id])
+  loot        Loot?    @relation(fields: [lootId], references: [id])
+  raid        Raid     @relation(fields: [raidId], references: [id])
+  createdAt   DateTime @default(now())
 }
 
 model RaidAttendance {
@@ -132,4 +134,14 @@ model Loot {
   LootHistory  LootHistory[]
 
   @@unique([name, bossId])
+}
+
+model HeroicMarkRequest {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @unique
+  quantity  Int      @default(0) // Combien le joueur veut (0-5)
+  received  Int      @default(0) // Combien il a déjà reçu
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

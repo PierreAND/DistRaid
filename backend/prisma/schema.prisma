@@ -23,6 +23,7 @@ model User {
   RaidPoints       RaidPoints?
   LootHistory      LootHistory[]
   attendances      RaidAttendance[]
+  heroicMarkRequest HeroicMarkRequest?
   classe           Classe         @relation(fields: [classeId], references: [id])
   specialisation   Specialisation @relation(fields: [specialisationId], references: [id])
   createdAt        DateTime       @default(now())
@@ -93,12 +94,13 @@ model WishlistItem {
 model LootHistory {
   id          Int      @id @default(autoincrement())
   userId      Int
-  lootId      Int
+  description String
+  lootId      Int?
   raidId      Int
   priority    Int      // priority at the time of attribution
   pointsCost  Int      // points deducted
   user        User     @relation(fields: [userId], references: [id])
-  loot        Loot     @relation(fields: [lootId], references: [id])
+  loot        Loot?     @relation(fields: [lootId], references: [id])
   raid        Raid     @relation(fields: [raidId], references: [id])
   createdAt   DateTime @default(now())
 }
@@ -129,4 +131,14 @@ model Loot {
   WishlistItem WishlistItem[]
   LootHistory LootHistory[]
   @@unique([name, bossId])
+}
+
+model HeroicMarkRequest {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @unique
+  quantity  Int      @default(0) // Combien le joueur veut (0-5)
+  received  Int      @default(0) // Combien il a déjà reçu
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

@@ -68,6 +68,11 @@ export type Boss = $Result.DefaultSelection<Prisma.$BossPayload>
  * 
  */
 export type Loot = $Result.DefaultSelection<Prisma.$LootPayload>
+/**
+ * Model HeroicMarkRequest
+ * 
+ */
+export type HeroicMarkRequest = $Result.DefaultSelection<Prisma.$HeroicMarkRequestPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -295,6 +300,16 @@ export class PrismaClient<
     * ```
     */
   get loot(): Prisma.LootDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.heroicMarkRequest`: Exposes CRUD operations for the **HeroicMarkRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HeroicMarkRequests
+    * const heroicMarkRequests = await prisma.heroicMarkRequest.findMany()
+    * ```
+    */
+  get heroicMarkRequest(): Prisma.HeroicMarkRequestDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -739,7 +754,8 @@ export namespace Prisma {
     LootHistory: 'LootHistory',
     RaidAttendance: 'RaidAttendance',
     Boss: 'Boss',
-    Loot: 'Loot'
+    Loot: 'Loot',
+    HeroicMarkRequest: 'HeroicMarkRequest'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -755,7 +771,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "classe" | "specialisation" | "raid" | "joinRequest" | "raidPoints" | "wishlistItem" | "lootHistory" | "raidAttendance" | "boss" | "loot"
+      modelProps: "user" | "classe" | "specialisation" | "raid" | "joinRequest" | "raidPoints" | "wishlistItem" | "lootHistory" | "raidAttendance" | "boss" | "loot" | "heroicMarkRequest"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1573,6 +1589,80 @@ export namespace Prisma {
           }
         }
       }
+      HeroicMarkRequest: {
+        payload: Prisma.$HeroicMarkRequestPayload<ExtArgs>
+        fields: Prisma.HeroicMarkRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HeroicMarkRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroicMarkRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HeroicMarkRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroicMarkRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.HeroicMarkRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroicMarkRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HeroicMarkRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroicMarkRequestPayload>
+          }
+          findMany: {
+            args: Prisma.HeroicMarkRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroicMarkRequestPayload>[]
+          }
+          create: {
+            args: Prisma.HeroicMarkRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroicMarkRequestPayload>
+          }
+          createMany: {
+            args: Prisma.HeroicMarkRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HeroicMarkRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroicMarkRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.HeroicMarkRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroicMarkRequestPayload>
+          }
+          update: {
+            args: Prisma.HeroicMarkRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroicMarkRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.HeroicMarkRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HeroicMarkRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HeroicMarkRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroicMarkRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.HeroicMarkRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HeroicMarkRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.HeroicMarkRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHeroicMarkRequest>
+          }
+          groupBy: {
+            args: Prisma.HeroicMarkRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HeroicMarkRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HeroicMarkRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<HeroicMarkRequestCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1692,6 +1782,7 @@ export namespace Prisma {
     raidAttendance?: RaidAttendanceOmit
     boss?: BossOmit
     loot?: LootOmit
+    heroicMarkRequest?: HeroicMarkRequestOmit
   }
 
   /* Types for Logging */
@@ -2307,6 +2398,7 @@ export namespace Prisma {
     RaidPoints?: boolean | User$RaidPointsArgs<ExtArgs>
     LootHistory?: boolean | User$LootHistoryArgs<ExtArgs>
     attendances?: boolean | User$attendancesArgs<ExtArgs>
+    heroicMarkRequest?: boolean | User$heroicMarkRequestArgs<ExtArgs>
     classe?: boolean | ClasseDefaultArgs<ExtArgs>
     specialisation?: boolean | SpecialisationDefaultArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -2361,6 +2453,7 @@ export namespace Prisma {
     RaidPoints?: boolean | User$RaidPointsArgs<ExtArgs>
     LootHistory?: boolean | User$LootHistoryArgs<ExtArgs>
     attendances?: boolean | User$attendancesArgs<ExtArgs>
+    heroicMarkRequest?: boolean | User$heroicMarkRequestArgs<ExtArgs>
     classe?: boolean | ClasseDefaultArgs<ExtArgs>
     specialisation?: boolean | SpecialisationDefaultArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -2387,6 +2480,7 @@ export namespace Prisma {
       RaidPoints: Prisma.$RaidPointsPayload<ExtArgs> | null
       LootHistory: Prisma.$LootHistoryPayload<ExtArgs>[]
       attendances: Prisma.$RaidAttendancePayload<ExtArgs>[]
+      heroicMarkRequest: Prisma.$HeroicMarkRequestPayload<ExtArgs> | null
       classe: Prisma.$ClassePayload<ExtArgs>
       specialisation: Prisma.$SpecialisationPayload<ExtArgs>
     }
@@ -2801,6 +2895,7 @@ export namespace Prisma {
     RaidPoints<T extends User$RaidPointsArgs<ExtArgs> = {}>(args?: Subset<T, User$RaidPointsArgs<ExtArgs>>): Prisma__RaidPointsClient<$Result.GetResult<Prisma.$RaidPointsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     LootHistory<T extends User$LootHistoryArgs<ExtArgs> = {}>(args?: Subset<T, User$LootHistoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LootHistoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendances<T extends User$attendancesArgs<ExtArgs> = {}>(args?: Subset<T, User$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RaidAttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    heroicMarkRequest<T extends User$heroicMarkRequestArgs<ExtArgs> = {}>(args?: Subset<T, User$heroicMarkRequestArgs<ExtArgs>>): Prisma__HeroicMarkRequestClient<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     classe<T extends ClasseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClasseDefaultArgs<ExtArgs>>): Prisma__ClasseClient<$Result.GetResult<Prisma.$ClassePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     specialisation<T extends SpecialisationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SpecialisationDefaultArgs<ExtArgs>>): Prisma__SpecialisationClient<$Result.GetResult<Prisma.$SpecialisationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -3415,6 +3510,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: RaidAttendanceScalarFieldEnum | RaidAttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * User.heroicMarkRequest
+   */
+  export type User$heroicMarkRequestArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestInclude<ExtArgs> | null
+    where?: HeroicMarkRequestWhereInput
   }
 
   /**
@@ -10193,6 +10307,7 @@ export namespace Prisma {
   export type LootHistoryMinAggregateOutputType = {
     id: number | null
     userId: number | null
+    description: string | null
     lootId: number | null
     raidId: number | null
     priority: number | null
@@ -10203,6 +10318,7 @@ export namespace Prisma {
   export type LootHistoryMaxAggregateOutputType = {
     id: number | null
     userId: number | null
+    description: string | null
     lootId: number | null
     raidId: number | null
     priority: number | null
@@ -10213,6 +10329,7 @@ export namespace Prisma {
   export type LootHistoryCountAggregateOutputType = {
     id: number
     userId: number
+    description: number
     lootId: number
     raidId: number
     priority: number
@@ -10243,6 +10360,7 @@ export namespace Prisma {
   export type LootHistoryMinAggregateInputType = {
     id?: true
     userId?: true
+    description?: true
     lootId?: true
     raidId?: true
     priority?: true
@@ -10253,6 +10371,7 @@ export namespace Prisma {
   export type LootHistoryMaxAggregateInputType = {
     id?: true
     userId?: true
+    description?: true
     lootId?: true
     raidId?: true
     priority?: true
@@ -10263,6 +10382,7 @@ export namespace Prisma {
   export type LootHistoryCountAggregateInputType = {
     id?: true
     userId?: true
+    description?: true
     lootId?: true
     raidId?: true
     priority?: true
@@ -10360,7 +10480,8 @@ export namespace Prisma {
   export type LootHistoryGroupByOutputType = {
     id: number
     userId: number
-    lootId: number
+    description: string
+    lootId: number | null
     raidId: number
     priority: number
     pointsCost: number
@@ -10389,45 +10510,49 @@ export namespace Prisma {
   export type LootHistorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    description?: boolean
     lootId?: boolean
     raidId?: boolean
     priority?: boolean
     pointsCost?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    loot?: boolean | LootDefaultArgs<ExtArgs>
+    loot?: boolean | LootHistory$lootArgs<ExtArgs>
     raid?: boolean | RaidDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lootHistory"]>
 
   export type LootHistorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    description?: boolean
     lootId?: boolean
     raidId?: boolean
     priority?: boolean
     pointsCost?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    loot?: boolean | LootDefaultArgs<ExtArgs>
+    loot?: boolean | LootHistory$lootArgs<ExtArgs>
     raid?: boolean | RaidDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lootHistory"]>
 
   export type LootHistorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    description?: boolean
     lootId?: boolean
     raidId?: boolean
     priority?: boolean
     pointsCost?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    loot?: boolean | LootDefaultArgs<ExtArgs>
+    loot?: boolean | LootHistory$lootArgs<ExtArgs>
     raid?: boolean | RaidDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["lootHistory"]>
 
   export type LootHistorySelectScalar = {
     id?: boolean
     userId?: boolean
+    description?: boolean
     lootId?: boolean
     raidId?: boolean
     priority?: boolean
@@ -10435,20 +10560,20 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type LootHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "lootId" | "raidId" | "priority" | "pointsCost" | "createdAt", ExtArgs["result"]["lootHistory"]>
+  export type LootHistoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "description" | "lootId" | "raidId" | "priority" | "pointsCost" | "createdAt", ExtArgs["result"]["lootHistory"]>
   export type LootHistoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    loot?: boolean | LootDefaultArgs<ExtArgs>
+    loot?: boolean | LootHistory$lootArgs<ExtArgs>
     raid?: boolean | RaidDefaultArgs<ExtArgs>
   }
   export type LootHistoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    loot?: boolean | LootDefaultArgs<ExtArgs>
+    loot?: boolean | LootHistory$lootArgs<ExtArgs>
     raid?: boolean | RaidDefaultArgs<ExtArgs>
   }
   export type LootHistoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    loot?: boolean | LootDefaultArgs<ExtArgs>
+    loot?: boolean | LootHistory$lootArgs<ExtArgs>
     raid?: boolean | RaidDefaultArgs<ExtArgs>
   }
 
@@ -10456,13 +10581,14 @@ export namespace Prisma {
     name: "LootHistory"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      loot: Prisma.$LootPayload<ExtArgs>
+      loot: Prisma.$LootPayload<ExtArgs> | null
       raid: Prisma.$RaidPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userId: number
-      lootId: number
+      description: string
+      lootId: number | null
       raidId: number
       priority: number
       pointsCost: number
@@ -10862,7 +10988,7 @@ export namespace Prisma {
   export interface Prisma__LootHistoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    loot<T extends LootDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LootDefaultArgs<ExtArgs>>): Prisma__LootClient<$Result.GetResult<Prisma.$LootPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    loot<T extends LootHistory$lootArgs<ExtArgs> = {}>(args?: Subset<T, LootHistory$lootArgs<ExtArgs>>): Prisma__LootClient<$Result.GetResult<Prisma.$LootPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     raid<T extends RaidDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RaidDefaultArgs<ExtArgs>>): Prisma__RaidClient<$Result.GetResult<Prisma.$RaidPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10895,6 +11021,7 @@ export namespace Prisma {
   interface LootHistoryFieldRefs {
     readonly id: FieldRef<"LootHistory", 'Int'>
     readonly userId: FieldRef<"LootHistory", 'Int'>
+    readonly description: FieldRef<"LootHistory", 'String'>
     readonly lootId: FieldRef<"LootHistory", 'Int'>
     readonly raidId: FieldRef<"LootHistory", 'Int'>
     readonly priority: FieldRef<"LootHistory", 'Int'>
@@ -11293,6 +11420,25 @@ export namespace Prisma {
      * Limit how many LootHistories to delete.
      */
     limit?: number
+  }
+
+  /**
+   * LootHistory.loot
+   */
+  export type LootHistory$lootArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Loot
+     */
+    select?: LootSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Loot
+     */
+    omit?: LootOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LootInclude<ExtArgs> | null
+    where?: LootWhereInput
   }
 
   /**
@@ -14661,6 +14807,1123 @@ export namespace Prisma {
 
 
   /**
+   * Model HeroicMarkRequest
+   */
+
+  export type AggregateHeroicMarkRequest = {
+    _count: HeroicMarkRequestCountAggregateOutputType | null
+    _avg: HeroicMarkRequestAvgAggregateOutputType | null
+    _sum: HeroicMarkRequestSumAggregateOutputType | null
+    _min: HeroicMarkRequestMinAggregateOutputType | null
+    _max: HeroicMarkRequestMaxAggregateOutputType | null
+  }
+
+  export type HeroicMarkRequestAvgAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    quantity: number | null
+    received: number | null
+  }
+
+  export type HeroicMarkRequestSumAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    quantity: number | null
+    received: number | null
+  }
+
+  export type HeroicMarkRequestMinAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    quantity: number | null
+    received: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HeroicMarkRequestMaxAggregateOutputType = {
+    id: number | null
+    userId: number | null
+    quantity: number | null
+    received: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HeroicMarkRequestCountAggregateOutputType = {
+    id: number
+    userId: number
+    quantity: number
+    received: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type HeroicMarkRequestAvgAggregateInputType = {
+    id?: true
+    userId?: true
+    quantity?: true
+    received?: true
+  }
+
+  export type HeroicMarkRequestSumAggregateInputType = {
+    id?: true
+    userId?: true
+    quantity?: true
+    received?: true
+  }
+
+  export type HeroicMarkRequestMinAggregateInputType = {
+    id?: true
+    userId?: true
+    quantity?: true
+    received?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HeroicMarkRequestMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    quantity?: true
+    received?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HeroicMarkRequestCountAggregateInputType = {
+    id?: true
+    userId?: true
+    quantity?: true
+    received?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type HeroicMarkRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HeroicMarkRequest to aggregate.
+     */
+    where?: HeroicMarkRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroicMarkRequests to fetch.
+     */
+    orderBy?: HeroicMarkRequestOrderByWithRelationInput | HeroicMarkRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HeroicMarkRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroicMarkRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroicMarkRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HeroicMarkRequests
+    **/
+    _count?: true | HeroicMarkRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: HeroicMarkRequestAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HeroicMarkRequestSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HeroicMarkRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HeroicMarkRequestMaxAggregateInputType
+  }
+
+  export type GetHeroicMarkRequestAggregateType<T extends HeroicMarkRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateHeroicMarkRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHeroicMarkRequest[P]>
+      : GetScalarType<T[P], AggregateHeroicMarkRequest[P]>
+  }
+
+
+
+
+  export type HeroicMarkRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HeroicMarkRequestWhereInput
+    orderBy?: HeroicMarkRequestOrderByWithAggregationInput | HeroicMarkRequestOrderByWithAggregationInput[]
+    by: HeroicMarkRequestScalarFieldEnum[] | HeroicMarkRequestScalarFieldEnum
+    having?: HeroicMarkRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HeroicMarkRequestCountAggregateInputType | true
+    _avg?: HeroicMarkRequestAvgAggregateInputType
+    _sum?: HeroicMarkRequestSumAggregateInputType
+    _min?: HeroicMarkRequestMinAggregateInputType
+    _max?: HeroicMarkRequestMaxAggregateInputType
+  }
+
+  export type HeroicMarkRequestGroupByOutputType = {
+    id: number
+    userId: number
+    quantity: number
+    received: number
+    createdAt: Date
+    updatedAt: Date
+    _count: HeroicMarkRequestCountAggregateOutputType | null
+    _avg: HeroicMarkRequestAvgAggregateOutputType | null
+    _sum: HeroicMarkRequestSumAggregateOutputType | null
+    _min: HeroicMarkRequestMinAggregateOutputType | null
+    _max: HeroicMarkRequestMaxAggregateOutputType | null
+  }
+
+  type GetHeroicMarkRequestGroupByPayload<T extends HeroicMarkRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HeroicMarkRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HeroicMarkRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HeroicMarkRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], HeroicMarkRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HeroicMarkRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    quantity?: boolean
+    received?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["heroicMarkRequest"]>
+
+  export type HeroicMarkRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    quantity?: boolean
+    received?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["heroicMarkRequest"]>
+
+  export type HeroicMarkRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    quantity?: boolean
+    received?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["heroicMarkRequest"]>
+
+  export type HeroicMarkRequestSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    quantity?: boolean
+    received?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type HeroicMarkRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "quantity" | "received" | "createdAt" | "updatedAt", ExtArgs["result"]["heroicMarkRequest"]>
+  export type HeroicMarkRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type HeroicMarkRequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type HeroicMarkRequestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $HeroicMarkRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "HeroicMarkRequest"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      userId: number
+      quantity: number
+      received: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["heroicMarkRequest"]>
+    composites: {}
+  }
+
+  type HeroicMarkRequestGetPayload<S extends boolean | null | undefined | HeroicMarkRequestDefaultArgs> = $Result.GetResult<Prisma.$HeroicMarkRequestPayload, S>
+
+  type HeroicMarkRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HeroicMarkRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HeroicMarkRequestCountAggregateInputType | true
+    }
+
+  export interface HeroicMarkRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HeroicMarkRequest'], meta: { name: 'HeroicMarkRequest' } }
+    /**
+     * Find zero or one HeroicMarkRequest that matches the filter.
+     * @param {HeroicMarkRequestFindUniqueArgs} args - Arguments to find a HeroicMarkRequest
+     * @example
+     * // Get one HeroicMarkRequest
+     * const heroicMarkRequest = await prisma.heroicMarkRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HeroicMarkRequestFindUniqueArgs>(args: SelectSubset<T, HeroicMarkRequestFindUniqueArgs<ExtArgs>>): Prisma__HeroicMarkRequestClient<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one HeroicMarkRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HeroicMarkRequestFindUniqueOrThrowArgs} args - Arguments to find a HeroicMarkRequest
+     * @example
+     * // Get one HeroicMarkRequest
+     * const heroicMarkRequest = await prisma.heroicMarkRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HeroicMarkRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, HeroicMarkRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HeroicMarkRequestClient<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HeroicMarkRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroicMarkRequestFindFirstArgs} args - Arguments to find a HeroicMarkRequest
+     * @example
+     * // Get one HeroicMarkRequest
+     * const heroicMarkRequest = await prisma.heroicMarkRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HeroicMarkRequestFindFirstArgs>(args?: SelectSubset<T, HeroicMarkRequestFindFirstArgs<ExtArgs>>): Prisma__HeroicMarkRequestClient<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HeroicMarkRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroicMarkRequestFindFirstOrThrowArgs} args - Arguments to find a HeroicMarkRequest
+     * @example
+     * // Get one HeroicMarkRequest
+     * const heroicMarkRequest = await prisma.heroicMarkRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HeroicMarkRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, HeroicMarkRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__HeroicMarkRequestClient<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more HeroicMarkRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroicMarkRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HeroicMarkRequests
+     * const heroicMarkRequests = await prisma.heroicMarkRequest.findMany()
+     * 
+     * // Get first 10 HeroicMarkRequests
+     * const heroicMarkRequests = await prisma.heroicMarkRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const heroicMarkRequestWithIdOnly = await prisma.heroicMarkRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HeroicMarkRequestFindManyArgs>(args?: SelectSubset<T, HeroicMarkRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a HeroicMarkRequest.
+     * @param {HeroicMarkRequestCreateArgs} args - Arguments to create a HeroicMarkRequest.
+     * @example
+     * // Create one HeroicMarkRequest
+     * const HeroicMarkRequest = await prisma.heroicMarkRequest.create({
+     *   data: {
+     *     // ... data to create a HeroicMarkRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends HeroicMarkRequestCreateArgs>(args: SelectSubset<T, HeroicMarkRequestCreateArgs<ExtArgs>>): Prisma__HeroicMarkRequestClient<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many HeroicMarkRequests.
+     * @param {HeroicMarkRequestCreateManyArgs} args - Arguments to create many HeroicMarkRequests.
+     * @example
+     * // Create many HeroicMarkRequests
+     * const heroicMarkRequest = await prisma.heroicMarkRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HeroicMarkRequestCreateManyArgs>(args?: SelectSubset<T, HeroicMarkRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many HeroicMarkRequests and returns the data saved in the database.
+     * @param {HeroicMarkRequestCreateManyAndReturnArgs} args - Arguments to create many HeroicMarkRequests.
+     * @example
+     * // Create many HeroicMarkRequests
+     * const heroicMarkRequest = await prisma.heroicMarkRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many HeroicMarkRequests and only return the `id`
+     * const heroicMarkRequestWithIdOnly = await prisma.heroicMarkRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HeroicMarkRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, HeroicMarkRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a HeroicMarkRequest.
+     * @param {HeroicMarkRequestDeleteArgs} args - Arguments to delete one HeroicMarkRequest.
+     * @example
+     * // Delete one HeroicMarkRequest
+     * const HeroicMarkRequest = await prisma.heroicMarkRequest.delete({
+     *   where: {
+     *     // ... filter to delete one HeroicMarkRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HeroicMarkRequestDeleteArgs>(args: SelectSubset<T, HeroicMarkRequestDeleteArgs<ExtArgs>>): Prisma__HeroicMarkRequestClient<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one HeroicMarkRequest.
+     * @param {HeroicMarkRequestUpdateArgs} args - Arguments to update one HeroicMarkRequest.
+     * @example
+     * // Update one HeroicMarkRequest
+     * const heroicMarkRequest = await prisma.heroicMarkRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HeroicMarkRequestUpdateArgs>(args: SelectSubset<T, HeroicMarkRequestUpdateArgs<ExtArgs>>): Prisma__HeroicMarkRequestClient<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more HeroicMarkRequests.
+     * @param {HeroicMarkRequestDeleteManyArgs} args - Arguments to filter HeroicMarkRequests to delete.
+     * @example
+     * // Delete a few HeroicMarkRequests
+     * const { count } = await prisma.heroicMarkRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HeroicMarkRequestDeleteManyArgs>(args?: SelectSubset<T, HeroicMarkRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HeroicMarkRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroicMarkRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HeroicMarkRequests
+     * const heroicMarkRequest = await prisma.heroicMarkRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HeroicMarkRequestUpdateManyArgs>(args: SelectSubset<T, HeroicMarkRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HeroicMarkRequests and returns the data updated in the database.
+     * @param {HeroicMarkRequestUpdateManyAndReturnArgs} args - Arguments to update many HeroicMarkRequests.
+     * @example
+     * // Update many HeroicMarkRequests
+     * const heroicMarkRequest = await prisma.heroicMarkRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more HeroicMarkRequests and only return the `id`
+     * const heroicMarkRequestWithIdOnly = await prisma.heroicMarkRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HeroicMarkRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, HeroicMarkRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one HeroicMarkRequest.
+     * @param {HeroicMarkRequestUpsertArgs} args - Arguments to update or create a HeroicMarkRequest.
+     * @example
+     * // Update or create a HeroicMarkRequest
+     * const heroicMarkRequest = await prisma.heroicMarkRequest.upsert({
+     *   create: {
+     *     // ... data to create a HeroicMarkRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HeroicMarkRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HeroicMarkRequestUpsertArgs>(args: SelectSubset<T, HeroicMarkRequestUpsertArgs<ExtArgs>>): Prisma__HeroicMarkRequestClient<$Result.GetResult<Prisma.$HeroicMarkRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of HeroicMarkRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroicMarkRequestCountArgs} args - Arguments to filter HeroicMarkRequests to count.
+     * @example
+     * // Count the number of HeroicMarkRequests
+     * const count = await prisma.heroicMarkRequest.count({
+     *   where: {
+     *     // ... the filter for the HeroicMarkRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends HeroicMarkRequestCountArgs>(
+      args?: Subset<T, HeroicMarkRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HeroicMarkRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HeroicMarkRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroicMarkRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HeroicMarkRequestAggregateArgs>(args: Subset<T, HeroicMarkRequestAggregateArgs>): Prisma.PrismaPromise<GetHeroicMarkRequestAggregateType<T>>
+
+    /**
+     * Group by HeroicMarkRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HeroicMarkRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HeroicMarkRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HeroicMarkRequestGroupByArgs['orderBy'] }
+        : { orderBy?: HeroicMarkRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HeroicMarkRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHeroicMarkRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the HeroicMarkRequest model
+   */
+  readonly fields: HeroicMarkRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HeroicMarkRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HeroicMarkRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the HeroicMarkRequest model
+   */
+  interface HeroicMarkRequestFieldRefs {
+    readonly id: FieldRef<"HeroicMarkRequest", 'Int'>
+    readonly userId: FieldRef<"HeroicMarkRequest", 'Int'>
+    readonly quantity: FieldRef<"HeroicMarkRequest", 'Int'>
+    readonly received: FieldRef<"HeroicMarkRequest", 'Int'>
+    readonly createdAt: FieldRef<"HeroicMarkRequest", 'DateTime'>
+    readonly updatedAt: FieldRef<"HeroicMarkRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * HeroicMarkRequest findUnique
+   */
+  export type HeroicMarkRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which HeroicMarkRequest to fetch.
+     */
+    where: HeroicMarkRequestWhereUniqueInput
+  }
+
+  /**
+   * HeroicMarkRequest findUniqueOrThrow
+   */
+  export type HeroicMarkRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which HeroicMarkRequest to fetch.
+     */
+    where: HeroicMarkRequestWhereUniqueInput
+  }
+
+  /**
+   * HeroicMarkRequest findFirst
+   */
+  export type HeroicMarkRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which HeroicMarkRequest to fetch.
+     */
+    where?: HeroicMarkRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroicMarkRequests to fetch.
+     */
+    orderBy?: HeroicMarkRequestOrderByWithRelationInput | HeroicMarkRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HeroicMarkRequests.
+     */
+    cursor?: HeroicMarkRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroicMarkRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroicMarkRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HeroicMarkRequests.
+     */
+    distinct?: HeroicMarkRequestScalarFieldEnum | HeroicMarkRequestScalarFieldEnum[]
+  }
+
+  /**
+   * HeroicMarkRequest findFirstOrThrow
+   */
+  export type HeroicMarkRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which HeroicMarkRequest to fetch.
+     */
+    where?: HeroicMarkRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroicMarkRequests to fetch.
+     */
+    orderBy?: HeroicMarkRequestOrderByWithRelationInput | HeroicMarkRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HeroicMarkRequests.
+     */
+    cursor?: HeroicMarkRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroicMarkRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroicMarkRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HeroicMarkRequests.
+     */
+    distinct?: HeroicMarkRequestScalarFieldEnum | HeroicMarkRequestScalarFieldEnum[]
+  }
+
+  /**
+   * HeroicMarkRequest findMany
+   */
+  export type HeroicMarkRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which HeroicMarkRequests to fetch.
+     */
+    where?: HeroicMarkRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HeroicMarkRequests to fetch.
+     */
+    orderBy?: HeroicMarkRequestOrderByWithRelationInput | HeroicMarkRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HeroicMarkRequests.
+     */
+    cursor?: HeroicMarkRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HeroicMarkRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HeroicMarkRequests.
+     */
+    skip?: number
+    distinct?: HeroicMarkRequestScalarFieldEnum | HeroicMarkRequestScalarFieldEnum[]
+  }
+
+  /**
+   * HeroicMarkRequest create
+   */
+  export type HeroicMarkRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a HeroicMarkRequest.
+     */
+    data: XOR<HeroicMarkRequestCreateInput, HeroicMarkRequestUncheckedCreateInput>
+  }
+
+  /**
+   * HeroicMarkRequest createMany
+   */
+  export type HeroicMarkRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HeroicMarkRequests.
+     */
+    data: HeroicMarkRequestCreateManyInput | HeroicMarkRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HeroicMarkRequest createManyAndReturn
+   */
+  export type HeroicMarkRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many HeroicMarkRequests.
+     */
+    data: HeroicMarkRequestCreateManyInput | HeroicMarkRequestCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HeroicMarkRequest update
+   */
+  export type HeroicMarkRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a HeroicMarkRequest.
+     */
+    data: XOR<HeroicMarkRequestUpdateInput, HeroicMarkRequestUncheckedUpdateInput>
+    /**
+     * Choose, which HeroicMarkRequest to update.
+     */
+    where: HeroicMarkRequestWhereUniqueInput
+  }
+
+  /**
+   * HeroicMarkRequest updateMany
+   */
+  export type HeroicMarkRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HeroicMarkRequests.
+     */
+    data: XOR<HeroicMarkRequestUpdateManyMutationInput, HeroicMarkRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which HeroicMarkRequests to update
+     */
+    where?: HeroicMarkRequestWhereInput
+    /**
+     * Limit how many HeroicMarkRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HeroicMarkRequest updateManyAndReturn
+   */
+  export type HeroicMarkRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update HeroicMarkRequests.
+     */
+    data: XOR<HeroicMarkRequestUpdateManyMutationInput, HeroicMarkRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which HeroicMarkRequests to update
+     */
+    where?: HeroicMarkRequestWhereInput
+    /**
+     * Limit how many HeroicMarkRequests to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HeroicMarkRequest upsert
+   */
+  export type HeroicMarkRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the HeroicMarkRequest to update in case it exists.
+     */
+    where: HeroicMarkRequestWhereUniqueInput
+    /**
+     * In case the HeroicMarkRequest found by the `where` argument doesn't exist, create a new HeroicMarkRequest with this data.
+     */
+    create: XOR<HeroicMarkRequestCreateInput, HeroicMarkRequestUncheckedCreateInput>
+    /**
+     * In case the HeroicMarkRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HeroicMarkRequestUpdateInput, HeroicMarkRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * HeroicMarkRequest delete
+   */
+  export type HeroicMarkRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestInclude<ExtArgs> | null
+    /**
+     * Filter which HeroicMarkRequest to delete.
+     */
+    where: HeroicMarkRequestWhereUniqueInput
+  }
+
+  /**
+   * HeroicMarkRequest deleteMany
+   */
+  export type HeroicMarkRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HeroicMarkRequests to delete
+     */
+    where?: HeroicMarkRequestWhereInput
+    /**
+     * Limit how many HeroicMarkRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * HeroicMarkRequest without action
+   */
+  export type HeroicMarkRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HeroicMarkRequest
+     */
+    select?: HeroicMarkRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HeroicMarkRequest
+     */
+    omit?: HeroicMarkRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HeroicMarkRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -14749,6 +16012,7 @@ export namespace Prisma {
   export const LootHistoryScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    description: 'description',
     lootId: 'lootId',
     raidId: 'raidId',
     priority: 'priority',
@@ -14786,6 +16050,18 @@ export namespace Prisma {
   };
 
   export type LootScalarFieldEnum = (typeof LootScalarFieldEnum)[keyof typeof LootScalarFieldEnum]
+
+
+  export const HeroicMarkRequestScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    quantity: 'quantity',
+    received: 'received',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type HeroicMarkRequestScalarFieldEnum = (typeof HeroicMarkRequestScalarFieldEnum)[keyof typeof HeroicMarkRequestScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -14896,6 +16172,7 @@ export namespace Prisma {
     RaidPoints?: XOR<RaidPointsNullableScalarRelationFilter, RaidPointsWhereInput> | null
     LootHistory?: LootHistoryListRelationFilter
     attendances?: RaidAttendanceListRelationFilter
+    heroicMarkRequest?: XOR<HeroicMarkRequestNullableScalarRelationFilter, HeroicMarkRequestWhereInput> | null
     classe?: XOR<ClasseScalarRelationFilter, ClasseWhereInput>
     specialisation?: XOR<SpecialisationScalarRelationFilter, SpecialisationWhereInput>
   }
@@ -14917,6 +16194,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsOrderByWithRelationInput
     LootHistory?: LootHistoryOrderByRelationAggregateInput
     attendances?: RaidAttendanceOrderByRelationAggregateInput
+    heroicMarkRequest?: HeroicMarkRequestOrderByWithRelationInput
     classe?: ClasseOrderByWithRelationInput
     specialisation?: SpecialisationOrderByWithRelationInput
   }
@@ -14941,6 +16219,7 @@ export namespace Prisma {
     RaidPoints?: XOR<RaidPointsNullableScalarRelationFilter, RaidPointsWhereInput> | null
     LootHistory?: LootHistoryListRelationFilter
     attendances?: RaidAttendanceListRelationFilter
+    heroicMarkRequest?: XOR<HeroicMarkRequestNullableScalarRelationFilter, HeroicMarkRequestWhereInput> | null
     classe?: XOR<ClasseScalarRelationFilter, ClasseWhereInput>
     specialisation?: XOR<SpecialisationScalarRelationFilter, SpecialisationWhereInput>
   }, "id" | "email">
@@ -15317,20 +16596,22 @@ export namespace Prisma {
     NOT?: LootHistoryWhereInput | LootHistoryWhereInput[]
     id?: IntFilter<"LootHistory"> | number
     userId?: IntFilter<"LootHistory"> | number
-    lootId?: IntFilter<"LootHistory"> | number
+    description?: StringFilter<"LootHistory"> | string
+    lootId?: IntNullableFilter<"LootHistory"> | number | null
     raidId?: IntFilter<"LootHistory"> | number
     priority?: IntFilter<"LootHistory"> | number
     pointsCost?: IntFilter<"LootHistory"> | number
     createdAt?: DateTimeFilter<"LootHistory"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    loot?: XOR<LootScalarRelationFilter, LootWhereInput>
+    loot?: XOR<LootNullableScalarRelationFilter, LootWhereInput> | null
     raid?: XOR<RaidScalarRelationFilter, RaidWhereInput>
   }
 
   export type LootHistoryOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    lootId?: SortOrder
+    description?: SortOrder
+    lootId?: SortOrderInput | SortOrder
     raidId?: SortOrder
     priority?: SortOrder
     pointsCost?: SortOrder
@@ -15346,20 +16627,22 @@ export namespace Prisma {
     OR?: LootHistoryWhereInput[]
     NOT?: LootHistoryWhereInput | LootHistoryWhereInput[]
     userId?: IntFilter<"LootHistory"> | number
-    lootId?: IntFilter<"LootHistory"> | number
+    description?: StringFilter<"LootHistory"> | string
+    lootId?: IntNullableFilter<"LootHistory"> | number | null
     raidId?: IntFilter<"LootHistory"> | number
     priority?: IntFilter<"LootHistory"> | number
     pointsCost?: IntFilter<"LootHistory"> | number
     createdAt?: DateTimeFilter<"LootHistory"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    loot?: XOR<LootScalarRelationFilter, LootWhereInput>
+    loot?: XOR<LootNullableScalarRelationFilter, LootWhereInput> | null
     raid?: XOR<RaidScalarRelationFilter, RaidWhereInput>
   }, "id">
 
   export type LootHistoryOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    lootId?: SortOrder
+    description?: SortOrder
+    lootId?: SortOrderInput | SortOrder
     raidId?: SortOrder
     priority?: SortOrder
     pointsCost?: SortOrder
@@ -15377,7 +16660,8 @@ export namespace Prisma {
     NOT?: LootHistoryScalarWhereWithAggregatesInput | LootHistoryScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"LootHistory"> | number
     userId?: IntWithAggregatesFilter<"LootHistory"> | number
-    lootId?: IntWithAggregatesFilter<"LootHistory"> | number
+    description?: StringWithAggregatesFilter<"LootHistory"> | string
+    lootId?: IntNullableWithAggregatesFilter<"LootHistory"> | number | null
     raidId?: IntWithAggregatesFilter<"LootHistory"> | number
     priority?: IntWithAggregatesFilter<"LootHistory"> | number
     pointsCost?: IntWithAggregatesFilter<"LootHistory"> | number
@@ -15548,6 +16832,68 @@ export namespace Prisma {
     bossId?: IntWithAggregatesFilter<"Loot"> | number
   }
 
+  export type HeroicMarkRequestWhereInput = {
+    AND?: HeroicMarkRequestWhereInput | HeroicMarkRequestWhereInput[]
+    OR?: HeroicMarkRequestWhereInput[]
+    NOT?: HeroicMarkRequestWhereInput | HeroicMarkRequestWhereInput[]
+    id?: IntFilter<"HeroicMarkRequest"> | number
+    userId?: IntFilter<"HeroicMarkRequest"> | number
+    quantity?: IntFilter<"HeroicMarkRequest"> | number
+    received?: IntFilter<"HeroicMarkRequest"> | number
+    createdAt?: DateTimeFilter<"HeroicMarkRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"HeroicMarkRequest"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type HeroicMarkRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    quantity?: SortOrder
+    received?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type HeroicMarkRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    userId?: number
+    AND?: HeroicMarkRequestWhereInput | HeroicMarkRequestWhereInput[]
+    OR?: HeroicMarkRequestWhereInput[]
+    NOT?: HeroicMarkRequestWhereInput | HeroicMarkRequestWhereInput[]
+    quantity?: IntFilter<"HeroicMarkRequest"> | number
+    received?: IntFilter<"HeroicMarkRequest"> | number
+    createdAt?: DateTimeFilter<"HeroicMarkRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"HeroicMarkRequest"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId">
+
+  export type HeroicMarkRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    quantity?: SortOrder
+    received?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: HeroicMarkRequestCountOrderByAggregateInput
+    _avg?: HeroicMarkRequestAvgOrderByAggregateInput
+    _max?: HeroicMarkRequestMaxOrderByAggregateInput
+    _min?: HeroicMarkRequestMinOrderByAggregateInput
+    _sum?: HeroicMarkRequestSumOrderByAggregateInput
+  }
+
+  export type HeroicMarkRequestScalarWhereWithAggregatesInput = {
+    AND?: HeroicMarkRequestScalarWhereWithAggregatesInput | HeroicMarkRequestScalarWhereWithAggregatesInput[]
+    OR?: HeroicMarkRequestScalarWhereWithAggregatesInput[]
+    NOT?: HeroicMarkRequestScalarWhereWithAggregatesInput | HeroicMarkRequestScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"HeroicMarkRequest"> | number
+    userId?: IntWithAggregatesFilter<"HeroicMarkRequest"> | number
+    quantity?: IntWithAggregatesFilter<"HeroicMarkRequest"> | number
+    received?: IntWithAggregatesFilter<"HeroicMarkRequest"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"HeroicMarkRequest"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"HeroicMarkRequest"> | Date | string
+  }
+
   export type UserCreateInput = {
     email: string
     name?: string | null
@@ -15561,6 +16907,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestCreateNestedOneWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -15581,6 +16928,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -15596,6 +16944,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUpdateOneWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -15616,6 +16965,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -15934,18 +17284,20 @@ export namespace Prisma {
   }
 
   export type LootHistoryCreateInput = {
+    description: string
     priority: number
     pointsCost: number
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutLootHistoryInput
-    loot: LootCreateNestedOneWithoutLootHistoryInput
+    loot?: LootCreateNestedOneWithoutLootHistoryInput
     raid: RaidCreateNestedOneWithoutLootHistoryInput
   }
 
   export type LootHistoryUncheckedCreateInput = {
     id?: number
     userId: number
-    lootId: number
+    description: string
+    lootId?: number | null
     raidId: number
     priority: number
     pointsCost: number
@@ -15953,18 +17305,20 @@ export namespace Prisma {
   }
 
   export type LootHistoryUpdateInput = {
+    description?: StringFieldUpdateOperationsInput | string
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutLootHistoryNestedInput
-    loot?: LootUpdateOneRequiredWithoutLootHistoryNestedInput
+    loot?: LootUpdateOneWithoutLootHistoryNestedInput
     raid?: RaidUpdateOneRequiredWithoutLootHistoryNestedInput
   }
 
   export type LootHistoryUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    lootId?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    lootId?: NullableIntFieldUpdateOperationsInput | number | null
     raidId?: IntFieldUpdateOperationsInput | number
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
@@ -15974,7 +17328,8 @@ export namespace Prisma {
   export type LootHistoryCreateManyInput = {
     id?: number
     userId: number
-    lootId: number
+    description: string
+    lootId?: number | null
     raidId: number
     priority: number
     pointsCost: number
@@ -15982,6 +17337,7 @@ export namespace Prisma {
   }
 
   export type LootHistoryUpdateManyMutationInput = {
+    description?: StringFieldUpdateOperationsInput | string
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -15990,7 +17346,8 @@ export namespace Prisma {
   export type LootHistoryUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    lootId?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    lootId?: NullableIntFieldUpdateOperationsInput | number | null
     raidId?: IntFieldUpdateOperationsInput | number
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
@@ -16141,6 +17498,65 @@ export namespace Prisma {
     bossId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type HeroicMarkRequestCreateInput = {
+    quantity?: number
+    received?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutHeroicMarkRequestInput
+  }
+
+  export type HeroicMarkRequestUncheckedCreateInput = {
+    id?: number
+    userId: number
+    quantity?: number
+    received?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HeroicMarkRequestUpdateInput = {
+    quantity?: IntFieldUpdateOperationsInput | number
+    received?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutHeroicMarkRequestNestedInput
+  }
+
+  export type HeroicMarkRequestUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
+    received?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeroicMarkRequestCreateManyInput = {
+    id?: number
+    userId: number
+    quantity?: number
+    received?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HeroicMarkRequestUpdateManyMutationInput = {
+    quantity?: IntFieldUpdateOperationsInput | number
+    received?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeroicMarkRequestUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    userId?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
+    received?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -16248,6 +17664,11 @@ export namespace Prisma {
     every?: RaidAttendanceWhereInput
     some?: RaidAttendanceWhereInput
     none?: RaidAttendanceWhereInput
+  }
+
+  export type HeroicMarkRequestNullableScalarRelationFilter = {
+    is?: HeroicMarkRequestWhereInput | null
+    isNot?: HeroicMarkRequestWhereInput | null
   }
 
   export type ClasseScalarRelationFilter = {
@@ -16671,9 +18092,15 @@ export namespace Prisma {
     priority?: SortOrder
   }
 
+  export type LootNullableScalarRelationFilter = {
+    is?: LootWhereInput | null
+    isNot?: LootWhereInput | null
+  }
+
   export type LootHistoryCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    description?: SortOrder
     lootId?: SortOrder
     raidId?: SortOrder
     priority?: SortOrder
@@ -16693,6 +18120,7 @@ export namespace Prisma {
   export type LootHistoryMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    description?: SortOrder
     lootId?: SortOrder
     raidId?: SortOrder
     priority?: SortOrder
@@ -16703,6 +18131,7 @@ export namespace Prisma {
   export type LootHistoryMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    description?: SortOrder
     lootId?: SortOrder
     raidId?: SortOrder
     priority?: SortOrder
@@ -16821,6 +18250,47 @@ export namespace Prisma {
     bossId?: SortOrder
   }
 
+  export type HeroicMarkRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    quantity?: SortOrder
+    received?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HeroicMarkRequestAvgOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    quantity?: SortOrder
+    received?: SortOrder
+  }
+
+  export type HeroicMarkRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    quantity?: SortOrder
+    received?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HeroicMarkRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    quantity?: SortOrder
+    received?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HeroicMarkRequestSumOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    quantity?: SortOrder
+    received?: SortOrder
+  }
+
   export type RaidCreateNestedOneWithoutUsersInput = {
     create?: XOR<RaidCreateWithoutUsersInput, RaidUncheckedCreateWithoutUsersInput>
     connectOrCreate?: RaidCreateOrConnectWithoutUsersInput
@@ -16872,6 +18342,12 @@ export namespace Prisma {
     connectOrCreate?: RaidAttendanceCreateOrConnectWithoutUserInput | RaidAttendanceCreateOrConnectWithoutUserInput[]
     createMany?: RaidAttendanceCreateManyUserInputEnvelope
     connect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+  }
+
+  export type HeroicMarkRequestCreateNestedOneWithoutUserInput = {
+    create?: XOR<HeroicMarkRequestCreateWithoutUserInput, HeroicMarkRequestUncheckedCreateWithoutUserInput>
+    connectOrCreate?: HeroicMarkRequestCreateOrConnectWithoutUserInput
+    connect?: HeroicMarkRequestWhereUniqueInput
   }
 
   export type ClasseCreateNestedOneWithoutUsersInput = {
@@ -16931,6 +18407,12 @@ export namespace Prisma {
     connectOrCreate?: RaidAttendanceCreateOrConnectWithoutUserInput | RaidAttendanceCreateOrConnectWithoutUserInput[]
     createMany?: RaidAttendanceCreateManyUserInputEnvelope
     connect?: RaidAttendanceWhereUniqueInput | RaidAttendanceWhereUniqueInput[]
+  }
+
+  export type HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<HeroicMarkRequestCreateWithoutUserInput, HeroicMarkRequestUncheckedCreateWithoutUserInput>
+    connectOrCreate?: HeroicMarkRequestCreateOrConnectWithoutUserInput
+    connect?: HeroicMarkRequestWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -17046,6 +18528,16 @@ export namespace Prisma {
     update?: RaidAttendanceUpdateWithWhereUniqueWithoutUserInput | RaidAttendanceUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: RaidAttendanceUpdateManyWithWhereWithoutUserInput | RaidAttendanceUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: RaidAttendanceScalarWhereInput | RaidAttendanceScalarWhereInput[]
+  }
+
+  export type HeroicMarkRequestUpdateOneWithoutUserNestedInput = {
+    create?: XOR<HeroicMarkRequestCreateWithoutUserInput, HeroicMarkRequestUncheckedCreateWithoutUserInput>
+    connectOrCreate?: HeroicMarkRequestCreateOrConnectWithoutUserInput
+    upsert?: HeroicMarkRequestUpsertWithoutUserInput
+    disconnect?: HeroicMarkRequestWhereInput | boolean
+    delete?: HeroicMarkRequestWhereInput | boolean
+    connect?: HeroicMarkRequestWhereUniqueInput
+    update?: XOR<XOR<HeroicMarkRequestUpdateToOneWithWhereWithoutUserInput, HeroicMarkRequestUpdateWithoutUserInput>, HeroicMarkRequestUncheckedUpdateWithoutUserInput>
   }
 
   export type ClasseUpdateOneRequiredWithoutUsersNestedInput = {
@@ -17171,6 +18663,16 @@ export namespace Prisma {
     update?: RaidAttendanceUpdateWithWhereUniqueWithoutUserInput | RaidAttendanceUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: RaidAttendanceUpdateManyWithWhereWithoutUserInput | RaidAttendanceUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: RaidAttendanceScalarWhereInput | RaidAttendanceScalarWhereInput[]
+  }
+
+  export type HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<HeroicMarkRequestCreateWithoutUserInput, HeroicMarkRequestUncheckedCreateWithoutUserInput>
+    connectOrCreate?: HeroicMarkRequestCreateOrConnectWithoutUserInput
+    upsert?: HeroicMarkRequestUpsertWithoutUserInput
+    disconnect?: HeroicMarkRequestWhereInput | boolean
+    delete?: HeroicMarkRequestWhereInput | boolean
+    connect?: HeroicMarkRequestWhereUniqueInput
+    update?: XOR<XOR<HeroicMarkRequestUpdateToOneWithWhereWithoutUserInput, HeroicMarkRequestUpdateWithoutUserInput>, HeroicMarkRequestUncheckedUpdateWithoutUserInput>
   }
 
   export type SpecialisationCreateNestedManyWithoutClasseInput = {
@@ -17647,10 +19149,12 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLootHistoryInput, UserUpdateWithoutLootHistoryInput>, UserUncheckedUpdateWithoutLootHistoryInput>
   }
 
-  export type LootUpdateOneRequiredWithoutLootHistoryNestedInput = {
+  export type LootUpdateOneWithoutLootHistoryNestedInput = {
     create?: XOR<LootCreateWithoutLootHistoryInput, LootUncheckedCreateWithoutLootHistoryInput>
     connectOrCreate?: LootCreateOrConnectWithoutLootHistoryInput
     upsert?: LootUpsertWithoutLootHistoryInput
+    disconnect?: LootWhereInput | boolean
+    delete?: LootWhereInput | boolean
     connect?: LootWhereUniqueInput
     update?: XOR<XOR<LootUpdateToOneWithWhereWithoutLootHistoryInput, LootUpdateWithoutLootHistoryInput>, LootUncheckedUpdateWithoutLootHistoryInput>
   }
@@ -17867,6 +19371,20 @@ export namespace Prisma {
     update?: LootHistoryUpdateWithWhereUniqueWithoutLootInput | LootHistoryUpdateWithWhereUniqueWithoutLootInput[]
     updateMany?: LootHistoryUpdateManyWithWhereWithoutLootInput | LootHistoryUpdateManyWithWhereWithoutLootInput[]
     deleteMany?: LootHistoryScalarWhereInput | LootHistoryScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutHeroicMarkRequestInput = {
+    create?: XOR<UserCreateWithoutHeroicMarkRequestInput, UserUncheckedCreateWithoutHeroicMarkRequestInput>
+    connectOrCreate?: UserCreateOrConnectWithoutHeroicMarkRequestInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutHeroicMarkRequestNestedInput = {
+    create?: XOR<UserCreateWithoutHeroicMarkRequestInput, UserUncheckedCreateWithoutHeroicMarkRequestInput>
+    connectOrCreate?: UserCreateOrConnectWithoutHeroicMarkRequestInput
+    upsert?: UserUpsertWithoutHeroicMarkRequestInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutHeroicMarkRequestInput, UserUpdateWithoutHeroicMarkRequestInput>, UserUncheckedUpdateWithoutHeroicMarkRequestInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -18170,16 +19688,18 @@ export namespace Prisma {
   }
 
   export type LootHistoryCreateWithoutUserInput = {
+    description: string
     priority: number
     pointsCost: number
     createdAt?: Date | string
-    loot: LootCreateNestedOneWithoutLootHistoryInput
+    loot?: LootCreateNestedOneWithoutLootHistoryInput
     raid: RaidCreateNestedOneWithoutLootHistoryInput
   }
 
   export type LootHistoryUncheckedCreateWithoutUserInput = {
     id?: number
-    lootId: number
+    description: string
+    lootId?: number | null
     raidId: number
     priority: number
     pointsCost: number
@@ -18217,6 +19737,26 @@ export namespace Prisma {
   export type RaidAttendanceCreateManyUserInputEnvelope = {
     data: RaidAttendanceCreateManyUserInput | RaidAttendanceCreateManyUserInput[]
     skipDuplicates?: boolean
+  }
+
+  export type HeroicMarkRequestCreateWithoutUserInput = {
+    quantity?: number
+    received?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HeroicMarkRequestUncheckedCreateWithoutUserInput = {
+    id?: number
+    quantity?: number
+    received?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HeroicMarkRequestCreateOrConnectWithoutUserInput = {
+    where: HeroicMarkRequestWhereUniqueInput
+    create: XOR<HeroicMarkRequestCreateWithoutUserInput, HeroicMarkRequestUncheckedCreateWithoutUserInput>
   }
 
   export type ClasseCreateWithoutUsersInput = {
@@ -18430,7 +19970,8 @@ export namespace Prisma {
     NOT?: LootHistoryScalarWhereInput | LootHistoryScalarWhereInput[]
     id?: IntFilter<"LootHistory"> | number
     userId?: IntFilter<"LootHistory"> | number
-    lootId?: IntFilter<"LootHistory"> | number
+    description?: StringFilter<"LootHistory"> | string
+    lootId?: IntNullableFilter<"LootHistory"> | number | null
     raidId?: IntFilter<"LootHistory"> | number
     priority?: IntFilter<"LootHistory"> | number
     pointsCost?: IntFilter<"LootHistory"> | number
@@ -18462,6 +20003,32 @@ export namespace Prisma {
     raidId?: IntFilter<"RaidAttendance"> | number
     pointsGiven?: IntFilter<"RaidAttendance"> | number
     createdAt?: DateTimeFilter<"RaidAttendance"> | Date | string
+  }
+
+  export type HeroicMarkRequestUpsertWithoutUserInput = {
+    update: XOR<HeroicMarkRequestUpdateWithoutUserInput, HeroicMarkRequestUncheckedUpdateWithoutUserInput>
+    create: XOR<HeroicMarkRequestCreateWithoutUserInput, HeroicMarkRequestUncheckedCreateWithoutUserInput>
+    where?: HeroicMarkRequestWhereInput
+  }
+
+  export type HeroicMarkRequestUpdateToOneWithWhereWithoutUserInput = {
+    where?: HeroicMarkRequestWhereInput
+    data: XOR<HeroicMarkRequestUpdateWithoutUserInput, HeroicMarkRequestUncheckedUpdateWithoutUserInput>
+  }
+
+  export type HeroicMarkRequestUpdateWithoutUserInput = {
+    quantity?: IntFieldUpdateOperationsInput | number
+    received?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HeroicMarkRequestUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    quantity?: IntFieldUpdateOperationsInput | number
+    received?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ClasseUpsertWithoutUsersInput = {
@@ -18542,6 +20109,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestCreateNestedOneWithoutUserInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
 
@@ -18560,6 +20128,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutClasseInput = {
@@ -18656,6 +20225,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestCreateNestedOneWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
   }
 
@@ -18674,6 +20244,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSpecialisationInput = {
@@ -18736,6 +20307,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestCreateNestedOneWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -18755,6 +20327,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCreatedRaidsInput = {
@@ -18784,17 +20357,19 @@ export namespace Prisma {
   }
 
   export type LootHistoryCreateWithoutRaidInput = {
+    description: string
     priority: number
     pointsCost: number
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutLootHistoryInput
-    loot: LootCreateNestedOneWithoutLootHistoryInput
+    loot?: LootCreateNestedOneWithoutLootHistoryInput
   }
 
   export type LootHistoryUncheckedCreateWithoutRaidInput = {
     id?: number
     userId: number
-    lootId: number
+    description: string
+    lootId?: number | null
     priority: number
     pointsCost: number
     createdAt?: Date | string
@@ -18845,6 +20420,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestCreateNestedOneWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -18864,6 +20440,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRaidInput = {
@@ -18922,6 +20499,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUpdateOneWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -18941,6 +20519,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type RaidPointsUpsertWithWhereUniqueWithoutRaidInput = {
@@ -19045,6 +20624,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestCreateNestedOneWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -19064,6 +20644,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutJoinRequestsInput = {
@@ -19118,6 +20699,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUpdateOneWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -19137,6 +20719,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type RaidUpsertWithoutJoinRequestsInput = {
@@ -19181,6 +20764,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
     LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestCreateNestedOneWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -19200,6 +20784,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
     LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRaidPointsInput = {
@@ -19254,6 +20839,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
     LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUpdateOneWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -19273,6 +20859,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
     LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type RaidUpsertWithoutRaidPointsInput = {
@@ -19317,6 +20904,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestCreateNestedOneWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -19336,6 +20924,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutWishlistItemInput = {
@@ -19388,6 +20977,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUpdateOneWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -19407,6 +20997,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type LootUpsertWithoutWishlistItemInput = {
@@ -19449,6 +21040,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
     RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
     attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestCreateNestedOneWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -19468,6 +21060,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
     RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
     attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutLootHistoryInput = {
@@ -19544,6 +21137,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
     RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
     attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUpdateOneWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -19563,6 +21157,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
     RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
     attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type LootUpsertWithoutLootHistoryInput = {
@@ -19635,6 +21230,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
     RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestCreateNestedOneWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -19654,6 +21250,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
     RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAttendancesInput = {
@@ -19708,6 +21305,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
     RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUpdateOneWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -19727,6 +21325,7 @@ export namespace Prisma {
     WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
     RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type RaidUpsertWithoutAttendancesInput = {
@@ -19828,6 +21427,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestCreateNestedOneWithoutUserInput
     classe: ClasseCreateNestedOneWithoutUsersInput
     specialisation: SpecialisationCreateNestedOneWithoutUsersInput
   }
@@ -19847,6 +21447,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
     LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
     attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutLootsInput = {
@@ -19878,6 +21479,7 @@ export namespace Prisma {
   }
 
   export type LootHistoryCreateWithoutLootInput = {
+    description: string
     priority: number
     pointsCost: number
     createdAt?: Date | string
@@ -19888,6 +21490,7 @@ export namespace Prisma {
   export type LootHistoryUncheckedCreateWithoutLootInput = {
     id?: number
     userId: number
+    description: string
     raidId: number
     priority: number
     pointsCost: number
@@ -19972,6 +21575,92 @@ export namespace Prisma {
     data: XOR<LootHistoryUpdateManyMutationInput, LootHistoryUncheckedUpdateManyWithoutLootInput>
   }
 
+  export type UserCreateWithoutHeroicMarkRequestInput = {
+    email: string
+    name?: string | null
+    password: string
+    createdAt?: Date | string
+    raid?: RaidCreateNestedOneWithoutUsersInput
+    createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
+    joinRequests?: JoinRequestCreateNestedManyWithoutUserInput
+    loots?: LootCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceCreateNestedManyWithoutUserInput
+    classe: ClasseCreateNestedOneWithoutUsersInput
+    specialisation: SpecialisationCreateNestedOneWithoutUsersInput
+  }
+
+  export type UserUncheckedCreateWithoutHeroicMarkRequestInput = {
+    id?: number
+    email: string
+    name?: string | null
+    password: string
+    classeId: number
+    specialisationId: number
+    raidId?: number | null
+    createdAt?: Date | string
+    createdRaids?: RaidUncheckedCreateNestedManyWithoutCreatedByInput
+    joinRequests?: JoinRequestUncheckedCreateNestedManyWithoutUserInput
+    loots?: LootUncheckedCreateNestedManyWithoutUsersInput
+    WishlistItem?: WishlistItemUncheckedCreateNestedManyWithoutUserInput
+    RaidPoints?: RaidPointsUncheckedCreateNestedOneWithoutUserInput
+    LootHistory?: LootHistoryUncheckedCreateNestedManyWithoutUserInput
+    attendances?: RaidAttendanceUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutHeroicMarkRequestInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutHeroicMarkRequestInput, UserUncheckedCreateWithoutHeroicMarkRequestInput>
+  }
+
+  export type UserUpsertWithoutHeroicMarkRequestInput = {
+    update: XOR<UserUpdateWithoutHeroicMarkRequestInput, UserUncheckedUpdateWithoutHeroicMarkRequestInput>
+    create: XOR<UserCreateWithoutHeroicMarkRequestInput, UserUncheckedCreateWithoutHeroicMarkRequestInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutHeroicMarkRequestInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutHeroicMarkRequestInput, UserUncheckedUpdateWithoutHeroicMarkRequestInput>
+  }
+
+  export type UserUpdateWithoutHeroicMarkRequestInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    raid?: RaidUpdateOneWithoutUsersNestedInput
+    createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
+    joinRequests?: JoinRequestUpdateManyWithoutUserNestedInput
+    loots?: LootUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
+    specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutHeroicMarkRequestInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    classeId?: IntFieldUpdateOperationsInput | number
+    specialisationId?: IntFieldUpdateOperationsInput | number
+    raidId?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdRaids?: RaidUncheckedUpdateManyWithoutCreatedByNestedInput
+    joinRequests?: JoinRequestUncheckedUpdateManyWithoutUserNestedInput
+    loots?: LootUncheckedUpdateManyWithoutUsersNestedInput
+    WishlistItem?: WishlistItemUncheckedUpdateManyWithoutUserNestedInput
+    RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
+    LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
+    attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type RaidCreateManyCreatedByInput = {
     id?: number
     name: string
@@ -19993,7 +21682,8 @@ export namespace Prisma {
 
   export type LootHistoryCreateManyUserInput = {
     id?: number
-    lootId: number
+    description: string
+    lootId?: number | null
     raidId: number
     priority: number
     pointsCost: number
@@ -20096,16 +21786,18 @@ export namespace Prisma {
   }
 
   export type LootHistoryUpdateWithoutUserInput = {
+    description?: StringFieldUpdateOperationsInput | string
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    loot?: LootUpdateOneRequiredWithoutLootHistoryNestedInput
+    loot?: LootUpdateOneWithoutLootHistoryNestedInput
     raid?: RaidUpdateOneRequiredWithoutLootHistoryNestedInput
   }
 
   export type LootHistoryUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    lootId?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    lootId?: NullableIntFieldUpdateOperationsInput | number | null
     raidId?: IntFieldUpdateOperationsInput | number
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
@@ -20114,7 +21806,8 @@ export namespace Prisma {
 
   export type LootHistoryUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    lootId?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    lootId?: NullableIntFieldUpdateOperationsInput | number | null
     raidId?: IntFieldUpdateOperationsInput | number
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
@@ -20185,6 +21878,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUpdateOneWithoutUserNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
 
@@ -20203,6 +21897,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutClasseInput = {
@@ -20238,6 +21933,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUpdateOneWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
   }
 
@@ -20256,6 +21952,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutSpecialisationInput = {
@@ -20277,7 +21974,8 @@ export namespace Prisma {
   export type LootHistoryCreateManyRaidInput = {
     id?: number
     userId: number
-    lootId: number
+    description: string
+    lootId?: number | null
     priority: number
     pointsCost: number
     createdAt?: Date | string
@@ -20325,17 +22023,19 @@ export namespace Prisma {
   }
 
   export type LootHistoryUpdateWithoutRaidInput = {
+    description?: StringFieldUpdateOperationsInput | string
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutLootHistoryNestedInput
-    loot?: LootUpdateOneRequiredWithoutLootHistoryNestedInput
+    loot?: LootUpdateOneWithoutLootHistoryNestedInput
   }
 
   export type LootHistoryUncheckedUpdateWithoutRaidInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    lootId?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    lootId?: NullableIntFieldUpdateOperationsInput | number | null
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20344,7 +22044,8 @@ export namespace Prisma {
   export type LootHistoryUncheckedUpdateManyWithoutRaidInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    lootId?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    lootId?: NullableIntFieldUpdateOperationsInput | number | null
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20382,6 +22083,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUpdateOneWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -20401,6 +22103,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRaidInput = {
@@ -20472,6 +22175,7 @@ export namespace Prisma {
   export type LootHistoryCreateManyLootInput = {
     id?: number
     userId: number
+    description: string
     raidId: number
     priority: number
     pointsCost: number
@@ -20490,6 +22194,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUpdateOneWithoutUserNestedInput
     classe?: ClasseUpdateOneRequiredWithoutUsersNestedInput
     specialisation?: SpecialisationUpdateOneRequiredWithoutUsersNestedInput
   }
@@ -20509,6 +22214,7 @@ export namespace Prisma {
     RaidPoints?: RaidPointsUncheckedUpdateOneWithoutUserNestedInput
     LootHistory?: LootHistoryUncheckedUpdateManyWithoutUserNestedInput
     attendances?: RaidAttendanceUncheckedUpdateManyWithoutUserNestedInput
+    heroicMarkRequest?: HeroicMarkRequestUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutLootsInput = {
@@ -20543,6 +22249,7 @@ export namespace Prisma {
   }
 
   export type LootHistoryUpdateWithoutLootInput = {
+    description?: StringFieldUpdateOperationsInput | string
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -20553,6 +22260,7 @@ export namespace Prisma {
   export type LootHistoryUncheckedUpdateWithoutLootInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
     raidId?: IntFieldUpdateOperationsInput | number
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number
@@ -20562,6 +22270,7 @@ export namespace Prisma {
   export type LootHistoryUncheckedUpdateManyWithoutLootInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
     raidId?: IntFieldUpdateOperationsInput | number
     priority?: IntFieldUpdateOperationsInput | number
     pointsCost?: IntFieldUpdateOperationsInput | number

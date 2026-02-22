@@ -16,6 +16,7 @@ import {
   SetPointsDto,
   AttributeLootDto,
   RecordAttendanceDto,
+  SetHeroicMarksDto,
 } from './dto/dkp.dto';
 
 @ApiTags('DKP')
@@ -80,5 +81,29 @@ export class DkpController {
     @Query('raidId', new ParseIntPipe({ optional: true })) raidId?: number,
   ) {
     return this.dkpService.getLootCandidatesByBoss(bossId, raidId);
+  }
+
+  @Get('heroic-marks/me')
+  getMyHeroicMarks(@Request() req) {
+    return this.dkpService.getMyHeroicMarks(req.user.id);
+  }
+
+  @Post('heroic-marks')
+  setHeroicMarksWanted(@Request() req, @Body() dto: SetHeroicMarksDto) {
+    return this.dkpService.setHeroicMarksWanted(req.user.id, dto.quantity);
+  }
+
+  @Get('raids/:raidId/heroic-marks')
+  getHeroicMarksForRaid(@Param('raidId', ParseIntPipe) raidId: number) {
+    return this.dkpService.getHeroicMarksForRaid(raidId);
+  }
+
+  @Post('raids/:raidId/heroic-marks/attribute/:userId')
+  attributeHeroicMark(
+    @Request() req,
+    @Param('raidId', ParseIntPipe) raidId: number,
+    @Param('userId', ParseIntPipe) userId: number,
+  ) {
+    return this.dkpService.attributeHeroicMark(req.user.id, raidId, userId);
   }
 }

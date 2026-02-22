@@ -174,6 +174,7 @@ exports.Prisma.WishlistItemScalarFieldEnum = {
 exports.Prisma.LootHistoryScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  description: 'description',
   lootId: 'lootId',
   raidId: 'raidId',
   priority: 'priority',
@@ -199,6 +200,15 @@ exports.Prisma.LootScalarFieldEnum = {
   name: 'name',
   url: 'url',
   bossId: 'bossId'
+};
+
+exports.Prisma.HeroicMarkRequestScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  quantity: 'quantity',
+  received: 'received',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -228,7 +238,8 @@ exports.Prisma.ModelName = {
   LootHistory: 'LootHistory',
   RaidAttendance: 'RaidAttendance',
   Boss: 'Boss',
-  Loot: 'Loot'
+  Loot: 'Loot',
+  HeroicMarkRequest: 'HeroicMarkRequest'
 };
 
 /**

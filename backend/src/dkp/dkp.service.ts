@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // =============================================
 // backend/src/dkp/dkp.service.ts
 // Module SÉPARÉ — ne touche PAS à LootService
@@ -134,6 +137,7 @@ export class DkpService {
           raidId,
           priority,
           pointsCost,
+          description: 'Loot attribué',
         },
         include: {
           user: {
@@ -319,5 +323,106 @@ export class DkpService {
     );
 
     return result;
+  }
+  async setHeroicMarksWanted(userId: number, quantity: number) {
+    const user = await this.prisma.user.findUnique({ where: { id: userId } });
+    if (!user || !user.raidId) {
+      throw new BadRequestException('Vous devez être dans un raid');
+    }
+
+    return this.prisma.heroicMarkRequest.upsert({
+      where: { userId },
+      update: { quantity },
+      create: { userId, quantity },
+    });
+  }
+  async getHeroicMarksForRaid(raidId: number) {
+    const requests = await this.prisma.heroicMarkRequest.findMany({
+      where: { user: { raidId } },
+      include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+            classe: true,
+            specialisation: true,
+            RaidPoints: true,
+          },
+        },
+      },
+    });
+
+    return requests
+      .map((r) => ({
+        userId: r.user.id,
+        name: r.user.name,
+        classe: r.user.classe,
+        specialisation: r.user.specialisation,
+        quantity: r.quantity,
+        received: r.received,
+        points: r.user.RaidPoints?.points ?? 0,
+      }))
+      .sort((a, b) => b.points - a.points);
+  }
+  async getMyHeroicMarks(userId: number) {
+    const request = await this.prisma.heroicMarkRequest.findUnique({
+      where: { userId },
+    });
+    return {
+      quantity: request?.quantity ?? 0,
+      received: request?.received ?? 0,
+    };
+  }
+  async attributeHeroicMark(
+    adminId: number,
+    raidId: number,
+    targetUserId: number,
+  ) {
+    await this.verifyAdmin(adminId, raidId);
+
+    const request = await this.prisma.heroicMarkRequest.findUnique({
+      where: { userId: targetUserId },
+    });
+    if (!request || request.quantity <= request.received) {
+      throw new BadRequestException("Ce joueur n'a plus besoin de marques");
+    }
+
+    const pointsCost = PRIORITY_COSTS[2]; 
+
+    const currentPoints = await this.prisma.raidPoints.findUnique({
+      where: { userId_raidId: { userId: targetUserId, raidId } },
+    });
+    const currentPts = currentPoints?.points ?? 0;
+    const newPoints = Math.max(0, currentPts - pointsCost);
+
+    await this.prisma.$transaction([
+      this.prisma.heroicMarkRequest.update({
+        where: { userId: targetUserId },
+        data: { received: { increment: 1 } },
+      }),
+      this.prisma.raidPoints.upsert({
+        where: { userId_raidId: { userId: targetUserId, raidId } },
+        update: { points: newPoints },
+        create: { userId: targetUserId, raidId, points: newPoints },
+      }),
+      this.prisma.lootHistory.create({
+        data: {
+          userId: targetUserId,
+          lootId: null,
+          raidId,
+          priority: 2,
+          pointsCost,
+          description: 'Marque Héroïque T10',
+        },
+      }),
+    ]);
+
+    return {
+      previousPoints: currentPts,
+      newPoints,
+      pointsCost,
+      received: request.received + 1,
+      quantity: request.quantity,
+    };
   }
 }
