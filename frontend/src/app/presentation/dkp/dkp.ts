@@ -8,6 +8,7 @@ import { AttributeLootUseCase } from '../../application/usecases/dkp/AttributeLo
 import { RecordAttendanceUseCase } from '../../application/usecases/dkp/recordAttendance.usecase';
 import { GetLootHistoryUseCase } from '../../application/usecases/dkp/getLootHistory.usecase';
 import { GetAttendanceHistoryUseCase } from '../../application/usecases/dkp/getAttendanceHistory.usecase';
+import { DkpRepository } from '../../domain/repositories/Dkp.repository';
 import {
   DkpTable,
   DkpMember,
@@ -16,7 +17,7 @@ import {
 } from '../../domain/models/dkp/dkp.model';
 
 @Component({
-  selector: 'app-dkp',
+  selector: 'app-dkp-table',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './dkp.html',
@@ -37,6 +38,7 @@ export class DkpTableComponent implements OnInit {
   successMessage = '';
   errorMessage = '';
   confirmLoot: { userId: number; lootId: number; lootName: string; userName: string } | null = null;
+  confirmMark: { userId: number; userName: string } | null = null;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -47,6 +49,7 @@ export class DkpTableComponent implements OnInit {
     private readonly recordAttendance: RecordAttendanceUseCase,
     private readonly getLootHistory: GetLootHistoryUseCase,
     private readonly getAttendanceHistory: GetAttendanceHistoryUseCase,
+    private readonly dkpRepository: DkpRepository,
   ) {}
 
   ngOnInit(): void {
@@ -72,33 +75,22 @@ export class DkpTableComponent implements OnInit {
 
   loadLootHistory(): void {
     this.getLootHistory.execute(this.raidId).subscribe({
-      next: (data) => {
-        this.lootHistory = data;
-        this.cdr.detectChanges();
-      },
+      next: (data) => { this.lootHistory = data; this.cdr.detectChanges(); },
     });
-  }
-
-  getHoveredMember(): DkpMember | null {
-    if (this.hoveredMember === null || !this.dkpData) return null;
-    return this.dkpData.members.find((m) => m.id === this.hoveredMember) ?? null;
   }
 
   loadAttendanceHistory(): void {
     this.getAttendanceHistory.execute(this.raidId).subscribe({
-      next: (data) => {
-        this.attendanceHistory = data;
-        this.cdr.detectChanges();
-      },
+      next: (data) => { this.attendanceHistory = data; this.cdr.detectChanges(); },
     });
   }
 
   switchTab(tab: 'dkp' | 'loot-history' | 'attendance-history'): void {
     this.activeTab = tab;
     if (tab === 'loot-history' && this.lootHistory.length === 0) this.loadLootHistory();
-    if (tab === 'attendance-history' && this.attendanceHistory.length === 0)
-      this.loadAttendanceHistory();
+    if (tab === 'attendance-history' && this.attendanceHistory.length === 0) this.loadAttendanceHistory();
   }
+
 
   startEditPoints(member: DkpMember): void {
     this.editingPointsFor = member.id;
@@ -106,33 +98,37 @@ export class DkpTableComponent implements OnInit {
   }
 
   savePoints(member: DkpMember): void {
-    this.setPoints
-      .execute(this.raidId, { userId: member.id, points: this.editPointsValue })
-      .subscribe({
-        next: () => {
-          member.points = this.editPointsValue;
-          this.editingPointsFor = null;
-          this.dkpData!.members.sort((a, b) => b.points - a.points);
-          this.cdr.detectChanges();
-        },
-        error: (err) => {
-          this.errorMessage = err.error?.message || 'Erreur lors de la modification';
-          this.cdr.detectChanges();
-        },
-      });
+    this.setPoints.execute(this.raidId, { userId: member.id, points: this.editPointsValue }).subscribe({
+      next: () => {
+        member.points = this.editPointsValue;
+        this.editingPointsFor = null;
+        this.dkpData!.members.sort((a, b) => b.points - a.points);
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        this.errorMessage = err.error?.message || 'Erreur lors de la modification';
+        this.cdr.detectChanges();
+      },
+    });
   }
 
   cancelEditPoints(): void {
     this.editingPointsFor = null;
   }
 
+
   onLootClick(member: DkpMember, loot: any): void {
     this.confirmLoot = {
       userId: member.id,
       lootId: loot.id,
       lootName: loot.name,
-      userName: member.name,
+      userName: member.name ?? member.email,
     };
+  }
+
+  getHoveredMember(): DkpMember | null {
+    if (this.hoveredMember === null || !this.dkpData) return null;
+    return this.dkpData.members.find((m) => m.id === this.hoveredMember) ?? null;
   }
 
   confirmAttributeLoot(): void {
@@ -147,13 +143,10 @@ export class DkpTableComponent implements OnInit {
           member.loots = member.loots.filter((l) => l.id !== lootId);
         }
         this.dkpData!.members.sort((a, b) => b.points - a.points);
-        this.successMessage = `${result.loot.name} attribué ! (-${result.pointsCost} pts)`;
+        this.successMessage = `${result.loot?.name ?? 'Loot'} attribué ! (-${result.pointsCost} pts)`;
         this.confirmLoot = null;
         this.cdr.detectChanges();
-        setTimeout(() => {
-          this.successMessage = '';
-          this.cdr.detectChanges();
-        }, 3000);
+        setTimeout(() => { this.successMessage = ''; this.cdr.detectChanges(); }, 3000);
       },
       error: (err) => {
         this.errorMessage = err.error?.message || "Erreur lors de l'attribution";
@@ -166,6 +159,45 @@ export class DkpTableComponent implements OnInit {
   cancelAttributeLoot(): void {
     this.confirmLoot = null;
   }
+
+
+  onMarkClick(member: DkpMember): void {
+    this.confirmMark = {
+      userId: member.id,
+      userName: member.name ?? member.email,
+    };
+  }
+
+  confirmAttributeMark(): void {
+    if (!this.confirmMark) return;
+    const { userId } = this.confirmMark;
+
+    this.dkpRepository.attributeHeroicMark(this.raidId, userId).subscribe({
+      next: (result: any) => {
+        const member = this.dkpData!.members.find((m) => m.id === userId);
+        if (member) {
+          member.points = result.newPoints;
+          member.heroicMarks.received = result.received;
+        }
+        this.dkpData!.members.sort((a, b) => b.points - a.points);
+        this.successMessage = `Marque Héroïque attribuée ! (-${result.pointsCost} pts)`;
+        this.confirmMark = null;
+        this.cdr.detectChanges();
+        setTimeout(() => { this.successMessage = ''; this.cdr.detectChanges(); }, 3000);
+      },
+      error: (err: any) => {
+        this.errorMessage = err.error?.message || "Erreur lors de l'attribution de la marque";
+        this.confirmMark = null;
+        this.cdr.detectChanges();
+      },
+    });
+  }
+
+  cancelAttributeMark(): void {
+    this.confirmMark = null;
+  }
+
+
 
   toggleMemberSelection(memberId: number): void {
     if (this.selectedMembers.has(memberId)) {
@@ -197,10 +229,7 @@ export class DkpTableComponent implements OnInit {
         this.selectedMembers.clear();
         this.successMessage = `+${result.pointsGiven} pts pour ${userIds.length} joueur(s)`;
         this.cdr.detectChanges();
-        setTimeout(() => {
-          this.successMessage = '';
-          this.cdr.detectChanges();
-        }, 3000);
+        setTimeout(() => { this.successMessage = ''; this.cdr.detectChanges(); }, 3000);
       },
       error: (err) => {
         this.errorMessage = err.error?.message || 'Erreur lors de la participation';

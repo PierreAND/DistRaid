@@ -559,3 +559,84 @@
     align-items: flex-start;
   }
 }
+
+/* Info badge marque */
+.info-badge.mark {
+  background: rgba(#d29922, 0.12);
+  border-color: rgba(#d29922, 0.3);
+  color: #d29922;
+}
+
+/* Colonne marques */
+.col-marks {
+  min-width: 140px;
+}
+
+.marks-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.marks-mini-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.mini-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: bold;
+  border: 1px solid $border-default;
+  background: $bg-primary;
+  color: $text-muted;
+
+  &.wanted {
+    border-color: $gold-primary;
+    background: rgba($gold-primary, 0.1);
+    color: $gold-primary;
+  }
+
+  &.received {
+    border-color: $green-success;
+    background: rgba($green-success, 0.15);
+    color: $green-success;
+  }
+}
+
+.marks-text {
+  font-size: 0.75rem;
+  color: $text-secondary;
+  font-family: $font-body;
+}
+
+.btn-mark {
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba($gold-primary, 0.3);
+  background: rgba($gold-primary, 0.08);
+  color: $gold-primary;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: rgba($gold-primary, 0.18);
+    box-shadow: 0 0 6px $gold-glow;
+  }
+}
+
+.marks-complete-tag {
+  font-size: 0.85rem;
+}
+
+.modal-cost {
+  color: $orange-warning;
+  font-size: 0.8rem;
+  font-style: italic;
+}

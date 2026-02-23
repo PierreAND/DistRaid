@@ -3,6 +3,7 @@ import { Loot } from '../boss/boss.model';
 
 
 export interface DkpMember extends User {
+  heroicMarks: any;
   points: number;
 }
 
@@ -32,11 +33,12 @@ export interface LootWithCandidates {
 export interface LootHistoryEntry {
   id: number;
   userId: number;
-  lootId: number;
+  lootId: number | null 
+  description: string,
   priority: number;
   pointsCost: number;
   user: User;
-  loot: Loot;
+  loot: Loot | null 
   createdAt: string;
 }
 

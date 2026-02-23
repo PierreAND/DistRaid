@@ -21,15 +21,14 @@
   }
 
   @if (dkpData) {
-    <!-- Info badges -->
     <div class="dkp-info">
       <span class="info-badge">P1 = -{{ dkpData.priorityCosts[1] }} pts</span>
       <span class="info-badge">P2 = -{{ dkpData.priorityCosts[2] }} pts</span>
       <span class="info-badge">P3 = -{{ dkpData.priorityCosts[3] }} pts</span>
       <span class="info-badge accent">Participation = +{{ dkpData.attendancePoints }} pts</span>
+      <span class="info-badge mark">🏅 Marque = -20 pts</span>
     </div>
 
-    <!-- Tabs -->
     <div class="tabs">
       <button [class.active]="activeTab === 'dkp'" (click)="switchTab('dkp')">📊 Tableau DKP</button>
       <button [class.active]="activeTab === 'loot-history'" (click)="switchTab('loot-history')">📜 Historique Loots</button>
@@ -38,7 +37,6 @@
 
     <!-- ═══ TAB: DKP TABLE ═══ -->
     @if (activeTab === 'dkp') {
-      <!-- Attendance bar -->
       <div class="attendance-bar">
         <label class="check-all">
           <input type="checkbox" [checked]="isAllSelected()" (change)="selectAllMembers()" />
@@ -49,7 +47,6 @@
         </button>
       </div>
 
-      <!-- Table -->
       <div class="table-scroll">
         <table class="dkp-table">
           <thead>
@@ -61,6 +58,7 @@
               <th>Spé</th>
               <th>Points</th>
               <th>Loots</th>
+              <th>🏅 Marques</th>
             </tr>
           </thead>
           <tbody>
@@ -94,6 +92,29 @@
                     {{ member.loots?.length || 0 }} loot(s) {{ hoveredMember === member.id ? '▲' : '▼' }}
                   </span>
                 </td>
+                <td class="col-marks">
+                  @if (member.heroicMarks && member.heroicMarks.wanted > 0) {
+                    <div class="marks-cell">
+                      <div class="marks-mini-dots">
+                        @for (dot of [1, 2, 3, 4, 5]; track dot) {
+                          @if (dot <= member.heroicMarks.wanted) {
+                            <span class="mini-dot" [class.received]="dot <= member.heroicMarks.received" [class.wanted]="dot > member.heroicMarks.received">
+                              @if (dot <= member.heroicMarks.received) { ✓ } @else { ○ }
+                            </span>
+                          }
+                        }
+                      </div>
+                      <span class="marks-text">{{ member.heroicMarks.received }}/{{ member.heroicMarks.wanted }}</span>
+                      @if (member.heroicMarks.received < member.heroicMarks.wanted) {
+                        <button class="btn-mark" (click)="onMarkClick(member)" title="Attribuer une marque">🏅+</button>
+                      } @else {
+                        <span class="marks-complete-tag">✅</span>
+                      }
+                    </div>
+                  } @else {
+                    <span class="muted">—</span>
+                  }
+                </td>
               </tr>
             }
           </tbody>
@@ -101,20 +122,21 @@
       </div>
     }
 
-    <!-- ═══ TAB: LOOT HISTORY ═══ -->
     @if (activeTab === 'loot-history') {
       @if (lootHistory.length > 0) {
         <div class="history-list">
           @for (entry of lootHistory; track entry.id) {
             <div class="history-card">
-              <span class="history-icon">🎁</span>
+              <span class="history-icon">{{ entry.loot ? '🎁' : '🏅' }}</span>
               <div class="history-content">
-                <strong>{{ entry.loot.name }}</strong>
+                <strong>{{ entry.loot?.name ?? entry.description ?? 'Marque Héroïque T10' }}</strong>
                 <span class="history-detail">
                   attribué à <strong>{{ entry.user.name }}</strong>
                   ({{ entry.user.classe?.name }} — {{ entry.user.specialisation?.name }})
                 </span>
-                <span class="history-meta">Priorité {{ entry.priority }} · -{{ entry.pointsCost }} pts · Boss: {{ entry.loot.boss?.name }}</span>
+                <span class="history-meta">Priorité {{ entry.priority }} · -{{ entry.pointsCost }} pts
+                 @if (entry.loot?.boss) { · Boss: {{ entry.loot?.boss?.name }} }
+                </span>
               </div>
               <span class="history-date">{{ entry.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
             </div>
@@ -125,7 +147,7 @@
       }
     }
 
-    <!-- ═══ TAB: ATTENDANCE HISTORY ═══ -->
+ 
     @if (activeTab === 'attendance-history') {
       @if (attendanceHistory.length > 0) {
         <div class="history-list">
@@ -147,7 +169,7 @@
   }
 </div>
 
-<!-- ═══ WISHLIST POPOVER ═══ -->
+
 @if (hoveredMember !== null && getHoveredMember()) {
   <div class="popover-overlay" (click)="hoveredMember = null">
     <div class="loots-popover" (click)="$event.stopPropagation()">
@@ -167,7 +189,7 @@
   </div>
 }
 
-<!-- ═══ MODAL CONFIRMATION ═══ -->
+
 @if (confirmLoot) {
   <div class="modal-overlay" (click)="cancelAttributeLoot()">
     <div class="modal" (click)="$event.stopPropagation()">
@@ -176,6 +198,22 @@
       <div class="modal-actions">
         <button class="btn-cancel" (click)="cancelAttributeLoot()">Annuler</button>
         <button class="btn-confirm" (click)="confirmAttributeLoot()">Confirmer</button>
+      </div>
+    </div>
+  </div>
+}
+
+
+@if (confirmMark) {
+  <div class="modal-overlay" (click)="cancelAttributeMark()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <h2>🏅 Attribuer une Marque Héroïque</h2>
+      <p>Attribuer 1 Marque Héroïque T10 à <strong>{{ confirmMark.userName }}</strong> ?<br>
+        <span class="modal-cost">Coût : -20 points DKP</span>
+      </p>
+      <div class="modal-actions">
+        <button class="btn-cancel" (click)="cancelAttributeMark()">Annuler</button>
+        <button class="btn-confirm" (click)="confirmAttributeMark()">🏅 Attribuer</button>
       </div>
     </div>
   </div>

@@ -54,6 +54,7 @@ export class DkpService {
             classe: true,
             specialisation: true,
             loots: { include: { boss: true } },
+            heroicMarkRequest: true,
           },
         },
       },
@@ -64,10 +65,16 @@ export class DkpService {
       where: { raidId },
     });
 
-    const dkpTable = raid.users
+    const members = raid.users
       .map((user) => ({
         ...user,
         points: points.find((p) => p.userId === user.id)?.points ?? 0,
+        heroicMarks: user.heroicMarkRequest
+          ? {
+              wanted: user.heroicMarkRequest.quantity,
+              received: user.heroicMarkRequest.received,
+            }
+          : { wanted: 0, received: 0 },
       }))
       .sort((a, b) => b.points - a.points);
 
@@ -75,10 +82,9 @@ export class DkpService {
       raid: { id: raid.id, name: raid.name },
       priorityCosts: PRIORITY_COSTS,
       attendancePoints: ATTENDANCE_POINTS,
-      members: dkpTable,
+      members,
     };
   }
-
   async setPoints(adminId: number, raidId: number, dto: SetPointsDto) {
     await this.verifyAdmin(adminId, raidId);
 
@@ -387,7 +393,7 @@ export class DkpService {
       throw new BadRequestException("Ce joueur n'a plus besoin de marques");
     }
 
-    const pointsCost = PRIORITY_COSTS[2]; 
+    const pointsCost = PRIORITY_COSTS[2];
 
     const currentPoints = await this.prisma.raidPoints.findUnique({
       where: { userId_raidId: { userId: targetUserId, raidId } },
