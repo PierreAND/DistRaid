@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-// =============================================
-// backend/src/dkp/dkp.service.ts
-// Module SÉPARÉ — ne touche PAS à LootService
-// =============================================
+
 
 import {
   Injectable,
