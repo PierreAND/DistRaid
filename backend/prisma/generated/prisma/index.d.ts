@@ -2353,8 +2353,8 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: number
-    email: string
-    name: string | null
+    email: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -2486,8 +2486,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      email: string
-      name: string | null
+      email: string | null
+      name: string
       password: string
       classeId: number
       specialisationId: number
@@ -16157,8 +16157,8 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: IntFilter<"User"> | number
-    email?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
+    email?: StringNullableFilter<"User"> | string | null
+    name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     classeId?: IntFilter<"User"> | number
     specialisationId?: IntFilter<"User"> | number
@@ -16179,8 +16179,8 @@ export namespace Prisma {
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    email?: SortOrder
-    name?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    name?: SortOrder
     password?: SortOrder
     classeId?: SortOrder
     specialisationId?: SortOrder
@@ -16201,11 +16201,11 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    email?: string
+    name?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    name?: StringNullableFilter<"User"> | string | null
+    email?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
     classeId?: IntFilter<"User"> | number
     specialisationId?: IntFilter<"User"> | number
@@ -16222,12 +16222,12 @@ export namespace Prisma {
     heroicMarkRequest?: XOR<HeroicMarkRequestNullableScalarRelationFilter, HeroicMarkRequestWhereInput> | null
     classe?: XOR<ClasseScalarRelationFilter, ClasseWhereInput>
     specialisation?: XOR<SpecialisationScalarRelationFilter, SpecialisationWhereInput>
-  }, "id" | "email">
+  }, "id" | "name">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    email?: SortOrder
-    name?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    name?: SortOrder
     password?: SortOrder
     classeId?: SortOrder
     specialisationId?: SortOrder
@@ -16245,8 +16245,8 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"User"> | number
-    email?: StringWithAggregatesFilter<"User"> | string
-    name?: StringNullableWithAggregatesFilter<"User"> | string | null
+    email?: StringNullableWithAggregatesFilter<"User"> | string | null
+    name?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     classeId?: IntWithAggregatesFilter<"User"> | number
     specialisationId?: IntWithAggregatesFilter<"User"> | number
@@ -16895,8 +16895,8 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     raid?: RaidCreateNestedOneWithoutUsersInput
@@ -16914,8 +16914,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -16932,8 +16932,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     raid?: RaidUpdateOneWithoutUsersNestedInput
@@ -16951,8 +16951,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -16970,8 +16970,8 @@ export namespace Prisma {
 
   export type UserCreateManyInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -16980,16 +16980,16 @@ export namespace Prisma {
   }
 
   export type UserUpdateManyMutationInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -17568,21 +17568,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type StringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -17596,6 +17581,21 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type StringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -17773,24 +17773,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -17807,6 +17789,24 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -18415,12 +18415,12 @@ export namespace Prisma {
     connect?: HeroicMarkRequestWhereUniqueInput
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -19398,20 +19398,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type NestedStringFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringFilter<$PrismaModel> | string
-  }
-
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -19424,6 +19410,20 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringFilter<$PrismaModel> | string
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -19475,23 +19475,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -19507,6 +19490,23 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -20097,8 +20097,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutClasseInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     raid?: RaidCreateNestedOneWithoutUsersInput
@@ -20115,8 +20115,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutClasseInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     specialisationId: number
     raidId?: number | null
@@ -20187,8 +20187,8 @@ export namespace Prisma {
     OR?: UserScalarWhereInput[]
     NOT?: UserScalarWhereInput | UserScalarWhereInput[]
     id?: IntFilter<"User"> | number
-    email?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
+    email?: StringNullableFilter<"User"> | string | null
+    name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     classeId?: IntFilter<"User"> | number
     specialisationId?: IntFilter<"User"> | number
@@ -20213,8 +20213,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutSpecialisationInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     raid?: RaidCreateNestedOneWithoutUsersInput
@@ -20231,8 +20231,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutSpecialisationInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     raidId?: number | null
@@ -20296,8 +20296,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutCreatedRaidsInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     raid?: RaidCreateNestedOneWithoutUsersInput
@@ -20314,8 +20314,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutCreatedRaidsInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -20409,8 +20409,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutRaidInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     createdRaids?: RaidCreateNestedManyWithoutCreatedByInput
@@ -20427,8 +20427,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutRaidInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -20488,8 +20488,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutCreatedRaidsInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     raid?: RaidUpdateOneWithoutUsersNestedInput
@@ -20506,8 +20506,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutCreatedRaidsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -20613,8 +20613,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutJoinRequestsInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     raid?: RaidCreateNestedOneWithoutUsersInput
@@ -20631,8 +20631,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutJoinRequestsInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -20688,8 +20688,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutJoinRequestsInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     raid?: RaidUpdateOneWithoutUsersNestedInput
@@ -20706,8 +20706,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutJoinRequestsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -20753,8 +20753,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutRaidPointsInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     raid?: RaidCreateNestedOneWithoutUsersInput
@@ -20771,8 +20771,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutRaidPointsInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -20828,8 +20828,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutRaidPointsInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     raid?: RaidUpdateOneWithoutUsersNestedInput
@@ -20846,8 +20846,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutRaidPointsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -20893,8 +20893,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutWishlistItemInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     raid?: RaidCreateNestedOneWithoutUsersInput
@@ -20911,8 +20911,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutWishlistItemInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -20966,8 +20966,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutWishlistItemInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     raid?: RaidUpdateOneWithoutUsersNestedInput
@@ -20984,8 +20984,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutWishlistItemInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -21029,8 +21029,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutLootHistoryInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     raid?: RaidCreateNestedOneWithoutUsersInput
@@ -21047,8 +21047,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutLootHistoryInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -21126,8 +21126,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutLootHistoryInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     raid?: RaidUpdateOneWithoutUsersNestedInput
@@ -21144,8 +21144,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutLootHistoryInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -21219,8 +21219,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutAttendancesInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     raid?: RaidCreateNestedOneWithoutUsersInput
@@ -21237,8 +21237,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutAttendancesInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -21294,8 +21294,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutAttendancesInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     raid?: RaidUpdateOneWithoutUsersNestedInput
@@ -21312,8 +21312,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutAttendancesInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -21416,8 +21416,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutLootsInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     raid?: RaidCreateNestedOneWithoutUsersInput
@@ -21434,8 +21434,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutLootsInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -21576,8 +21576,8 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutHeroicMarkRequestInput = {
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     createdAt?: Date | string
     raid?: RaidCreateNestedOneWithoutUsersInput
@@ -21594,8 +21594,8 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutHeroicMarkRequestInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -21627,8 +21627,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutHeroicMarkRequestInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     raid?: RaidUpdateOneWithoutUsersNestedInput
@@ -21645,8 +21645,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutHeroicMarkRequestInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -21841,8 +21841,8 @@ export namespace Prisma {
 
   export type UserCreateManyClasseInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     specialisationId: number
     raidId?: number | null
@@ -21866,8 +21866,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutClasseInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     raid?: RaidUpdateOneWithoutUsersNestedInput
@@ -21884,8 +21884,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutClasseInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     specialisationId?: IntFieldUpdateOperationsInput | number
     raidId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -21902,8 +21902,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyWithoutClasseInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     specialisationId?: IntFieldUpdateOperationsInput | number
     raidId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -21912,8 +21912,8 @@ export namespace Prisma {
 
   export type UserCreateManySpecialisationInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     raidId?: number | null
@@ -21921,8 +21921,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutSpecialisationInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     raid?: RaidUpdateOneWithoutUsersNestedInput
@@ -21939,8 +21939,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutSpecialisationInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     raidId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -21957,8 +21957,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyWithoutSpecialisationInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     raidId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -21990,8 +21990,8 @@ export namespace Prisma {
 
   export type UserCreateManyRaidInput = {
     id?: number
-    email: string
-    name?: string | null
+    email?: string | null
+    name: string
     password: string
     classeId: number
     specialisationId: number
@@ -22072,8 +22072,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutRaidInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdRaids?: RaidUpdateManyWithoutCreatedByNestedInput
@@ -22090,8 +22090,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutRaidInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -22108,8 +22108,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyWithoutRaidInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -22183,8 +22183,8 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutLootsInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     raid?: RaidUpdateOneWithoutUsersNestedInput
@@ -22201,8 +22201,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutLootsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
@@ -22219,8 +22219,8 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyWithoutLootsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     classeId?: IntFieldUpdateOperationsInput | number
     specialisationId?: IntFieldUpdateOperationsInput | number
