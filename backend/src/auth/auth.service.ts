@@ -18,10 +18,10 @@ export class AuthService {
 
   async register(dto: RegisterDto) {
     const existingUser = await this.prisma.user.findUnique({
-      where: { email: dto.email },
+      where: { name: dto.name },
     });
     if (existingUser) {
-      throw new ConflictException('Un utilisateur avec cet email existe déjà');
+      throw new ConflictException('Un utilisateur avec ce pseudo existe déjà');
     }
 
     const classe = await this.prisma.classe.findUnique({
@@ -45,7 +45,6 @@ export class AuthService {
     const user = await this.prisma.user.create({
       data: {
         name: dto.name,
-        email: dto.email,
         password: hashedPassword,
         classeId: dto.classeId,
         specialisationId: dto.specialisationId,
@@ -57,33 +56,33 @@ export class AuthService {
 
     return {
       user: userWithoutPassword,
-      access_token: this.generateToken(user.id, user.email),
+      access_token: this.generateToken(user.id, user.name),
     };
   }
 
   async login(dto: LoginDto) {
     const user = await this.prisma.user.findUnique({
-      where: { email: dto.email },
+      where: { name: dto.name },
       include: { classe: true, specialisation: true },
     });
     if (!user) {
-      throw new UnauthorizedException('Email ou mot de passe incorrect');
+      throw new UnauthorizedException('Pseudo ou mot de passe incorrect');
     }
 
     const isPasswordValid = await bcrypt.compare(dto.password, user.password);
     if (!isPasswordValid) {
-      throw new UnauthorizedException('Email ou mot de passe incorrect');
+      throw new UnauthorizedException('Pseudo ou mot de passe incorrect');
     }
 
     const { password, ...userWithoutPassword } = user;
 
     return {
       user: userWithoutPassword,
-      access_token: this.generateToken(user.id, user.email),
+      access_token: this.generateToken(user.id, user.name),
     };
   }
 
-  private generateToken(userId: number, email: string): string {
-    return this.jwtService.sign({ sub: userId, email });
+  private generateToken(userId: number, name: string): string {
+    return this.jwtService.sign({ sub: userId, name });
   }
 }
