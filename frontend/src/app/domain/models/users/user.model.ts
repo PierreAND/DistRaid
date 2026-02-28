@@ -60,21 +60,19 @@ export interface AuthResponse {
 }
 
 export interface RegisterPayload {
-    name?: string
-    email: string
+    name: string
     password: string
     classeId: number
     specialisationId: number
 }
 
 export interface LoginPayload {
-    email: string
+    name: string
     password: string
 }
 
 export interface UpdateUserPayload {
     name?: string
-    email?: string
     classeId?: number
     specialisationId?: number
     raidId?: number | null 

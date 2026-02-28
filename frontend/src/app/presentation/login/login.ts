@@ -23,30 +23,30 @@ export class Login {
   ) {}
 
   ngOnInit(): void {
-   this.loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+  this.loginForm = this.fb.group({
+    name: ['', [Validators.required]],
     password: ['', [Validators.required]]
   });
-  }
-  onSubmit(): void {
-    if (this.loginForm.invalid) return;
-    this.isLoading = true;
-    this.errorMessage = '';
-    const formValue = this.loginForm.getRawValue();
+}
 
-    this.loginUseCase.execute({
-      email: formValue.email,
-      password: formValue.password
-    })
-    .subscribe({
-      next: (res) => {
-        localStorage.setItem('access_token', res.access_token);
-        this.router.navigate(['/home'])
-      },
-      error: (err) => {
-        this.isLoading = false;
-        this.errorMessage = err.error?.message || "Email ou mot de passe incorect"
-      }
-    })
-  }
+onSubmit(): void {
+  if (this.loginForm.invalid) return;
+  this.isLoading = true;
+  this.errorMessage = '';
+  const formValue = this.loginForm.getRawValue();
+
+  this.loginUseCase.execute({
+    name: formValue.name,
+    password: formValue.password
+  })
+  .subscribe({
+    next: (res) => {
+      localStorage.setItem('access_token', res.access_token);
+      this.router.navigate(['/home'])
+    },
+    error: (err) => {
+      this.isLoading = false;
+      this.errorMessage = err.error?.message || "Pseudo ou mot de passe incorrect"
+    }
+  });
 }

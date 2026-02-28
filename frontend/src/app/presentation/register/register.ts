@@ -27,71 +27,66 @@ export class Register {
     private getAllClasse: GetAllClassUseCase,
     private router: Router,
   ) {}
-
- ngOnInit(): void {
-  this.registerForm = this.fb.group({
-    name: [''],
-    email: ['', [Validators.required, Validators.email]],          
-    password: ['', [Validators.required, Validators.minLength(6)]], 
-    classeId: [null, [Validators.required]],
-    specialisationId: [{ value: null, disabled: true }, [Validators.required]],
-  });
-  this.loadClasses();
-}
-
-loadClasses(): void {
-  this.getAllClasse.execute().subscribe({
-    next: (classes) => {
-      console.log(classes)
-      this.classes = classes;
-      this.specialisations = classes.flatMap((c) => c.specialisation);
-    },
-    error: (err) => {
-      console.error('Erreur chargement classes:', err);
-    },
-  });
-}
-
-onClasseChange(): void {
-  const classeId = this.registerForm.get('classeId')?.value;
-  const specControl = this.registerForm.get('specialisationId');
-
-  if (classeId) {
-    this.filteredSpecialisations = this.specialisations.filter(
-      (s) => s.classeId === +classeId
-    );
-    specControl?.enable();
-  } else {
-    this.filteredSpecialisations = [];
-    specControl?.setValue(null);
-    specControl?.disable();
+  ngOnInit(): void {
+    this.registerForm = this.fb.group({
+      name: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      classeId: [null, [Validators.required]],
+      specialisationId: [{ value: null, disabled: true }, [Validators.required]],
+    });
+    this.loadClasses();
   }
-}
 
-onSubmit(): void {
-  if (this.registerForm.invalid) return;
-
-  this.isLoading = true;
-  this.errorMessage = '';
-  const formValue = this.registerForm.getRawValue();
-
-  this.registerUseCase
-    .execute({
-      name: formValue.name,
-      email: formValue.email,
-      password: formValue.password,
-      classeId: +formValue.classeId,
-      specialisationId: +formValue.specialisationId,
-    })
-    .subscribe({
-      next: (res) => {
-        localStorage.setItem('access_token', res.access_token);
-        this.router.navigate(['/login']);
+  loadClasses(): void {
+    this.getAllClasse.execute().subscribe({
+      next: (classes) => {
+        console.log(classes);
+        this.classes = classes;
+        this.specialisations = classes.flatMap((c) => c.specialisation);
       },
       error: (err) => {
-        this.isLoading = false;
-        this.errorMessage = err.error?.message || "Erreur lors de l'inscription";
+        console.error('Erreur chargement classes:', err);
       },
     });
-}
+  }
+
+  onClasseChange(): void {
+    const classeId = this.registerForm.get('classeId')?.value;
+    const specControl = this.registerForm.get('specialisationId');
+
+    if (classeId) {
+      this.filteredSpecialisations = this.specialisations.filter((s) => s.classeId === +classeId);
+      specControl?.enable();
+    } else {
+      this.filteredSpecialisations = [];
+      specControl?.setValue(null);
+      specControl?.disable();
+    }
+  }
+
+  onSubmit(): void {
+    if (this.registerForm.invalid) return;
+
+    this.isLoading = true;
+    this.errorMessage = '';
+    const formValue = this.registerForm.getRawValue();
+
+    this.registerUseCase
+      .execute({
+        name: formValue.name,
+        password: formValue.password,
+        classeId: +formValue.classeId,
+        specialisationId: +formValue.specialisationId,
+      })
+      .subscribe({
+        next: (res) => {
+          localStorage.setItem('access_token', res.access_token);
+          this.router.navigate(['/login']);
+        },
+        error: (err) => {
+          this.isLoading = false;
+          this.errorMessage = err.error?.message || "Erreur lors de l'inscription";
+        },
+      });
+  }
 }

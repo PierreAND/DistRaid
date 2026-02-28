@@ -7,22 +7,10 @@
 
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="name">Nom</label>
-      <input id="name" type="text" formControlName="name" placeholder="Votre nom" />
-    </div>
-
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input id="email" type="email" formControlName="email" placeholder="email@exemple.com" />
-      @if (registerForm.get('email')?.touched && registerForm.get('email')?.errors) {
-        <small class="field-error">
-          @if (registerForm.get('email')?.errors?.['required']) {
-            L'email est requis
-          }
-          @if (registerForm.get('email')?.errors?.['email']) {
-            Format d'email invalide
-          }
-        </small>
+      <label for="name">Pseudo</label>
+      <input id="name" type="text" formControlName="name" placeholder="Votre pseudo" />
+      @if (registerForm.get('name')?.touched && registerForm.get('name')?.errors?.['required']) {
+        <small class="field-error">Le pseudo est requis</small>
       }
     </div>
 
